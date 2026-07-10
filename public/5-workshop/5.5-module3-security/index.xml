@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Module 3: Bảo mật &amp; Phân quyền :: Báo cáo thực tập</title>
-    <link>http://example.org/5-workshop/5.5-module3-security/index.html</link>
+    <link>http://localhost:1313/5-workshop/5.5-module3-security/index.html</link>
     <description>Thiết lập Cognito User Pool cho đăng nhập và tạo các chính sách IAM chi tiết tuân theo nguyên tắc phân quyền tối thiểu (Least Privilege).&#xA;Tạo tệp lib/security-stack.ts:&#xA;import * as cdk from &#39;aws-cdk-lib&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as iam from &#39;aws-cdk-lib/aws-iam&#39;; import { Construct } from &#39;constructs&#39;; export class SecurityStack extends cdk.Stack { public readonly userPool: cognito.UserPool; public readonly userPoolClient: cognito.UserPoolClient; constructor(scope: Construct, id: string, props?: cdk.StackProps) { super(scope, id, props); this.userPool = new cognito.UserPool(this, &#39;AppUserPool&#39;, { userPoolName: &#39;app-user-pool&#39;, selfSignUpEnabled: true, signInAliases: { email: true }, autoVerify: { email: true }, passwordPolicy: { minLength: 8, requireLowercase: true, requireUppercase: true, requireDigits: true, requireSymbols: true, }, removalPolicy: cdk.RemovalPolicy.DESTROY, }); this.userPoolClient = new cognito.UserPoolClient(this, &#39;AppUserPoolClient&#39;, { userPool: this.userPool, generateSecret: false, }); // Custom role cho hệ thống thông báo (Quyền tối thiểu) const notificationRole = new iam.Role(this, &#39;NotificationPublishRole&#39;, { assumedBy: new iam.ServicePrincipal(&#39;lambda.amazonaws.com&#39;), description: &#39;Role gửi thông báo với các quyền tối giản&#39;, }); notificationRole.addToPolicy(new iam.PolicyStatement({ actions: [&#39;sns:Publish&#39;], resources: [&#39;*&#39;], effect: iam.Effect.ALLOW, })); } }</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://example.org/5-workshop/5.5-module3-security/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/5-workshop/5.5-module3-security/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

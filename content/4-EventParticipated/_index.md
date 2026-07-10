@@ -9,7 +9,7 @@ pre: " <b> 4. </b> "
 During my internship period, I had the valuable opportunity to attend an insightful tech event. It was an excellent chance to gain practical knowledge, discover fresh perspectives on modern technologies, and build memorable networking experiences.
 
 ### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** FCAJ Meetup: Using AI in a New Era
+&emsp;**Event Name:** FCAJ Community Day
 
 &emsp;**Date & Time:** 09:00 AM, May 09, 2026
 

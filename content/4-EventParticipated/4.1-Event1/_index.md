@@ -1,5 +1,5 @@
 +++
-title = "FCAJ Meetup: Using AI in a New Era"
+title = "FCAJ Community Day"
 date = 2026-05-09
 weight = 1
 chapter = false
@@ -8,7 +8,7 @@ pre = " <b> 4.1. </b> "
 
 ## 1. General Overview
 
-&emsp;**Event Name:** FCAJ Meetup: Using AI in a New Era
+&emsp;**Event Name:** FCAJ Community Day
 
 &emsp;**Date:** May 09, 2026
 
@@ -18,9 +18,17 @@ pre = " <b> 4.1. </b> "
 
 &emsp;**Format:** In-person technical meetup (including presentations, live demonstrations, and Q&A sessions)
 
+&emsp;**Event Livestream Recording:**
+
+<p align="center">
+  <a href="https://youtu.be/4hEntEh-nm4" target="_blank">
+    <img src="https://img.youtube.com/vi/4hEntEh-nm4/maxresdefault.jpg" alt="FCAJ Community Day" width="800" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  </a>
+</p>
+
 ## 2. Event Highlights
 
-The meetup centered on integrating artificial intelligence, cloud computing, and modern security infrastructure into real-world business systems. The speakers successfully bridged the gap between foundational theories and practical implementations.
+The FCAJ Community Day centered on integrating artificial intelligence, cloud computing, and modern security infrastructure into real-world business systems. The speakers successfully bridged the gap between foundational theories and practical implementations.
 
 1. **Building Multiplayer Games on AWS Cloud** (Quoc Bao - Swinburne University)
 	This session explored the usage of AWS Serverless architecture for multiplayer gaming backends. The speaker detailed the system structure, Route Key integration, DynamoDB schema configurations, Lambda logic, and the Godot client loop. The live demo highlighted the complexities of maintaining low latency in real-time environments.
@@ -39,10 +47,10 @@ The meetup centered on integrating artificial intelligence, cloud computing, and
 
 ## 3. Personal Takeaways & Engagement
 
-This event provided me with a profound understanding of how diverse cloud services interlock to form scalable, production-ready systems. The GraphRAG presentation was a standout, clarifying how combining knowledge graphs with Amazon Neptune and Bedrock overcomes the limitations of vector-only searches, ultimately making AI applications far more trustworthy and maintainable.
+This FCAJ Community Day provided me with a profound understanding of how diverse cloud services interlock to form scalable, production-ready systems. The GraphRAG presentation was a standout, clarifying how combining knowledge graphs with Amazon Neptune and Bedrock overcomes the limitations of vector-only searches, ultimately making AI applications far more trustworthy and maintainable.
 
 Equally fascinating was the serverless multiplayer backend discussion. Designing a real-time game architecture utilizing Lambda and DynamoDB requires a deep understanding of state management and latency trade-offs. The concepts shared directly reinforced my knowledge of scalable and highly available backend design.
 
 During the Q&A segments, I actively engaged with the speakers by raising questions regarding the deployment challenges of GraphRAG pipelines and the scalability thresholds of serverless real-time systems. Discussing these specific technical constraints helped me correlate theoretical designs with practical performance tuning.
 
-Overall, the FCAJ Meetup significantly boosted my enthusiasm for cloud architecture and AI integration. It has given me a much clearer technical direction and prepared me well for handling complex AWS and AI-driven tasks in my ongoing internship.
+Overall, the FCAJ Community Day significantly boosted my enthusiasm for cloud architecture and AI integration. It has given me a much clearer technical direction and prepared me well for handling complex AWS and AI-driven tasks in my ongoing internship.

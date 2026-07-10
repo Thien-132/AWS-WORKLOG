@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Các sự kiện đã tham gia :: Báo cáo thực tập</title>
-    <link>http://example.org/4-eventparticipated/index.html</link>
-    <description>Trong kỳ thực tập này, em đã có cơ hội tham gia một sự kiện vô cùng ý nghĩa. Không chỉ mang lại những kiến thức thực tiễn và góc nhìn mới mẻ về công nghệ, đây còn là dịp để giao lưu, học hỏi và tạo ra những kỷ niệm đáng nhớ.&#xA;Sự kiện 1&#xD;Tên sự kiện: FCAJ Meetup: Ứng dụng AI trong kỷ nguyên mới</description>
+    <link>http://localhost:1313/4-eventparticipated/index.html</link>
+    <description>Trong kỳ thực tập này, em đã có cơ hội tham gia một sự kiện vô cùng ý nghĩa. Không chỉ mang lại những kiến thức thực tiễn và góc nhìn mới mẻ về công nghệ, đây còn là dịp để giao lưu, học hỏi và tạo ra những kỷ niệm đáng nhớ.&#xA;Sự kiện 1&#xD;Tên sự kiện: FCAJ Community Day</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Sat, 09 May 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://example.org/4-eventparticipated/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/4-eventparticipated/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>FCAJ Meetup: Ứng dụng AI trong kỷ nguyên mới</title>
-      <link>http://example.org/4-eventparticipated/4.1-event1/index.html</link>
+      <title>FCAJ Community Day</title>
+      <link>http://localhost:1313/4-eventparticipated/4.1-event1/index.html</link>
       <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://example.org/4-eventparticipated/4.1-event1/index.html</guid>
-      <description>1. Thông tin tổng quan&#xD;Tên sự kiện: FCAJ Meetup: Ứng dụng AI trong kỷ nguyên mới&#xA;Ngày tổ chức: 09/05/2026&#xA;Địa điểm: Tầng 26, Bitexco Financial Tower, số 02 Hải Triều, Phường Bến Nghé, Quận 1, TP.HCM&#xA;Vai trò: Khán giả tham dự&#xA;Hình thức tổ chức: Hội thảo kỹ thuật trực tiếp (bao gồm thuyết trình, demo thực tế và phần Q&amp;A)</description>
+      <guid>http://localhost:1313/4-eventparticipated/4.1-event1/index.html</guid>
+      <description>1. Thông tin tổng quan&#xD;Tên sự kiện: FCAJ Community Day&#xA;Ngày tổ chức: 09/05/2026&#xA;Địa điểm: Tầng 26, Bitexco Financial Tower, số 02 Hải Triều, Phường Bến Nghé, Quận 1, TP.HCM&#xA;Vai trò: Khán giả tham dự&#xA;Hình thức tổ chức: Hội thảo kỹ thuật trực tiếp (bao gồm thuyết trình, demo thực tế và phần Q&amp;A)</description>
     </item>
   </channel>
 </rss>
