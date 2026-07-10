@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FCAJ Community Day - June 2026 :: Báo cáo thực tập</title>
+    <link>http://localhost:60313/4-eventparticipated/4.2-event2/index.html</link>
+    <description>1. Thông tin chung&#xD;Tên sự kiện: FCAJ Community Day - June 2026&#xA;Ngày: 27/06/2026&#xA;Địa điểm: Trực tuyến (Online)&#xA;Vai trò: Người tham dự&#xA;Hình thức: Hội thảo trực tuyến (Online webinar / livestream) tập trung vào các chia sẻ kỹ thuật về Cloud, AI và DevOps.&#xA;2. Nội dung chính của sự kiện&#xD;Sự kiện bao gồm chuỗi các buổi trình bày và thảo luận kỹ thuật tập trung vào các tiến bộ trong lĩnh vực Cloud, AI và DevOps:</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:60313/4-eventparticipated/4.2-event2/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

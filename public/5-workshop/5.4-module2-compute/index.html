@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html id="R-html" lang="vi-vn" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
+    <meta name="description" content="Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.
+Tạo tệp lib/api-stack.ts:
+import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk-lib/aws-lambda&#39;; import * as apigateway from &#39;aws-cdk-lib/aws-apigateway&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import { Construct } from &#39;constructs&#39;; interface ApiStackProps extends cdk.StackProps { table: dynamodb.Table; userPool: cognito.IUserPool; } export class ApiStack extends cdk.Stack { constructor(scope: Construct, id: string, props: ApiStackProps) { super(scope, id, props); const authorizer = new apigateway.CognitoUserPoolsAuthorizer(this, &#39;AppApiAuthorizer&#39;, { cognitoUserPools: [props.userPool], authorizerName: &#39;AppAuthorizer&#39;, }); const dataLambda = new lambda.Function(this, &#39;DataServiceLambda&#39;, { runtime: lambda.Runtime.NODEJS_18_X, handler: &#39;index.handler&#39;, code: lambda.Code.fromInline(` const { DynamoDBClient } = require(&#34;@aws-sdk/client-dynamodb&#34;); const { DynamoDBDocumentClient, ScanCommand } = require(&#34;@aws-sdk/lib-dynamodb&#34;); const client = new DynamoDBClient({}); const docClient = DynamoDBDocumentClient.from(client); exports.handler = async (event) =&gt; { const tableName = process.env.TABLE_NAME; try { const data = await docClient.send(new ScanCommand({ TableName: tableName, FilterExpression: &#34;begins_with(PK, :pk)&#34;, ExpressionAttributeValues: { &#34;:pk&#34;: &#34;ITEM#&#34; } })); return { statusCode: 200, headers: { &#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Access-Control-Allow-Origin&#34;: &#34;*&#34; }, body: JSON.stringify(data.Items || []) }; } catch (err) { return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; } }; `), environment: { TABLE_NAME: props.table.tableName, }, }); props.table.grantReadWriteData(dataLambda); const api = new apigateway.RestApi(this, &#39;AppRestApi&#39;, { restApiName: &#39;Application Backend API&#39;, defaultCorsPreflightOptions: { allowOrigins: apigateway.Cors.ALL_ORIGINS, allowMethods: apigateway.Cors.ALL_METHODS, }, }); const itemsResource = api.root.addResource(&#39;items&#39;); itemsResource.addMethod(&#39;GET&#39;, new apigateway.LambdaIntegration(dataLambda)); itemsResource.addMethod(&#39;POST&#39;, new apigateway.LambdaIntegration(dataLambda), { authorizer: authorizer, authorizationType: apigateway.AuthorizationType.COGNITO, }); } }">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Module 2: Tính toán &amp; API :: Báo cáo thực tập">
+    <meta name="twitter:description" content="Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.
+Tạo tệp lib/api-stack.ts:
+import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk-lib/aws-lambda&#39;; import * as apigateway from &#39;aws-cdk-lib/aws-apigateway&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import { Construct } from &#39;constructs&#39;; interface ApiStackProps extends cdk.StackProps { table: dynamodb.Table; userPool: cognito.IUserPool; } export class ApiStack extends cdk.Stack { constructor(scope: Construct, id: string, props: ApiStackProps) { super(scope, id, props); const authorizer = new apigateway.CognitoUserPoolsAuthorizer(this, &#39;AppApiAuthorizer&#39;, { cognitoUserPools: [props.userPool], authorizerName: &#39;AppAuthorizer&#39;, }); const dataLambda = new lambda.Function(this, &#39;DataServiceLambda&#39;, { runtime: lambda.Runtime.NODEJS_18_X, handler: &#39;index.handler&#39;, code: lambda.Code.fromInline(` const { DynamoDBClient } = require(&#34;@aws-sdk/client-dynamodb&#34;); const { DynamoDBDocumentClient, ScanCommand } = require(&#34;@aws-sdk/lib-dynamodb&#34;); const client = new DynamoDBClient({}); const docClient = DynamoDBDocumentClient.from(client); exports.handler = async (event) =&gt; { const tableName = process.env.TABLE_NAME; try { const data = await docClient.send(new ScanCommand({ TableName: tableName, FilterExpression: &#34;begins_with(PK, :pk)&#34;, ExpressionAttributeValues: { &#34;:pk&#34;: &#34;ITEM#&#34; } })); return { statusCode: 200, headers: { &#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Access-Control-Allow-Origin&#34;: &#34;*&#34; }, body: JSON.stringify(data.Items || []) }; } catch (err) { return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; } }; `), environment: { TABLE_NAME: props.table.tableName, }, }); props.table.grantReadWriteData(dataLambda); const api = new apigateway.RestApi(this, &#39;AppRestApi&#39;, { restApiName: &#39;Application Backend API&#39;, defaultCorsPreflightOptions: { allowOrigins: apigateway.Cors.ALL_ORIGINS, allowMethods: apigateway.Cors.ALL_METHODS, }, }); const itemsResource = api.root.addResource(&#39;items&#39;); itemsResource.addMethod(&#39;GET&#39;, new apigateway.LambdaIntegration(dataLambda)); itemsResource.addMethod(&#39;POST&#39;, new apigateway.LambdaIntegration(dataLambda), { authorizer: authorizer, authorizationType: apigateway.AuthorizationType.COGNITO, }); } }">
+    <meta property="og:url" content="http://localhost:1313/5-workshop/5.4-module2-compute/index.html">
+    <meta property="og:site_name" content="Báo cáo thực tập">
+    <meta property="og:title" content="Module 2: Tính toán &amp; API :: Báo cáo thực tập">
+    <meta property="og:description" content="Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.
+Tạo tệp lib/api-stack.ts:
+import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk-lib/aws-lambda&#39;; import * as apigateway from &#39;aws-cdk-lib/aws-apigateway&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import { Construct } from &#39;constructs&#39;; interface ApiStackProps extends cdk.StackProps { table: dynamodb.Table; userPool: cognito.IUserPool; } export class ApiStack extends cdk.Stack { constructor(scope: Construct, id: string, props: ApiStackProps) { super(scope, id, props); const authorizer = new apigateway.CognitoUserPoolsAuthorizer(this, &#39;AppApiAuthorizer&#39;, { cognitoUserPools: [props.userPool], authorizerName: &#39;AppAuthorizer&#39;, }); const dataLambda = new lambda.Function(this, &#39;DataServiceLambda&#39;, { runtime: lambda.Runtime.NODEJS_18_X, handler: &#39;index.handler&#39;, code: lambda.Code.fromInline(` const { DynamoDBClient } = require(&#34;@aws-sdk/client-dynamodb&#34;); const { DynamoDBDocumentClient, ScanCommand } = require(&#34;@aws-sdk/lib-dynamodb&#34;); const client = new DynamoDBClient({}); const docClient = DynamoDBDocumentClient.from(client); exports.handler = async (event) =&gt; { const tableName = process.env.TABLE_NAME; try { const data = await docClient.send(new ScanCommand({ TableName: tableName, FilterExpression: &#34;begins_with(PK, :pk)&#34;, ExpressionAttributeValues: { &#34;:pk&#34;: &#34;ITEM#&#34; } })); return { statusCode: 200, headers: { &#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Access-Control-Allow-Origin&#34;: &#34;*&#34; }, body: JSON.stringify(data.Items || []) }; } catch (err) { return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; } }; `), environment: { TABLE_NAME: props.table.tableName, }, }); props.table.grantReadWriteData(dataLambda); const api = new apigateway.RestApi(this, &#39;AppRestApi&#39;, { restApiName: &#39;Application Backend API&#39;, defaultCorsPreflightOptions: { allowOrigins: apigateway.Cors.ALL_ORIGINS, allowMethods: apigateway.Cors.ALL_METHODS, }, }); const itemsResource = api.root.addResource(&#39;items&#39;); itemsResource.addMethod(&#39;GET&#39;, new apigateway.LambdaIntegration(dataLambda)); itemsResource.addMethod(&#39;POST&#39;, new apigateway.LambdaIntegration(dataLambda), { authorizer: authorizer, authorizationType: apigateway.AuthorizationType.COGNITO, }); } }">
+    <meta property="og:locale" content="vi_vn">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Module 2: Tính toán &amp; API :: Báo cáo thực tập">
+    <meta itemprop="description" content="Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.
+Tạo tệp lib/api-stack.ts:
+import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk-lib/aws-lambda&#39;; import * as apigateway from &#39;aws-cdk-lib/aws-apigateway&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import { Construct } from &#39;constructs&#39;; interface ApiStackProps extends cdk.StackProps { table: dynamodb.Table; userPool: cognito.IUserPool; } export class ApiStack extends cdk.Stack { constructor(scope: Construct, id: string, props: ApiStackProps) { super(scope, id, props); const authorizer = new apigateway.CognitoUserPoolsAuthorizer(this, &#39;AppApiAuthorizer&#39;, { cognitoUserPools: [props.userPool], authorizerName: &#39;AppAuthorizer&#39;, }); const dataLambda = new lambda.Function(this, &#39;DataServiceLambda&#39;, { runtime: lambda.Runtime.NODEJS_18_X, handler: &#39;index.handler&#39;, code: lambda.Code.fromInline(` const { DynamoDBClient } = require(&#34;@aws-sdk/client-dynamodb&#34;); const { DynamoDBDocumentClient, ScanCommand } = require(&#34;@aws-sdk/lib-dynamodb&#34;); const client = new DynamoDBClient({}); const docClient = DynamoDBDocumentClient.from(client); exports.handler = async (event) =&gt; { const tableName = process.env.TABLE_NAME; try { const data = await docClient.send(new ScanCommand({ TableName: tableName, FilterExpression: &#34;begins_with(PK, :pk)&#34;, ExpressionAttributeValues: { &#34;:pk&#34;: &#34;ITEM#&#34; } })); return { statusCode: 200, headers: { &#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Access-Control-Allow-Origin&#34;: &#34;*&#34; }, body: JSON.stringify(data.Items || []) }; } catch (err) { return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; } }; `), environment: { TABLE_NAME: props.table.tableName, }, }); props.table.grantReadWriteData(dataLambda); const api = new apigateway.RestApi(this, &#39;AppRestApi&#39;, { restApiName: &#39;Application Backend API&#39;, defaultCorsPreflightOptions: { allowOrigins: apigateway.Cors.ALL_ORIGINS, allowMethods: apigateway.Cors.ALL_METHODS, }, }); const itemsResource = api.root.addResource(&#39;items&#39;); itemsResource.addMethod(&#39;GET&#39;, new apigateway.LambdaIntegration(dataLambda)); itemsResource.addMethod(&#39;POST&#39;, new apigateway.LambdaIntegration(dataLambda), { authorizer: authorizer, authorizationType: apigateway.AuthorizationType.COGNITO, }); } }">
+    <meta itemprop="datePublished" content="2026-01-01T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-01-01T00:00:00+00:00">
+    <meta itemprop="wordCount" content="258">
+    <title>Module 2: Tính toán &amp; API :: Báo cáo thực tập</title>
+    <link href="/5-workshop/5.4-module2-compute/index.xml" rel="alternate" type="application/rss+xml" title="Module 2: Tính toán &amp; API :: Báo cáo thực tập">
+    <link href="/css/auto-complete/auto-complete.min.css?1783668541" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783668541" defer></script>
+    <script src="/js/search-lunr.js?1783668541" defer></script>
+    <script src="/js/search.js?1783668541" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.vi.js?1783668541";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1783668541" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783668541" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783668541" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783668541" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1783668541" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783668541" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783668541" rel="stylesheet">
+    <link href="/css/theme.css?1783668541" rel="stylesheet">
+    <link href="/css/format-html.css?1783668541" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/5-workshop\/5.4-module2-compute\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+table:has(th:nth-child(5):last-child) { table-layout: fixed; width: 100%; }
+table:has(th:nth-child(5):last-child) th:nth-child(1) { width: 8%; }
+table:has(th:nth-child(5):last-child) th:nth-child(2) { width: 42%; }
+table:has(th:nth-child(5):last-child) th:nth-child(3) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(4) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(5) { width: 20%; word-break: break-all; }
+td { word-wrap: break-word; }
+
+:root {
+  --PRIMARY-color: #3b99fc !important; 
+  --PRIMARY-HOVER-color: #5da2e1 !important;
+  --MENU-HEADER-BG-color: #232f3e !important;
+  --MENU-HEADER-BORDER-color: #161e27 !important;
+  --MENU-SEARCH-BG-color: #161e27 !important;
+  --MENU-SEARCH-BORDER-color: #161e27 !important;
+  --MENU-SECTIONS-BG-color: #232f3e !important;
+  --MENU-SECTIONS-ACTIVE-BG-color: #161e27 !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-color: #ffffff !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #161e27 !important;
+  --MENU-SECTION-SEPARATOR-color: #161e27 !important;
+  --MENU-SECTIONS-LINK-color: #879596 !important;
+  --MENU-SECTIONS-LINK-HOVER-color: #ffffff !important;
+}
+body, h1, h2, h3, h4, h5, h6, table {
+  font-family: "Open Sans", "Amazon Ember", "Helvetica Neue", Roboto, "Segoe UI", Arial, sans-serif !important;
+}
+</style>
+
+  </head>
+  <body class="mobile-support html" data-origin="/5-workshop/5.4-module2-compute/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper"> 
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Báo cáo thực tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/5-workshop/index.html"><span itemprop="name">Workshop</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Module 2: Tính toán &amp; API</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/5-workshop/5.3-module1-storage/index.html" title="Module 1: Lưu trữ & DB (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/5-workshop/5.5-module3-security/index.html" title="Module 3: Bảo mật & Phân quyền (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 5-workshop" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="module-2-tính-toán--api">Module 2: Tính toán &amp; API</h1>
+
+<p>Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.</p>
+<p>Tạo tệp <code>lib/api-stack.ts</code>:</p>
+<div class="highlight actionbar-wrapper wrap-code" dir="auto"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">cdk</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;aws-cdk-lib&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">lambda</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;aws-cdk-lib/aws-lambda&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">apigateway</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;aws-cdk-lib/aws-apigateway&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">cognito</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;aws-cdk-lib/aws-cognito&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">dynamodb</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;aws-cdk-lib/aws-dynamodb&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Construct</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;constructs&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">ApiStackProps</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">cdk</span>.<span style="color:#a6e22e">StackProps</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">table</span>: <span style="color:#66d9ef">dynamodb.Table</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userPool</span>: <span style="color:#66d9ef">cognito.IUserPool</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ApiStack</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">cdk</span>.<span style="color:#a6e22e">Stack</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#a6e22e">scope</span>: <span style="color:#66d9ef">Construct</span>, <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">props</span>: <span style="color:#66d9ef">ApiStackProps</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>(<span style="color:#a6e22e">scope</span>, <span style="color:#a6e22e">id</span>, <span style="color:#a6e22e">props</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authorizer</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">apigateway</span>.<span style="color:#a6e22e">CognitoUserPoolsAuthorizer</span>(<span style="color:#66d9ef">this</span>, <span style="color:#e6db74">&#39;AppApiAuthorizer&#39;</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">cognitoUserPools</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">userPool</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">authorizerName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;AppAuthorizer&#39;</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">dataLambda</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">lambda</span>.Function(<span style="color:#66d9ef">this</span>, <span style="color:#e6db74">&#39;DataServiceLambda&#39;</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">runtime</span>: <span style="color:#66d9ef">lambda.Runtime.NODEJS_18_X</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">handler</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;index.handler&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">code</span>: <span style="color:#66d9ef">lambda.Code.fromInline</span>(<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        const { DynamoDBClient } = require(&#34;@aws-sdk/client-dynamodb&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        const { DynamoDBDocumentClient, ScanCommand } = require(&#34;@aws-sdk/lib-dynamodb&#34;);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        const client = new DynamoDBClient({});
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        const docClient = DynamoDBDocumentClient.from(client);
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        exports.handler = async (event) =&gt; {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          const tableName = process.env.TABLE_NAME;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          try {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            const data = await docClient.send(new ScanCommand({
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              TableName: tableName,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              FilterExpression: &#34;begins_with(PK, :pk)&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              ExpressionAttributeValues: { &#34;:pk&#34;: &#34;ITEM#&#34; }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            }));
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            return {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              statusCode: 200,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              headers: { &#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Access-Control-Allow-Origin&#34;: &#34;*&#34; },
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              body: JSON.stringify(data.Items || [])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            };
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          } catch (err) {
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          }
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        };
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">      `</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">environment</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">TABLE_NAME</span>: <span style="color:#66d9ef">props.table.tableName</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">props</span>.<span style="color:#a6e22e">table</span>.<span style="color:#a6e22e">grantReadWriteData</span>(<span style="color:#a6e22e">dataLambda</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">api</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">apigateway</span>.<span style="color:#a6e22e">RestApi</span>(<span style="color:#66d9ef">this</span>, <span style="color:#e6db74">&#39;AppRestApi&#39;</span>, {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">restApiName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Application Backend API&#39;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">defaultCorsPreflightOptions</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">allowOrigins</span>: <span style="color:#66d9ef">apigateway.Cors.ALL_ORIGINS</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">allowMethods</span>: <span style="color:#66d9ef">apigateway.Cors.ALL_METHODS</span>,
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">itemsResource</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">api</span>.<span style="color:#a6e22e">root</span>.<span style="color:#a6e22e">addResource</span>(<span style="color:#e6db74">&#39;items&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">itemsResource</span>.<span style="color:#a6e22e">addMethod</span>(<span style="color:#e6db74">&#39;GET&#39;</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">apigateway</span>.<span style="color:#a6e22e">LambdaIntegration</span>(<span style="color:#a6e22e">dataLambda</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">itemsResource</span>.<span style="color:#a6e22e">addMethod</span>(<span style="color:#e6db74">&#39;POST&#39;</span>, <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">apigateway</span>.<span style="color:#a6e22e">LambdaIntegration</span>(<span style="color:#a6e22e">dataLambda</span>), {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">authorizer</span>: <span style="color:#66d9ef">authorizer</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">authorizationType</span>: <span style="color:#66d9ef">apigateway.AuthorizationType.COGNITO</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+<hr>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> 1 thg 1, 2026
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a href="/" id="logo" style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" style="height: 35px; filter: brightness(0) invert(1);">
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-fw fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/1-worklog/index.html"><a class="padding default-animation" href="/1-worklog/index.html"> <b> 1. </b> Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/2-proposal/index.html"><a class="padding" href="/2-proposal/index.html"> <b> 2. </b> Bản đề xuất</a></li>
+            <li class="" data-nav-id="/3-blogsposted/index.html"><a class="padding default-animation" href="/3-blogsposted/index.html"> <b> 3. </b> Các bài blogs đã đăng</a><ul id="R-subsections-139b2bd7ed608dfc4cda535ffb3638d1" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/4-eventparticipated/index.html"><a class="padding default-animation" href="/4-eventparticipated/index.html"> <b> 4. </b> Các sự kiện đã tham gia</a><ul id="R-subsections-a3223440c4beb7b035882258d4302894" class="collapsible-menu"></ul></li>
+            <li class="parent " data-nav-id="/5-workshop/index.html"><a class="padding default-animation" href="/5-workshop/index.html"> <b> 5. </b> Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu">
+            <li class="" data-nav-id="/5-workshop/5.1-overview/index.html"><a class="padding" href="/5-workshop/5.1-overview/index.html"> <b> 5.1. </b> Tổng quan Workshop</a></li>
+            <li class="" data-nav-id="/5-workshop/5.2-prerequisites/index.html"><a class="padding" href="/5-workshop/5.2-prerequisites/index.html"> <b> 5.2. </b> Chuẩn bị &amp; Khởi tạo</a></li>
+            <li class="" data-nav-id="/5-workshop/5.3-module1-storage/index.html"><a class="padding" href="/5-workshop/5.3-module1-storage/index.html"> <b> 5.3. </b> Module 1: Lưu trữ &amp; DB</a></li>
+            <li class="active " data-nav-id="/5-workshop/5.4-module2-compute/index.html"><a class="padding" href="/5-workshop/5.4-module2-compute/index.html"> <b> 5.4. </b> Module 2: Tính toán &amp; API</a></li>
+            <li class="" data-nav-id="/5-workshop/5.5-module3-security/index.html"><a class="padding" href="/5-workshop/5.5-module3-security/index.html"> <b> 5.5. </b> Module 3: Bảo mật &amp; Phân quyền</a></li>
+            <li class="" data-nav-id="/5-workshop/5.6-module4-serverless/index.html"><a class="padding" href="/5-workshop/5.6-module4-serverless/index.html"> <b> 5.6. </b> Module 4: Serverless Backend</a></li>
+            <li class="" data-nav-id="/5-workshop/5.7-deployment-testing/index.html"><a class="padding" href="/5-workshop/5.7-deployment-testing/index.html"> <b> 5.7. </b> Triển khai &amp; Kiểm thử</a></li>
+            <li class="" data-nav-id="/5-workshop/5.8-cleanup-advanced/index.html"><a class="padding" href="/5-workshop/5.8-cleanup-advanced/index.html"> <b> 5.8. </b> Dọn dẹp &amp; Nâng cao</a></li></ul></li>
+            <li class="" data-nav-id="/6-self-evaluation/index.html"><a class="padding" href="/6-self-evaluation/index.html"> <b> 6. </b> Tự đánh giá</a></li>
+            <li class="" data-nav-id="/7-feedback/index.html"><a class="padding" href="/7-feedback/index.html"> <b> 7. </b> Chia sẻ và Đóng góp ý kiến</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-vi" value="vi" data-url="/5-workshop/5.4-module2-compute/index.html" lang="vi-vn" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><div style="margin-top: 2rem;">
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Last Updated</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem; margin-bottom: 1.5rem;">02-06-2026</div>
+  
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Team</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem;">First Cloud AI Journey</div>
+</div>
+</div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783668541" defer></script>
+    <script src="/js/theme.js?1783668541" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

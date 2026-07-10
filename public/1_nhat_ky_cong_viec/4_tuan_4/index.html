@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html id="R-html" lang="vi-vn" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
+    <meta name="description" content="Mục tiêu tuần 4:Nắm vững khái niệm, chức năng cốt lõi của dịch vụ bảo mật AWS IAM. Thực hành tạo và quản lý chi tiết User, Group, Role. Tìm hiểu sâu về cách hoạt động và cấu trúc của IAM Policy. Quản lý quyền truy cập cho EC2 và các dịch vụ AWS khác. Nâng cao bảo mật tài khoản bằng tính năng xác thực hai yếu tố (MFA). Các công việc cần triển khai trong tuần này:Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 - Tìm hiểu chuyên sâu về khái niệm và chức năng của IAM
+- Phân biệt sự khác nhau giữa User, Group và Role 11/05/2026 11/05/2026 https://docs.aws.amazon.com/iam/ 3 - Thực hành:
+&#43; Khởi tạo IAM User và IAM Group mới
+&#43; Tạo IAM Role để cấp quyền cho các dịch vụ AWS 12/05/2026 12/05/2026 4 - Tìm hiểu về JSON Policy
+- Phân quyền truy cập chi tiết thông qua IAM Policy (Inline Policy &amp; Managed Policy) 13/05/2026 13/05/2026 https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html 5 - Cấu hình IAM Role cho EC2 instance
+- Quản lý và kiểm soát quyền truy cập để EC2 có thể giao tiếp an toàn với các dịch vụ AWS khác (ví dụ: truy cập S3) 14/05/2026 14/05/2026 6 - Thiết lập bảo mật tài khoản bằng MFA (Multi-Factor Authentication) cho Root User và IAM User
+- Khảo sát các công cụ tạo mã MFA (Google Authenticator, Authy…) 15/05/2026 15/05/2026 https://aws.amazon.com/iam/features/mfa/ 7 - Thực hành tổng hợp:
+&#43; Cấp quyền cho người dùng giả định
+&#43; Sử dụng IAM Policy Simulator để kiểm tra và xác minh quyền truy cập 16/05/2026 16/05/2026 Kết quả đạt được tuần 4:Hiểu tường tận cách quản lý người dùng và phân quyền chi tiết, linh hoạt trên nền tảng AWS. Có khả năng thiết lập bảo mật nhiều lớp và kiểm soát truy cập hệ thống chặt chẽ thông qua cấu hình IAM. Xây dựng được nền tảng kiến thức cơ bản và vững chắc về an toàn bảo mật (Security) trong môi trường Cloud AWS. Biết cách gắn Role an toàn cho EC2, không cần lưu trữ Secret Key trực tiếp trên server, giúp giảm thiểu rủi ro bảo mật. Đã cấu hình thành công MFA, đảm bảo tài khoản an toàn tuyệt đối trước các truy cập trái phép.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="1.4. Worklog Tuần 4 :: Báo cáo thực tập">
+    <meta name="twitter:description" content="Mục tiêu tuần 4:Nắm vững khái niệm, chức năng cốt lõi của dịch vụ bảo mật AWS IAM. Thực hành tạo và quản lý chi tiết User, Group, Role. Tìm hiểu sâu về cách hoạt động và cấu trúc của IAM Policy. Quản lý quyền truy cập cho EC2 và các dịch vụ AWS khác. Nâng cao bảo mật tài khoản bằng tính năng xác thực hai yếu tố (MFA). Các công việc cần triển khai trong tuần này:Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 - Tìm hiểu chuyên sâu về khái niệm và chức năng của IAM
+- Phân biệt sự khác nhau giữa User, Group và Role 11/05/2026 11/05/2026 https://docs.aws.amazon.com/iam/ 3 - Thực hành:
+&#43; Khởi tạo IAM User và IAM Group mới
+&#43; Tạo IAM Role để cấp quyền cho các dịch vụ AWS 12/05/2026 12/05/2026 4 - Tìm hiểu về JSON Policy
+- Phân quyền truy cập chi tiết thông qua IAM Policy (Inline Policy &amp; Managed Policy) 13/05/2026 13/05/2026 https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html 5 - Cấu hình IAM Role cho EC2 instance
+- Quản lý và kiểm soát quyền truy cập để EC2 có thể giao tiếp an toàn với các dịch vụ AWS khác (ví dụ: truy cập S3) 14/05/2026 14/05/2026 6 - Thiết lập bảo mật tài khoản bằng MFA (Multi-Factor Authentication) cho Root User và IAM User
+- Khảo sát các công cụ tạo mã MFA (Google Authenticator, Authy…) 15/05/2026 15/05/2026 https://aws.amazon.com/iam/features/mfa/ 7 - Thực hành tổng hợp:
+&#43; Cấp quyền cho người dùng giả định
+&#43; Sử dụng IAM Policy Simulator để kiểm tra và xác minh quyền truy cập 16/05/2026 16/05/2026 Kết quả đạt được tuần 4:Hiểu tường tận cách quản lý người dùng và phân quyền chi tiết, linh hoạt trên nền tảng AWS. Có khả năng thiết lập bảo mật nhiều lớp và kiểm soát truy cập hệ thống chặt chẽ thông qua cấu hình IAM. Xây dựng được nền tảng kiến thức cơ bản và vững chắc về an toàn bảo mật (Security) trong môi trường Cloud AWS. Biết cách gắn Role an toàn cho EC2, không cần lưu trữ Secret Key trực tiếp trên server, giúp giảm thiểu rủi ro bảo mật. Đã cấu hình thành công MFA, đảm bảo tài khoản an toàn tuyệt đối trước các truy cập trái phép.">
+    <meta property="og:url" content="http://localhost:1313/1_nhat_ky_cong_viec/4_tuan_4/index.html">
+    <meta property="og:site_name" content="Báo cáo thực tập">
+    <meta property="og:title" content="1.4. Worklog Tuần 4 :: Báo cáo thực tập">
+    <meta property="og:description" content="Mục tiêu tuần 4:Nắm vững khái niệm, chức năng cốt lõi của dịch vụ bảo mật AWS IAM. Thực hành tạo và quản lý chi tiết User, Group, Role. Tìm hiểu sâu về cách hoạt động và cấu trúc của IAM Policy. Quản lý quyền truy cập cho EC2 và các dịch vụ AWS khác. Nâng cao bảo mật tài khoản bằng tính năng xác thực hai yếu tố (MFA). Các công việc cần triển khai trong tuần này:Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 - Tìm hiểu chuyên sâu về khái niệm và chức năng của IAM
+- Phân biệt sự khác nhau giữa User, Group và Role 11/05/2026 11/05/2026 https://docs.aws.amazon.com/iam/ 3 - Thực hành:
+&#43; Khởi tạo IAM User và IAM Group mới
+&#43; Tạo IAM Role để cấp quyền cho các dịch vụ AWS 12/05/2026 12/05/2026 4 - Tìm hiểu về JSON Policy
+- Phân quyền truy cập chi tiết thông qua IAM Policy (Inline Policy &amp; Managed Policy) 13/05/2026 13/05/2026 https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html 5 - Cấu hình IAM Role cho EC2 instance
+- Quản lý và kiểm soát quyền truy cập để EC2 có thể giao tiếp an toàn với các dịch vụ AWS khác (ví dụ: truy cập S3) 14/05/2026 14/05/2026 6 - Thiết lập bảo mật tài khoản bằng MFA (Multi-Factor Authentication) cho Root User và IAM User
+- Khảo sát các công cụ tạo mã MFA (Google Authenticator, Authy…) 15/05/2026 15/05/2026 https://aws.amazon.com/iam/features/mfa/ 7 - Thực hành tổng hợp:
+&#43; Cấp quyền cho người dùng giả định
+&#43; Sử dụng IAM Policy Simulator để kiểm tra và xác minh quyền truy cập 16/05/2026 16/05/2026 Kết quả đạt được tuần 4:Hiểu tường tận cách quản lý người dùng và phân quyền chi tiết, linh hoạt trên nền tảng AWS. Có khả năng thiết lập bảo mật nhiều lớp và kiểm soát truy cập hệ thống chặt chẽ thông qua cấu hình IAM. Xây dựng được nền tảng kiến thức cơ bản và vững chắc về an toàn bảo mật (Security) trong môi trường Cloud AWS. Biết cách gắn Role an toàn cho EC2, không cần lưu trữ Secret Key trực tiếp trên server, giúp giảm thiểu rủi ro bảo mật. Đã cấu hình thành công MFA, đảm bảo tài khoản an toàn tuyệt đối trước các truy cập trái phép.">
+    <meta property="og:locale" content="vi_vn">
+    <meta property="og:type" content="article">
+    <meta property="article:section" content="1. Nhật ký công việc">
+    <meta itemprop="name" content="1.4. Worklog Tuần 4 :: Báo cáo thực tập">
+    <meta itemprop="description" content="Mục tiêu tuần 4:Nắm vững khái niệm, chức năng cốt lõi của dịch vụ bảo mật AWS IAM. Thực hành tạo và quản lý chi tiết User, Group, Role. Tìm hiểu sâu về cách hoạt động và cấu trúc của IAM Policy. Quản lý quyền truy cập cho EC2 và các dịch vụ AWS khác. Nâng cao bảo mật tài khoản bằng tính năng xác thực hai yếu tố (MFA). Các công việc cần triển khai trong tuần này:Thứ Công việc Ngày bắt đầu Ngày hoàn thành Nguồn tài liệu 2 - Tìm hiểu chuyên sâu về khái niệm và chức năng của IAM
+- Phân biệt sự khác nhau giữa User, Group và Role 11/05/2026 11/05/2026 https://docs.aws.amazon.com/iam/ 3 - Thực hành:
+&#43; Khởi tạo IAM User và IAM Group mới
+&#43; Tạo IAM Role để cấp quyền cho các dịch vụ AWS 12/05/2026 12/05/2026 4 - Tìm hiểu về JSON Policy
+- Phân quyền truy cập chi tiết thông qua IAM Policy (Inline Policy &amp; Managed Policy) 13/05/2026 13/05/2026 https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html 5 - Cấu hình IAM Role cho EC2 instance
+- Quản lý và kiểm soát quyền truy cập để EC2 có thể giao tiếp an toàn với các dịch vụ AWS khác (ví dụ: truy cập S3) 14/05/2026 14/05/2026 6 - Thiết lập bảo mật tài khoản bằng MFA (Multi-Factor Authentication) cho Root User và IAM User
+- Khảo sát các công cụ tạo mã MFA (Google Authenticator, Authy…) 15/05/2026 15/05/2026 https://aws.amazon.com/iam/features/mfa/ 7 - Thực hành tổng hợp:
+&#43; Cấp quyền cho người dùng giả định
+&#43; Sử dụng IAM Policy Simulator để kiểm tra và xác minh quyền truy cập 16/05/2026 16/05/2026 Kết quả đạt được tuần 4:Hiểu tường tận cách quản lý người dùng và phân quyền chi tiết, linh hoạt trên nền tảng AWS. Có khả năng thiết lập bảo mật nhiều lớp và kiểm soát truy cập hệ thống chặt chẽ thông qua cấu hình IAM. Xây dựng được nền tảng kiến thức cơ bản và vững chắc về an toàn bảo mật (Security) trong môi trường Cloud AWS. Biết cách gắn Role an toàn cho EC2, không cần lưu trữ Secret Key trực tiếp trên server, giúp giảm thiểu rủi ro bảo mật. Đã cấu hình thành công MFA, đảm bảo tài khoản an toàn tuyệt đối trước các truy cập trái phép.">
+    <meta itemprop="wordCount" content="392">
+    <title>1.4. Worklog Tuần 4 :: Báo cáo thực tập</title>
+    <link href="http://localhost:1313/1_nhat_ky_cong_viec/4_tuan_4/index.html" rel="alternate" hreflang="x-default">
+    <link href="http://localhost:1313/1_nhat_ky_cong_viec/4_tuan_4/index.html" rel="alternate" hreflang="vi-vn">
+    <link href="http://localhost:1313/en/1_nhat_ky_cong_viec/4_tuan_4/index.html" rel="alternate" hreflang="en">
+    <link href="/css/auto-complete/auto-complete.min.css?1783613277" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783613277" defer></script>
+    <script src="/js/search-lunr.js?1783613277" defer></script>
+    <script src="/js/search.js?1783613277" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.vi.js?1783613277";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1783613277" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783613277" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783613277" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783613277" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1783613277" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783613277" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783613277" rel="stylesheet">
+    <link href="/css/theme.css?1783613277" rel="stylesheet">
+    <link href="/css/format-html.css?1783613277" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/1_nhat_ky_cong_viec\/4_tuan_4\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+table:has(th:nth-child(5):last-child) { table-layout: fixed; width: 100%; }
+table:has(th:nth-child(5):last-child) th:nth-child(1) { width: 8%; }
+table:has(th:nth-child(5):last-child) th:nth-child(2) { width: 42%; }
+table:has(th:nth-child(5):last-child) th:nth-child(3) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(4) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(5) { width: 20%; word-break: break-all; }
+td { word-wrap: break-word; }
+
+:root {
+  --PRIMARY-color: #3b99fc !important; 
+  --PRIMARY-HOVER-color: #5da2e1 !important;
+  --MENU-HEADER-BG-color: #232f3e !important;
+  --MENU-HEADER-BORDER-color: #161e27 !important;
+  --MENU-SEARCH-BG-color: #161e27 !important;
+  --MENU-SEARCH-BORDER-color: #161e27 !important;
+  --MENU-SECTIONS-BG-color: #232f3e !important;
+  --MENU-SECTIONS-ACTIVE-BG-color: #161e27 !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-color: #ffffff !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #161e27 !important;
+  --MENU-SECTION-SEPARATOR-color: #161e27 !important;
+  --MENU-SECTIONS-LINK-color: #879596 !important;
+  --MENU-SECTIONS-LINK-HOVER-color: #ffffff !important;
+}
+body, h1, h2, h3, h4, h5, h6, table {
+  font-family: "Open Sans", "Amazon Ember", "Helvetica Neue", Roboto, "Segoe UI", Arial, sans-serif !important;
+}
+</style>
+
+  </head>
+  <body class="mobile-support html" data-origin="/1_nhat_ky_cong_viec/4_tuan_4/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#mục-tiêu-tuần-4">Mục tiêu tuần 4:</a></li>
+    <li><a href="#các-công-việc-cần-triển-khai-trong-tuần-này">Các công việc cần triển khai trong tuần này:</a></li>
+    <li><a href="#kết-quả-đạt-được-tuần-4">Kết quả đạt được tuần 4:</a></li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">BÁO CÁO THỰC TẬP</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/1_nhat_ky_cong_viec/index.html"><span itemprop="name">1. Nhật ký công việc</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">1.4. Worklog Tuần 4</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/1_nhat_ky_cong_viec/3_tuan_3/index.html" title="1.3. Worklog Tuần 3 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/1_nhat_ky_cong_viec/5_tuan_5/index.html" title="1.5. Worklog Tuần 5 (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 1_nhat_ky_cong_viec" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="14-worklog-tuần-4">1.4. Worklog Tuần 4</h1>
+
+<h2 id="mục-tiêu-tuần-4">Mục tiêu tuần 4:<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Nắm vững khái niệm, chức năng cốt lõi của dịch vụ bảo mật AWS IAM.</li>
+<li>Thực hành tạo và quản lý chi tiết User, Group, Role.</li>
+<li>Tìm hiểu sâu về cách hoạt động và cấu trúc của IAM Policy.</li>
+<li>Quản lý quyền truy cập cho EC2 và các dịch vụ AWS khác.</li>
+<li>Nâng cao bảo mật tài khoản bằng tính năng xác thực hai yếu tố (MFA).</li>
+</ul>
+<h2 id="các-công-việc-cần-triển-khai-trong-tuần-này">Các công việc cần triển khai trong tuần này:<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<table>
+	<thead>
+			<tr>
+					<th>Thứ</th>
+					<th>Công việc</th>
+					<th>Ngày bắt đầu</th>
+					<th>Ngày hoàn thành</th>
+					<th>Nguồn tài liệu</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2</td>
+					<td>- Tìm hiểu chuyên sâu về khái niệm và chức năng của IAM<br>- Phân biệt sự khác nhau giữa User, Group và Role</td>
+					<td>11/05/2026</td>
+					<td>11/05/2026</td>
+					<td><a href="https://docs.aws.amazon.com/iam/" rel="external">https://docs.aws.amazon.com/iam/</a></td>
+			</tr>
+			<tr>
+					<td>3</td>
+					<td>- <strong>Thực hành:</strong><br>  + Khởi tạo IAM User và IAM Group mới<br>  + Tạo IAM Role để cấp quyền cho các dịch vụ AWS</td>
+					<td>12/05/2026</td>
+					<td>12/05/2026</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>4</td>
+					<td>- Tìm hiểu về JSON Policy<br>- Phân quyền truy cập chi tiết thông qua IAM Policy (Inline Policy &amp; Managed Policy)</td>
+					<td>13/05/2026</td>
+					<td>13/05/2026</td>
+					<td><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html" rel="external">https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html</a></td>
+			</tr>
+			<tr>
+					<td>5</td>
+					<td>- Cấu hình IAM Role cho EC2 instance<br>- Quản lý và kiểm soát quyền truy cập để EC2 có thể giao tiếp an toàn với các dịch vụ AWS khác (ví dụ: truy cập S3)</td>
+					<td>14/05/2026</td>
+					<td>14/05/2026</td>
+					<td></td>
+			</tr>
+			<tr>
+					<td>6</td>
+					<td>- Thiết lập bảo mật tài khoản bằng MFA (Multi-Factor Authentication) cho Root User và IAM User<br>- Khảo sát các công cụ tạo mã MFA (Google Authenticator, Authy&hellip;)</td>
+					<td>15/05/2026</td>
+					<td>15/05/2026</td>
+					<td><a href="https://aws.amazon.com/iam/features/mfa/" rel="external">https://aws.amazon.com/iam/features/mfa/</a></td>
+			</tr>
+			<tr>
+					<td>7</td>
+					<td>- <strong>Thực hành tổng hợp:</strong><br>  + Cấp quyền cho người dùng giả định<br>  + Sử dụng IAM Policy Simulator để kiểm tra và xác minh quyền truy cập</td>
+					<td>16/05/2026</td>
+					<td>16/05/2026</td>
+					<td></td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="kết-quả-đạt-được-tuần-4">Kết quả đạt được tuần 4:<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<ul>
+<li>Hiểu tường tận cách quản lý người dùng và phân quyền chi tiết, linh hoạt trên nền tảng AWS.</li>
+<li>Có khả năng thiết lập bảo mật nhiều lớp và kiểm soát truy cập hệ thống chặt chẽ thông qua cấu hình IAM.</li>
+<li>Xây dựng được nền tảng kiến thức cơ bản và vững chắc về an toàn bảo mật (Security) trong môi trường Cloud AWS.</li>
+<li>Biết cách gắn Role an toàn cho EC2, không cần lưu trữ Secret Key trực tiếp trên server, giúp giảm thiểu rủi ro bảo mật.</li>
+<li>Đã cấu hình thành công MFA, đảm bảo tài khoản an toàn tuyệt đối trước các truy cập trái phép.</li>
+</ul>
+
+  <footer class="footline">
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a href="/" id="logo" style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" style="height: 35px; filter: brightness(0) invert(1);">
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-fw fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="parent " data-nav-id="/1_nhat_ky_cong_viec/index.html"><a class="padding default-animation" href="/1_nhat_ky_cong_viec/index.html">1. Nhật ký công việc</a><ul id="R-subsections-42ec97cac7d717578aac0fcee10bfe8a" class="collapsible-menu">
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/1_tuan_1/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/1_tuan_1/index.html">1.1. Worklog Tuần 1</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/2_tuan_2/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/2_tuan_2/index.html">1.2. Worklog Tuần 2</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/3_tuan_3/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/3_tuan_3/index.html">1.3. Worklog Tuần 3</a></li>
+            <li class="active " data-nav-id="/1_nhat_ky_cong_viec/4_tuan_4/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/4_tuan_4/index.html">1.4. Worklog Tuần 4</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/5_tuan_5/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/5_tuan_5/index.html">1.5. Worklog Tuần 5</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/6_tuan_6/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/6_tuan_6/index.html">1.6. Worklog Tuần 6</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/7_tuan_7/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/7_tuan_7/index.html">1.7. Worklog Tuần 7</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/8_tuan_8/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/8_tuan_8/index.html">1.8. Worklog Tuần 8</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/9_tuan_9/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/9_tuan_9/index.html">1.9. Worklog Tuần 9</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/10_tuan_10/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/10_tuan_10/index.html">1.10. Worklog Tuần 10</a></li>
+            <li class="" data-nav-id="/1_nhat_ky_cong_viec/11_tuan_11/index.html"><a class="padding" href="/1_nhat_ky_cong_viec/11_tuan_11/index.html">1.11. Worklog Tuần 11</a></li></ul></li>
+            <li class="" data-nav-id="/2_ban_de_xuat/index.html"><a class="padding" href="/2_ban_de_xuat/index.html">2. Bản đề xuất</a></li>
+            <li class="" data-nav-id="/3_cac_bai_blogs/index.html"><a class="padding" href="/3_cac_bai_blogs/index.html">3. Các bài blogs đã đăng</a></li>
+            <li class="" data-nav-id="/4_cac_events/index.html"><a class="padding" href="/4_cac_events/index.html">4. Các events đã tham gia</a></li>
+            <li class="" data-nav-id="/5_workshop/index.html"><a class="padding default-animation" href="/5_workshop/index.html">5. Workshop</a><ul id="R-subsections-b476975f4685b6ff531c400a2e828fc2" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/6_tu_danh_gia/index.html"><a class="padding" href="/6_tu_danh_gia/index.html">6. Tự đánh giá</a></li>
+            <li class="" data-nav-id="/7_chia_se/index.html"><a class="padding" href="/7_chia_se/index.html">7. Chia sẻ, đóng góp ý kiến</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-vi" value="vi" data-url="/1_nhat_ky_cong_viec/4_tuan_4/index.html" lang="vi-vn" selected data-selected>Tiếng Việt</option>
+                    <option id="R-select-language-en" value="en" data-url="/en/1_nhat_ky_cong_viec/4_tuan_4/index.html" lang="en">English</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><div style="margin-top: 2rem;">
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Last Updated</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem; margin-bottom: 1.5rem;">02-06-2026</div>
+  
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Team</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem;">First Cloud AI Journey</div>
+</div>
+</div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783613277" defer></script>
+    <script src="/js/theme.js?1783613277" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

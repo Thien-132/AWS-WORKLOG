@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Worklog Tuần 12 :: Báo cáo thực tập</title>
+    <link>http://localhost:1313/1-worklog/1.12-week12/index.html</link>
+    <description>Mục tiêu tuần 12:&#xD;Tổng kết hành trình học tập và hoàn thiện các chủ đề còn lại. Làm quen với machine learning, review kiến thức và chốt lộ trình. Các công việc cần triển khai trong tuần này:&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 AWS: SageMaker ML 03/07/2026 03/07/2026 Tìm hiểu workflow machine learning trên AWS Hoàn thành 2 AWS: SageMaker Immersion Day 1 04/07/2026 04/07/2026 Thực hành theo kịch bản immersion day Hoàn thành 3 AWS: SageMaker Immersion Day 2 05/07/2026 05/07/2026 Hoàn thành phần thực hành còn lại Hoàn thành 4 AWS: Migration Review 06/07/2026 06/07/2026 Nhìn lại bài học về di chuyển ứng dụng lên cloud Hoàn thành 5 AWS: Best Practices Review 07/07/2026 07/07/2026 Củng cố best practices cho hệ thống Hoàn thành 6 AWS: Hands-on Review 08/07/2026 08/07/2026 Ôn lại toàn bộ bài thực hành và kỹ năng thao tác Hoàn thành 7 AWS: Journey Finalization 09/07/2026 09/07/2026 Tổng kết hành trình và hoàn thiện báo cáo Hoàn thành Chi tiết từng ngày&#xD;Ngày 1 - AWS: SageMaker ML&#xD;Tìm hiểu workflow machine learning cơ bản trên AWS. Ngày 2 - AWS: SageMaker Immersion Day 1&#xD;Thực hành theo kịch bản immersion day và làm quen các bước triển khai ML. Ngày 3 - AWS: SageMaker Immersion Day 2&#xD;Hoàn thành phần thực hành còn lại trong chuỗi SageMaker. Ngày 4 - AWS: Migration Review&#xD;Nhìn lại bài học về di chuyển ứng dụng lên cloud và các điểm cần lưu ý. Ngày 5 - AWS: Best Practices Review&#xD;Củng cố best practices cho kiến trúc và vận hành hệ thống. Ngày 6 - AWS: Hands-on Review&#xD;Ôn lại toàn bộ bài thực hành và kỹ năng thao tác đã tích lũy. Ngày 7 - AWS: Journey Finalization&#xD;Tổng kết hành trình và hoàn thiện báo cáo worklog. Kết quả đạt được tuần 12:&#xD;Nắm được các khái niệm cơ bản về machine learning trên AWS. Ôn lại toàn bộ chuỗi chủ đề từ nền tảng, networking, security đến data và ML. Hoàn tất lộ trình học tập và có thể tổng hợp thành báo cáo worklog đầy đủ.</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/1-worklog/1.12-week12/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

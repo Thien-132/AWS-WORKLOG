@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tổng quan Workshop :: Báo cáo thực tập</title>
+    <link>http://localhost:1313/5-workshop/5.1-overview/index.html</link>
+    <description>1. Tại sao lựa chọn AWS CDK?&#xD;Trước đây, Hạ tầng dưới dạng mã (IaC) phụ thuộc vào các tệp mẫu YAML/JSON tĩnh. AWS CDK cho phép các nhà phát triển định nghĩa tài nguyên đám mây bằng các ngôn ngữ lập trình quen thuộc như TypeScript. Điều này mang lại tính năng kiểm tra kiểu dữ liệu mạnh mẽ, gợi ý mã tự động, tính kế thừa và tái sử dụng mã vào định nghĩa hạ tầng đám mây.</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/5-workshop/5.1-overview/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

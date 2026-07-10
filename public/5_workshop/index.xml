@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Workshop :: Báo cáo thực tập</title>
+    <link>http://localhost:1313/5_workshop/index.html</link>
+    <description>WORKSHOP Warning&#xD;Lưu ý: Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng không sao chép nguyên văn cho bài báo cáo của bạn kể cả warning này.&#xA;ĐẢM BẢO TRUY CẬP HYBRID AN TOÀN ĐẾN S3 BẰNG CÁCH SỬ DỤNG VPC ENDPOINT Tổng quan AWS PrivateLink cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <atom:link href="http://localhost:1313/5_workshop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5.1. Giới thiệu</title>
+      <link>http://localhost:1313/5_workshop/1_gioi_thieu/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/1_gioi_thieu/index.html</guid>
+      <description>Giới thiệu về VPC Endpoint Điểm cuối VPC (endpoint) là thiết bị ảo. Chúng là các thành phần VPC có thể mở rộng theo chiều ngang, dự phòng và có tính sẵn sàng cao. Chúng cho phép giao tiếp giữa tài nguyên điện toán của bạn và dịch vụ AWS mà không gây ra rủi ro về tính sẵn sàng. Tài nguyên điện toán đang chạy trong VPC có thể truy cập Amazon S3 bằng cách sử dụng điểm cuối Gateway. Interface Endpoint PrivateLink có thể được sử dụng bởi tài nguyên chạy trong VPC hoặc tại TTDL. Tổng quan về workshop Trong workshop này, bạn sẽ sử dụng hai VPC.</description>
+    </item>
+    <item>
+      <title>5.2. Các bước chuẩn bị</title>
+      <link>http://localhost:1313/5_workshop/2_cac_buoc_chuan_bi/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/2_cac_buoc_chuan_bi/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.3. Truy cập S3 từ VPC</title>
+      <link>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.4. Truy cập S3 từ môi trường truyền thống</title>
+      <link>http://localhost:1313/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.5 VPC Endpoint Policies</title>
+      <link>http://localhost:1313/5_workshop/5_vpc_endpoint_policies/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/5_vpc_endpoint_policies/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.6. Dọn dẹp tài nguyên</title>
+      <link>http://localhost:1313/5_workshop/6_don_dep_tai_nguyen/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/6_don_dep_tai_nguyen/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

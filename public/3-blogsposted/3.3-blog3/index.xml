@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting :: Báo cáo thực tập</title>
+    <link>http://localhost:60313/3-blogsposted/3.3-blog3/index.html</link>
+    <description>HƯỚNG DẪN TỐI ƯU HÓA QUẢN LÝ ĐA ỨNG DỤNG (MULTI-APP) VỚI UNIFIED WEBHOOKS TRÊN AWS AMPLIFY HOSTING&#xD;Trong phát triển phần mềm hiện đại, kiến trúc Monorepo (quản lý nhiều ứng dụng, services trong cùng một repository) ngày càng được các team phát triển frontend ưa chuộng nhờ khả năng chia sẻ code dễ dàng và đơn giản hóa quy trình quản lý dự án. Tuy nhiên, khi triển khai deploy các ứng dụng này lên AWS Amplify Hosting, các kỹ sư thường phải đối mặt với một “nỗi đau” (pain point) rất lớn: Giới hạn số lượng Webhook của Git Provider.</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:60313/3-blogsposted/3.3-blog3/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

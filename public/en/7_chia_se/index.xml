@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>7. Sharing and Feedback :: Báo cáo thực tập</title>
+    <link>http://localhost:999/en/7_chia_se/index.html</link>
+    <description>General Assessment&#xD;1. Working Environment&#xD;During my internship at FCAJ, I felt the working environment was very comfortable and friendly. Everyone in the team was ready to help when I faced difficulties, especially when I was new to the job. The working atmosphere is serious but does not create pressure, helping me easily integrate and focus on completing assigned tasks.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:999/en/7_chia_se/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>7. Chia sẻ, đóng góp ý kiến :: Báo cáo thực tập</title>
+    <link>http://localhost:1313/7_chia_se/index.html</link>
+    <description>Đánh giá chung&#xD;1. Môi trường làm việc&#xD;Trong thời gian thực tập tại FCAJ, mình cảm thấy môi trường làm việc rất thoải mái và thân thiện. Mọi người trong nhóm đều sẵn sàng hỗ trợ khi mình gặp khó khăn, đặc biệt là khi mình còn bỡ ngỡ với công việc. Không khí làm việc nghiêm túc nhưng không tạo áp lực, giúp mình dễ hòa nhập và tập trung hoàn thành các nhiệm vụ được giao.</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <atom:link href="http://localhost:1313/7_chia_se/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

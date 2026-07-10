@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>5.4. Access S3 from Traditional Environment :: Báo cáo thực tập</title>
+    <link>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5.4.1 Prepare resources</title>
+      <link>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/1_chuan_bi_tai_nguyen/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/1_chuan_bi_tai_nguyen/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.4.2 Create an S3 Interface endpoint</title>
+      <link>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/2_tao_s3_interface_endpoint/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/2_tao_s3_interface_endpoint/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.4.3 Test Interface Endpoint</title>
+      <link>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/3_kiem_tra_interface_endpoint/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/3_kiem_tra_interface_endpoint/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.4.4 Simulate On-premises DNS</title>
+      <link>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/4_mo_phong_on_premises_dns/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/4_mo_phong_on_premises_dns/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

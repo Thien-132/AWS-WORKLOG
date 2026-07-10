@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html id="R-html" lang="vi-vn" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=60313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
+    <meta name="description" content="ĐỘT PHÁ STALE KNOWLEDGE CỦA AI AGENT VỚI WEB SEARCH TRÊN AMAZON BEDROCK AGENTCORETrong làn sóng phát triển trí tuệ nhân tạo hiện nay, các AI Agent ngày càng được kỳ vọng sẽ giải quyết các tác vụ phức tạp một cách tự động và thông minh. Tuy nhiên, một trong những giới hạn lớn nhất của các mô hình ngôn ngữ lớn (LLM) và AI Agent hiện tại là hiện tượng “Stale Knowledge” (Kiến thức bị đóng băng). Do kiến thức của mô hình chỉ giới hạn tại thời điểm kết thúc quá trình huấn luyện (training cutoff), AI Agent hoàn toàn “mù tịt” trước các thông tin mang tính thời gian thực (real-time) như giá cổ phiếu hôm nay, kết quả của một trận bóng đá vừa diễn ra, hay các tin tức công nghệ mới cập nhật.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore :: Báo cáo thực tập">
+    <meta name="twitter:description" content="ĐỘT PHÁ STALE KNOWLEDGE CỦA AI AGENT VỚI WEB SEARCH TRÊN AMAZON BEDROCK AGENTCORETrong làn sóng phát triển trí tuệ nhân tạo hiện nay, các AI Agent ngày càng được kỳ vọng sẽ giải quyết các tác vụ phức tạp một cách tự động và thông minh. Tuy nhiên, một trong những giới hạn lớn nhất của các mô hình ngôn ngữ lớn (LLM) và AI Agent hiện tại là hiện tượng “Stale Knowledge” (Kiến thức bị đóng băng). Do kiến thức của mô hình chỉ giới hạn tại thời điểm kết thúc quá trình huấn luyện (training cutoff), AI Agent hoàn toàn “mù tịt” trước các thông tin mang tính thời gian thực (real-time) như giá cổ phiếu hôm nay, kết quả của một trận bóng đá vừa diễn ra, hay các tin tức công nghệ mới cập nhật.">
+    <meta property="og:url" content="http://localhost:60313/3-blogsposted/3.2-blog2/index.html">
+    <meta property="og:site_name" content="Báo cáo thực tập">
+    <meta property="og:title" content="Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore :: Báo cáo thực tập">
+    <meta property="og:description" content="ĐỘT PHÁ STALE KNOWLEDGE CỦA AI AGENT VỚI WEB SEARCH TRÊN AMAZON BEDROCK AGENTCORETrong làn sóng phát triển trí tuệ nhân tạo hiện nay, các AI Agent ngày càng được kỳ vọng sẽ giải quyết các tác vụ phức tạp một cách tự động và thông minh. Tuy nhiên, một trong những giới hạn lớn nhất của các mô hình ngôn ngữ lớn (LLM) và AI Agent hiện tại là hiện tượng “Stale Knowledge” (Kiến thức bị đóng băng). Do kiến thức của mô hình chỉ giới hạn tại thời điểm kết thúc quá trình huấn luyện (training cutoff), AI Agent hoàn toàn “mù tịt” trước các thông tin mang tính thời gian thực (real-time) như giá cổ phiếu hôm nay, kết quả của một trận bóng đá vừa diễn ra, hay các tin tức công nghệ mới cập nhật.">
+    <meta property="og:locale" content="vi_vn">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore :: Báo cáo thực tập">
+    <meta itemprop="description" content="ĐỘT PHÁ STALE KNOWLEDGE CỦA AI AGENT VỚI WEB SEARCH TRÊN AMAZON BEDROCK AGENTCORETrong làn sóng phát triển trí tuệ nhân tạo hiện nay, các AI Agent ngày càng được kỳ vọng sẽ giải quyết các tác vụ phức tạp một cách tự động và thông minh. Tuy nhiên, một trong những giới hạn lớn nhất của các mô hình ngôn ngữ lớn (LLM) và AI Agent hiện tại là hiện tượng “Stale Knowledge” (Kiến thức bị đóng băng). Do kiến thức của mô hình chỉ giới hạn tại thời điểm kết thúc quá trình huấn luyện (training cutoff), AI Agent hoàn toàn “mù tịt” trước các thông tin mang tính thời gian thực (real-time) như giá cổ phiếu hôm nay, kết quả của một trận bóng đá vừa diễn ra, hay các tin tức công nghệ mới cập nhật.">
+    <meta itemprop="datePublished" content="2026-06-30T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-06-30T00:00:00+00:00">
+    <meta itemprop="wordCount" content="770">
+    <title>Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore :: Báo cáo thực tập</title>
+    <link href="/3-blogsposted/3.2-blog2/index.xml" rel="alternate" type="application/rss+xml" title="Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore :: Báo cáo thực tập">
+    <link href="/css/auto-complete/auto-complete.min.css?1783614785" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783614785" defer></script>
+    <script src="/js/search-lunr.js?1783614785" defer></script>
+    <script src="/js/search.js?1783614785" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.vi.js?1783614785";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1783614785" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783614785" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783614785" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783614785" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1783614785" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783614785" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783614785" rel="stylesheet">
+    <link href="/css/theme.css?1783614785" rel="stylesheet">
+    <link href="/css/format-html.css?1783614785" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/3-blogsposted\/3.2-blog2\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:60313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+table:has(th:nth-child(5):last-child) { table-layout: fixed; width: 100%; }
+table:has(th:nth-child(5):last-child) th:nth-child(1) { width: 8%; }
+table:has(th:nth-child(5):last-child) th:nth-child(2) { width: 42%; }
+table:has(th:nth-child(5):last-child) th:nth-child(3) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(4) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(5) { width: 20%; word-break: break-all; }
+td { word-wrap: break-word; }
+
+:root {
+  --PRIMARY-color: #3b99fc !important; 
+  --PRIMARY-HOVER-color: #5da2e1 !important;
+  --MENU-HEADER-BG-color: #232f3e !important;
+  --MENU-HEADER-BORDER-color: #161e27 !important;
+  --MENU-SEARCH-BG-color: #161e27 !important;
+  --MENU-SEARCH-BORDER-color: #161e27 !important;
+  --MENU-SECTIONS-BG-color: #232f3e !important;
+  --MENU-SECTIONS-ACTIVE-BG-color: #161e27 !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-color: #ffffff !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #161e27 !important;
+  --MENU-SECTION-SEPARATOR-color: #161e27 !important;
+  --MENU-SECTIONS-LINK-color: #879596 !important;
+  --MENU-SECTIONS-LINK-HOVER-color: #ffffff !important;
+}
+body, h1, h2, h3, h4, h5, h6, table {
+  font-family: "Open Sans", "Amazon Ember", "Helvetica Neue", Roboto, "Segoe UI", Arial, sans-serif !important;
+}
+</style>
+
+  </head>
+  <body class="mobile-support html" data-origin="/3-blogsposted/3.2-blog2/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#kiến-trúc-hệ-thống-minh-họa">Kiến Trúc Hệ Thống Minh Họa</a></li>
+    <li><a href="#các-điểm-kiến-trúc-nổi-bật-của-web-search-trên-bedrock-agentcore">Các Điểm Kiến Trúc Nổi Bật của Web Search trên Bedrock AgentCore</a></li>
+    <li><a href="#tóm-tắt-chi-phí--đánh-giá-cá-nhân">Tóm Tắt Chi Phí &amp; Đánh Giá Cá Nhân</a>
+      <ul>
+        <li><a href="#đúc-kết-cá-nhân-của-một-thực-tập-sinh-cloud">Đúc kết cá nhân của một thực tập sinh Cloud:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Báo cáo thực tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/3-blogsposted/index.html"><span itemprop="name">Các bài blogs đã đăng</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/3-blogsposted/3.1-blog1/index.html" title="Đơn giản hóa tích hợp AWS AppSync Events với Powertools (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/3-blogsposted/3.3-blog3/index.html" title="Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-blogsposted" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="đột-phá-stale-knowledge-của-ai-agent-với-web-search-trên-amazon-bedrock-agentcore">Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore</h1>
+
+<h1 id="đột-phá-stale-knowledge-của-ai-agent-với-web-search-trên-amazon-bedrock-agentcore">ĐỘT PHÁ STALE KNOWLEDGE CỦA AI AGENT VỚI WEB SEARCH TRÊN AMAZON BEDROCK AGENTCORE<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p>Trong làn sóng phát triển trí tuệ nhân tạo hiện nay, các AI Agent ngày càng được kỳ vọng sẽ giải quyết các tác vụ phức tạp một cách tự động và thông minh. Tuy nhiên, một trong những giới hạn lớn nhất của các mô hình ngôn ngữ lớn (LLM) và AI Agent hiện tại là hiện tượng <strong>&ldquo;Stale Knowledge&rdquo; (Kiến thức bị đóng băng)</strong>. Do kiến thức của mô hình chỉ giới hạn tại thời điểm kết thúc quá trình huấn luyện (training cutoff), AI Agent hoàn toàn &ldquo;mù tịt&rdquo; trước các thông tin mang tính thời gian thực (real-time) như giá cổ phiếu hôm nay, kết quả của một trận bóng đá vừa diễn ra, hay các tin tức công nghệ mới cập nhật.</p>
+<p>Để phá vỡ rào cản này, AWS đã giới thiệu tính năng <strong>Web Search trên Amazon Bedrock AgentCore</strong> - một giải pháp fully managed và hoàn toàn tương thích với Model Context Protocol (MCP) của Anthropic, giúp đưa dữ liệu web thời gian thực vào các luồng xử lý của AI Agent một cách an toàn và tối ưu nhất.</p>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Thông tin
+  </summary>
+  <div class="box-content">
+<p><strong>Sự kết hợp hoàn hảo:</strong> Việc đưa Web Search vào Bedrock AgentCore cho phép AI Agent vừa truy xuất được thông tin tĩnh trong doanh nghiệp vừa cập nhật thông tin động từ internet toàn cầu để đưa ra quyết định chính xác nhất.</p>
+  </div>
+</details>
+<hr>
+<h2 id="kiến-trúc-hệ-thống-minh-họa">Kiến Trúc Hệ Thống Minh Họa<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Dưới đây là sơ đồ kiến trúc mô tả cách thức hoạt động của tính năng Web Search trên Amazon Bedrock AgentCore:</p>
+<p><a href="#R-image-7f402824c49028ae1958104f816318b3" class="lightbox-link"><img alt="Amazon Bedrock AgentCore Web Search Tool" class="lazy lightbox figure-image" loading="lazy" src="/images/3-Blog/blog2_1-img.jpg" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-7f402824c49028ae1958104f816318b3"><img alt="Amazon Bedrock AgentCore Web Search Tool" class="lazy lightbox lightbox-image" loading="lazy" src="/images/3-Blog/blog2_1-img.jpg"></a></p>
+<hr>
+<h2 id="các-điểm-kiến-trúc-nổi-bật-của-web-search-trên-bedrock-agentcore">Các Điểm Kiến Trúc Nổi Bật của Web Search trên Bedrock AgentCore<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Tính năng Web Search này không chỉ đơn thuần là việc gửi query lên một công cụ tìm kiếm thông thường, mà nó được thiết kế tối ưu sâu sắc cho AI Agent với hạ tầng mạnh mẽ của AWS:</p>
+<ol>
+<li>
+<p><strong>Web Index &ldquo;Chính Chủ&rdquo; do Amazon Vận Hành:</strong>
+AWS sử dụng một bộ chỉ mục web khổng lồ chứa hàng chục tỷ tài liệu và được cập nhật liên tục sau mỗi vài phút. Điều này đảm bảo AI Agent luôn tiếp cận được những thông tin mới nhất trên internet mà không gặp độ trễ lớn.</p>
+</li>
+<li>
+<p><strong>Tích Hợp Knowledge Graph (Đồ Thị Tri Thức):</strong>
+Thay vì chỉ tìm kiếm từ khóa thô, Web Search kết hợp với Knowledge Graph của Amazon để ánh xạ thực thể và mối quan hệ giữa chúng, giúp trả về các thông tin thực tế (facts) có độ tin cậy và chính xác cực kỳ cao, giảm thiểu tối đa hiện tượng ảo tưởng (hallucination) của mô hình.</p>
+</li>
+<li>
+<p><strong>Trích Xuất Đoạn Văn Thông Minh (Semantic Snippet Extraction):</strong>
+Đây là điểm cộng cực lớn cho hiệu năng và chi phí. Thay vì ném toàn bộ mã nguồn raw HTML cồng kềnh của trang web vào prompt (gây lãng phí context window và tăng chi phí token), hệ thống sẽ tự động trích xuất các đoạn văn bản chứa ngữ nghĩa phù hợp nhất (semantic snippets) để gửi cho mô hình.</p>
+</li>
+<li>
+<p><strong>Bảo Mật Tuyệt Đối (Private by Design):</strong>
+Trong môi trường doanh nghiệp, bảo mật dữ liệu là ưu tiên hàng đầu. Mọi câu truy vấn (queries) từ AI Agent đến Web Search Tool đều được xử lý hoàn toàn trong hạ tầng mạng nội bộ bảo mật của AWS, cam kết không đẩy dữ liệu ra bất kỳ bên thứ ba nào nằm ngoài kiểm soát của doanh nghiệp.</p>
+</li>
+</ol>
+<hr>
+<h2 id="tóm-tắt-chi-phí--đánh-giá-cá-nhân">Tóm Tắt Chi Phí &amp; Đánh Giá Cá Nhân<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Amazon Bedrock áp dụng mô hình tính phí vô cùng linh hoạt và dễ tiếp cận:</p>
+<ul>
+<li><strong>Mô hình Pay-as-you-go:</strong> Chi phí cực kỳ tối ưu chỉ <strong>$7 cho mỗi 1,000 queries</strong>.</li>
+<li><strong>Không phí khởi tạo:</strong> Không có chi phí duy trì cố định hằng tháng, dùng bao nhiêu trả bấy nhiêu.</li>
+</ul>
+<h3 id="đúc-kết-cá-nhân-của-một-thực-tập-sinh-cloud">Đúc kết cá nhân của một thực tập sinh Cloud:<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p>Việc kết hợp tính năng Web Search mới này với <strong>Amazon Bedrock Knowledge Bases (RAG)</strong> sẽ tạo nên một bộ đôi &ldquo;hủy diệt&rdquo; cho doanh nghiệp. Doanh nghiệp vừa có thể dùng Knowledge Bases để truy vấn tài liệu nội bộ bảo mật (quy trình, chính sách, báo cáo tài chính nội bộ), vừa có thể dùng Web Search để cập nhật nhanh các xu hướng thị trường, đối thủ cạnh tranh bên ngoài. Sự giao thoa này giúp AI Agent hoạt động toàn diện và thông minh hơn bao giờ hết!</p>
+</blockquote>
+<hr>
+<ul>
+<li><strong>Link bài đăng cộng đồng:</strong> <a href="https://www.facebook.com/groups/awsstudygroupfcj/permalink/2193226758108951/" rel="external">AWS Study Group Facebook Post</a></li>
+<li><strong>Hashtags:</strong> #AWS #AmazonBedrock #AgentCore #WebSearch #AIAgents #awsstudygroup</li>
+</ul>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> 30 thg 6, 2026
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a href="/" id="logo" style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" style="height: 35px; filter: brightness(0) invert(1);">
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-fw fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/1-worklog/index.html"><a class="padding default-animation" href="/1-worklog/index.html"> <b> 1. </b> Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/2-proposal/index.html"><a class="padding" href="/2-proposal/index.html"> <b> 2. </b> Bản đề xuất</a></li>
+            <li class="parent " data-nav-id="/3-blogsposted/index.html"><a class="padding default-animation" href="/3-blogsposted/index.html"> <b> 3. </b> Các bài blogs đã đăng</a><ul id="R-subsections-139b2bd7ed608dfc4cda535ffb3638d1" class="collapsible-menu">
+            <li class="" data-nav-id="/3-blogsposted/3.1-blog1/index.html"><a class="padding" href="/3-blogsposted/3.1-blog1/index.html">Đơn giản hóa tích hợp AWS AppSync Events với Powertools</a></li>
+            <li class="active " data-nav-id="/3-blogsposted/3.2-blog2/index.html"><a class="padding" href="/3-blogsposted/3.2-blog2/index.html">Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore</a></li>
+            <li class="" data-nav-id="/3-blogsposted/3.3-blog3/index.html"><a class="padding" href="/3-blogsposted/3.3-blog3/index.html">Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting</a></li></ul></li>
+            <li class="" data-nav-id="/4-eventparticipated/index.html"><a class="padding default-animation" href="/4-eventparticipated/index.html"> <b> 4. </b> Các events đã tham gia</a><ul id="R-subsections-a3223440c4beb7b035882258d4302894" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/5-workshop/index.html"><a class="padding default-animation" href="/5-workshop/index.html"> <b> 5. </b> Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/6-self-evaluation/index.html"><a class="padding" href="/6-self-evaluation/index.html"> <b> 6. </b> Tự đánh giá</a></li>
+            <li class="" data-nav-id="/7-feedback/index.html"><a class="padding" href="/7-feedback/index.html"> <b> 7. </b> Chia sẻ và Đóng góp ý kiến</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-vi" value="vi" data-url="/3-blogsposted/3.2-blog2/index.html" lang="vi-vn" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><div style="margin-top: 2rem;">
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Last Updated</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem; margin-bottom: 1.5rem;">02-06-2026</div>
+  
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Team</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem;">First Cloud AI Journey</div>
+</div>
+</div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783614785" defer></script>
+    <script src="/js/theme.js?1783614785" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

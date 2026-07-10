@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html id="R-html" lang="vi-vn" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
+    <meta name="description" content="BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNGDỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ1.1. Xu hướng Cloud-native và DecoupledHiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Bản đề xuất :: Báo cáo thực tập">
+    <meta name="twitter:description" content="BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNGDỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ1.1. Xu hướng Cloud-native và DecoupledHiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.">
+    <meta property="og:url" content="http://localhost:1313/2-proposal/index.html">
+    <meta property="og:site_name" content="Báo cáo thực tập">
+    <meta property="og:title" content="Bản đề xuất :: Báo cáo thực tập">
+    <meta property="og:description" content="BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNGDỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ1.1. Xu hướng Cloud-native và DecoupledHiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.">
+    <meta property="og:locale" content="vi_vn">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Bản đề xuất :: Báo cáo thực tập">
+    <meta itemprop="description" content="BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNGDỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ1.1. Xu hướng Cloud-native và DecoupledHiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.">
+    <meta itemprop="datePublished" content="2024-01-01T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2024-01-01T00:00:00+00:00">
+    <meta itemprop="wordCount" content="1440">
+    <title>Bản đề xuất :: Báo cáo thực tập</title>
+    <link href="/2-proposal/index.xml" rel="alternate" type="application/rss+xml" title="Bản đề xuất :: Báo cáo thực tập">
+    <link href="/css/auto-complete/auto-complete.min.css?1783668541" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783668541" defer></script>
+    <script src="/js/search-lunr.js?1783668541" defer></script>
+    <script src="/js/search.js?1783668541" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.vi.js?1783668541";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1783668541" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783668541" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783668541" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783668541" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1783668541" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783668541" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783668541" rel="stylesheet">
+    <link href="/css/theme.css?1783668541" rel="stylesheet">
+    <link href="/css/format-html.css?1783668541" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/2-proposal\/index.html';
+      window.relearn.relBasePath='..';
+      window.relearn.relBaseUri='..';
+      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+table:has(th:nth-child(5):last-child) { table-layout: fixed; width: 100%; }
+table:has(th:nth-child(5):last-child) th:nth-child(1) { width: 8%; }
+table:has(th:nth-child(5):last-child) th:nth-child(2) { width: 42%; }
+table:has(th:nth-child(5):last-child) th:nth-child(3) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(4) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(5) { width: 20%; word-break: break-all; }
+td { word-wrap: break-word; }
+
+:root {
+  --PRIMARY-color: #3b99fc !important; 
+  --PRIMARY-HOVER-color: #5da2e1 !important;
+  --MENU-HEADER-BG-color: #232f3e !important;
+  --MENU-HEADER-BORDER-color: #161e27 !important;
+  --MENU-SEARCH-BG-color: #161e27 !important;
+  --MENU-SEARCH-BORDER-color: #161e27 !important;
+  --MENU-SECTIONS-BG-color: #232f3e !important;
+  --MENU-SECTIONS-ACTIVE-BG-color: #161e27 !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-color: #ffffff !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #161e27 !important;
+  --MENU-SECTION-SEPARATOR-color: #161e27 !important;
+  --MENU-SECTIONS-LINK-color: #879596 !important;
+  --MENU-SECTIONS-LINK-HOVER-color: #ffffff !important;
+}
+body, h1, h2, h3, h4, h5, h6, table {
+  font-family: "Open Sans", "Amazon Ember", "Helvetica Neue", Roboto, "Segoe UI", Arial, sans-serif !important;
+}
+</style>
+
+  </head>
+  <body class="mobile-support html" data-origin="/2-proposal/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#dự-án-nền-tảng-thương-mại-điện-tử-tích-hợp-ai-trên-nền-tảng-aws-serverless">DỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS</a>
+      <ul>
+        <li><a href="#1-giới-thiệu--đặt-vấn-đề">1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ</a></li>
+        <li><a href="#2-mục-tiêu-dự-án">2. MỤC TIÊU DỰ ÁN</a></li>
+        <li><a href="#3-kiến-trúc-hệ-thống-đề-xuất">3. KIẾN TRÚC HỆ THỐNG ĐỀ XUẤT</a></li>
+        <li><a href="#4-phân-công-nhiệm-vụ">4. PHÂN CÔNG NHIỆM VỤ</a></li>
+        <li><a href="#5-ước-tính-chi-phí">5. ƯỚC TÍNH CHI PHÍ</a></li>
+        <li><a href="#6-đánh-giá-rủi-ro--giải-pháp">6. ĐÁNH GIÁ RỦI RO &amp; GIẢI PHÁP</a></li>
+        <li><a href="#7-tiêu-chí-nghiệm-thu-dự-án">7. TIÊU CHÍ NGHIỆM THU DỰ ÁN</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Báo cáo thực tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Bản đề xuất</span><meta itemprop="position" content="2"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/1-worklog/1.12-week12/index.html" title="Worklog Tuần 12 (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/3-blogsposted/index.html" title="Các bài blogs đã đăng (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 2-proposal" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="bản-đề-xuất">Bản đề xuất</h1>
+
+<h1 id="bản-đề-xuất-kiến-trúc-hệ-thống">BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNG<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<h2 id="dự-án-nền-tảng-thương-mại-điện-tử-tích-hợp-ai-trên-nền-tảng-aws-serverless">DỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<hr>
+<h3 id="1-giới-thiệu--đặt-vấn-đề">1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="11-xu-hướng-cloud-native-và-decoupled">1.1. Xu hướng Cloud-native và Decoupled<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p>Hiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.</p>
+<h4 id="12-thách-thức-của-hệ-thống-truyền-thống">1.2. Thách thức của hệ thống truyền thống<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><strong>Quá tải kết nối:</strong> Lượng truy cập tăng vọt làm cạn kiệt tài nguyên máy chủ Web và Database gây nghẽn hệ thống.</li>
+<li><strong>Lãng phí tài nguyên:</strong> Doanh nghiệp phải duy trì máy chủ cấu hình cao ngay cả lúc ít truy cập, gây tốn kém lớn.</li>
+<li><strong>Rủi ro thanh toán lặp:</strong> Thiếu cơ chế Idempotency dẫn đến việc khách hàng bị trừ tiền nhiều lần khi mạng chậm.</li>
+<li><strong>Bảo mật lỏng lẻo:</strong> Dễ bị tấn công từ chối dịch vụ (DDoS) và rò rỉ dữ liệu khi không có tầng bảo vệ rìa (Edge).</li>
+<li><strong>Quản lý luồng gián đoạn:</strong> Nếu một dịch vụ phụ (như gửi email) lỗi, toàn bộ tiến trình mua hàng sẽ bị đình trệ.</li>
+</ul>
+<hr>
+<h3 id="2-mục-tiêu-dự-án">2. MỤC TIÊU DỰ ÁN<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Dự án hướng đến việc xây dựng một nền tảng E-Commerce hiện đại, tích hợp trí tuệ nhân tạo (AI) nhằm giải quyết triệt để các hạn chế trên:</p>
+<ul>
+<li><strong>Tự động mở rộng (Autoscaling):</strong> Hệ thống co giãn theo lưu lượng thực tế mà không cần can thiệp thủ công.</li>
+<li><strong>Tối ưu chi phí (Pay-as-you-go):</strong> Chỉ trả tiền cho những tài nguyên thực sự dùng, loại bỏ chi phí duy trì máy chủ rỗi.</li>
+<li><strong>Đảm bảo hiệu năng cốt lõi:</strong>
+<ul>
+<li>Phân phối hình ảnh tốc độ cao từ S3 qua CDN.</li>
+<li>Bảo mật danh tính, phân quyền bằng Amazon Cognito.</li>
+<li>Quản lý đơn hàng bất đồng bộ bằng hàng đợi (Queue).</li>
+<li>Tích hợp cổng thanh toán bảo mật Stripe kèm cơ chế chống trùng lặp.</li>
+<li>Trải nghiệm thông minh qua Chatbot AI (Amazon Lex) và hệ thống thông báo đa kênh.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="3-kiến-trúc-hệ-thống-đề-xuất">3. KIẾN TRÚC HỆ THỐNG ĐỀ XUẤT<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<h4 id="31-tại-sao-chọn-aws-serverless">3.1. Tại sao chọn AWS Serverless?<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><strong>Thu hẹp phạm vi rủi ro:</strong> Mỗi hàm Lambda hoạt động độc lập, lỗi ở một phần không làm sập toàn bộ hệ thống.</li>
+<li><strong>Tối ưu trải nghiệm lập trình (DX):</strong> Lập trình viên tập trung viết logic nghiệp vụ thay vì phải lo cấu hình server, đồng thời ứng dụng IaC thông qua AWS CDK.</li>
+<li><strong>Độ tin cậy cao:</strong> Đảm bảo tính Multi-AZ và độ sẵn sàng cao (High Availability) tích hợp tự động bởi AWS.</li>
+</ul>
+<h4 id="32-sơ-đồ-kiến-trúc">3.2. Sơ đồ kiến trúc<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<p><a href="#R-image-e76ac83b0777402b5176a1a24fbf3d3f" class="lightbox-link"><img alt="Sơ đồ kiến trúc Serverless AWS" class="lazy lightbox figure-image" loading="lazy" src="/images/2-Proposal/architecture.png" style="height: auto;width: auto;"></a>
+<a href="javascript:history.back();" class="lightbox-back" id="R-image-e76ac83b0777402b5176a1a24fbf3d3f"><img alt="Sơ đồ kiến trúc Serverless AWS" class="lazy lightbox lightbox-image" loading="lazy" src="/images/2-Proposal/architecture.png"></a></p>
+<blockquote>
+<p><strong>Ghi chú:</strong> AWS WAF được sử dụng để bảo vệ tầng giao tiếp (CloudFront và API Gateway).</p>
+</blockquote>
+<h4 id="33-các-luồng-dữ-liệu-chính">3.3. Các luồng dữ liệu chính<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ol>
+<li><strong>Truy cập Web:</strong> Người dùng gọi tên miền qua Route 53 -&gt; AWS WAF kiểm tra -&gt; tải giao diện từ CDN AWS Amplify.</li>
+<li><strong>Xác thực:</strong> Cognito cấp phát token JWT; API Gateway dùng Cognito Authorizer để chặn các request trái phép.</li>
+<li><strong>Tra cứu sản phẩm:</strong> Frontend gọi API qua API Gateway -&gt; Lambda xử lý đọc dữ liệu DynamoDB và cấp pre-signed URL từ S3.</li>
+<li><strong>Tạo đơn hàng bất đồng bộ:</strong> Lambda đưa yêu cầu vào SQS Order Queue; Consumer xử lý ngầm, nếu lỗi sẽ đưa vào Dead-Letter Queue (DLQ).</li>
+<li><strong>Thanh toán:</strong> Gọi Stripe API lấy thông tin thanh toán có gắn khóa Idempotency-Key. Sau đó nhận trạng thái từ Stripe Webhook và đẩy sự kiện qua EventBridge.</li>
+<li><strong>Kiến trúc Hướng sự kiện (Event-driven):</strong> EventBridge định tuyến sự kiện thanh toán thành công về dịch vụ Order để cập nhật trạng thái DB và đưa bản tin vào SQS Notification để gửi email.</li>
+<li><strong>Chatbot AI:</strong> API Gateway dẫn kết nối tới Lambda xử lý Amazon Lex để trao đổi trực tiếp với khách hàng.</li>
+</ol>
+<h4 id="34-bảo-mật">3.4. Bảo mật<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h4>
+<ul>
+<li><strong>Cognito Authorizer:</strong> Ngăn chặn các truy cập API không hợp lệ.</li>
+<li><strong>Mã hóa:</strong> Dùng KMS mã hóa dữ liệu tại DynamoDB, S3.</li>
+<li><strong>Bảo mật tập trung:</strong> Dùng Secrets Manager lưu trữ mã bí mật thay vì để trong mã nguồn. Cấp quyền Least Privilege bằng IAM cho các dịch vụ.</li>
+</ul>
+<hr>
+<h3 id="4-phân-công-nhiệm-vụ">4. PHÂN CÔNG NHIỆM VỤ<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Thành viên</th>
+					<th>Vai trò</th>
+					<th>Trách nhiệm chính</th>
+					<th>Kết quả Bàn giao</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Thành viên 1</strong></td>
+					<td>Frontend &amp; Identity</td>
+					<td>Xây dựng UI bằng Next.js, tích hợp Cognito auth, UI giỏ hàng, Checkout, và Chatbot.</td>
+					<td>Source code UI, luồng auth hoàn chỉnh, pipeline Amplify.</td>
+			</tr>
+			<tr>
+					<td><strong>Thành viên 2</strong></td>
+					<td>API &amp; Compute</td>
+					<td>Thiết lập API Gateway, phát triển Lambda (Product, Order), xử lý validate dữ liệu đầu vào.</td>
+					<td>Code Lambda, file cấu hình API, Unit Test cho API.</td>
+			</tr>
+			<tr>
+					<td><strong>Thành viên 3</strong></td>
+					<td>Data &amp; Messaging</td>
+					<td>Thiết kế DynamoDB Single-Table, cấu hình S3, SQS (Queue + DLQ), EventBridge và tự động Backup.</td>
+					<td>Schema DynamoDB, script hạ tầng Event/Queue, cấu hình Backup.</td>
+			</tr>
+			<tr>
+					<td><strong>Thành viên 4</strong></td>
+					<td>Payment &amp; AI</td>
+					<td>Tích hợp cổng Stripe, Webhook, huấn luyện Chatbot Lex, phát triển Lambda Notification.</td>
+					<td>Code thanh toán, model Lex Chatbot, code gửi email/tin nhắn.</td>
+			</tr>
+			<tr>
+					<td><strong>Thành viên 5</strong></td>
+					<td>DevSecOps &amp; PM</td>
+					<td>Định nghĩa hạ tầng CDK (IaC), IAM, WAF, CI/CD, thiết lập CloudWatch và GuardDuty. Quản lý dự án.</td>
+					<td>Code CDK IaC, workflow CI/CD GitHub, bảng giám sát hệ thống.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h3 id="5-ước-tính-chi-phí">5. ƯỚC TÍNH CHI PHÍ<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Ước tính chi phí quy mô dùng thử nghiệm (Lab-scale) trong 1 tháng:</p>
+<ul>
+<li><strong>Amplify, Cognito, API Gateway, Lambda, SQS, EventBridge:</strong> Đa phần nằm trong Free Tier hoặc có chi phí cực kỳ nhỏ (quanh mốc $0.00 - $1.00).</li>
+<li><strong>DynamoDB, S3:</strong> Khoảng dưới $1.00 / tháng với lượng dữ liệu nhỏ.</li>
+<li><strong>Secrets Manager, WAF, Backup:</strong> Dịch vụ phát sinh phí khoảng $1.50 - $2.50.</li>
+<li><strong>TỔNG CHI PHÍ DỰ KIẾN:</strong> Khoảng <strong>$3.00 - $5.00 USD / tháng</strong>, chứng minh tính kinh tế vượt trội của Serverless.</li>
+</ul>
+<hr>
+<h3 id="6-đánh-giá-rủi-ro--giải-pháp">6. ĐÁNH GIÁ RỦI RO &amp; GIẢI PHÁP<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<table>
+	<thead>
+			<tr>
+					<th>Rủi ro</th>
+					<th>Ảnh hưởng</th>
+					<th>Giải pháp xử lý</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><strong>Sập database vì quá tải kết nối</strong></td>
+					<td>Đứt gãy luồng xử lý</td>
+					<td>Dùng Amazon DynamoDB (NoSQL) với khả năng tự co giãn (On-demand) không lo giới hạn kết nối.</td>
+			</tr>
+			<tr>
+					<td><strong>Lỗi Webhook hoặc bị trừ tiền trùng</strong></td>
+					<td>Khiếu nại từ khách hàng</td>
+					<td>Gắn thẻ Idempotency-Key của Stripe, kiểm tra chữ ký Webhook; quản lý tác vụ lỗi thông qua DLQ SQS.</td>
+			</tr>
+			<tr>
+					<td><strong>Lộ thông tin API Keys</strong></td>
+					<td>Mất an toàn toàn hệ thống</td>
+					<td>Quản lý tuyệt mật qua AWS Secrets Manager, không đưa lên GitHub, áp dụng xoay vòng key tự động.</td>
+			</tr>
+			<tr>
+					<td><strong>Tiến độ dự án bị chậm</strong></td>
+					<td>Không kịp demo môn học</td>
+					<td>Chốt nhanh mô hình MVP (Minimum Viable Product). Tổ chức họp nhóm Daily ngắn gọn.</td>
+			</tr>
+	</tbody>
+</table>
+<hr>
+<h3 id="7-tiêu-chí-nghiệm-thu-dự-án">7. TIÊU CHÍ NGHIỆM THU DỰ ÁN<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ol>
+<li><strong>Hạ tầng &amp; Phân giải miền (Edge):</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Tên miền chạy an toàn trên Route 53 với giao thức HTTPS.</label></li>
+  <li><label><input type="checkbox"> AWS WAF lọc thành công các request độc hại hoặc vi phạm giới hạn lưu lượng.</label></li>
+  <li><label><input type="checkbox"> Frontend triển khai hoàn thiện qua AWS Amplify.</label></li>
+</ul>
+<ol start="2">
+<li><strong>Hệ thống Xác thực (Identity):</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Quy trình đăng ký, đăng nhập qua Amazon Cognito hoàn tất.</label></li>
+  <li><label><input type="checkbox"> Nhận về JWT hợp lệ, tự động chặn yêu cầu API thiếu token (trả về lỗi 401).</label></li>
+</ul>
+<ol start="3">
+<li><strong>Sản phẩm &amp; Xử lý đơn hàng:</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Đọc danh sách sản phẩm thành công từ DB, load ảnh trực tiếp từ S3 qua URL an toàn.</label></li>
+  <li><label><input type="checkbox"> Gọi API tạo đơn hàng bất đồng bộ vào SQS Queue thành công.</label></li>
+  <li><label><input type="checkbox"> Các đơn hàng lỗi tự động được chuyển hướng sang SQS DLQ sau các lần thử lại.</label></li>
+</ul>
+<ol start="4">
+<li><strong>Thanh toán &amp; Hướng sự kiện (Event-Driven):</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Thực hiện thanh toán Sandbox qua Stripe an toàn với Idempotency-Key.</label></li>
+  <li><label><input type="checkbox"> Backend nhận và xử lý thành công Stripe Webhook (đã qua kiểm tra chữ ký).</label></li>
+  <li><label><input type="checkbox"> Sự kiện thanh toán kích hoạt thành công Notification Lambda để gửi mail/thông báo.</label></li>
+</ul>
+<ol start="5">
+<li><strong>Trợ lý Ảo (Chatbot AI):</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Chatbot Amazon Lex tương tác tốt với người dùng ngay trên website.</label></li>
+  <li><label><input type="checkbox"> Chatbot tự phân tích ý định (Intent) và truy xuất đúng thông tin đơn hàng/sản phẩm.</label></li>
+</ul>
+<ol start="6">
+<li><strong>Giám sát hệ thống (Observability):</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Bảng điều khiển CloudWatch phản ánh trực quan tình trạng hệ thống.</label></li>
+  <li><label><input type="checkbox"> AWS X-Ray kết nối các dịch vụ lại thành một luồng (Trace map) xuyên suốt.</label></li>
+  <li><label><input type="checkbox"> Amazon GuardDuty giám sát hoạt động, AWS Backup chứng minh khả năng khôi phục DB.</label></li>
+</ul>
+<ol start="7">
+<li><strong>Quy trình &amp; Mã nguồn (CI/CD):</strong></li>
+</ol>
+<ul style="list-style-type: none;">
+  <li><label><input type="checkbox"> Triển khai toàn bộ bằng Infrastructure as Code (AWS CDK).</label></li>
+  <li><label><input type="checkbox"> GitHub Actions tự động kiểm thử và triển khai khi có code mới (CI/CD Pipeline).</label></li>
+</ul>
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> 1 thg 1, 2024
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a href="/" id="logo" style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" style="height: 35px; filter: brightness(0) invert(1);">
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-fw fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/1-worklog/index.html"><a class="padding default-animation" href="/1-worklog/index.html"> <b> 1. </b> Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="active " data-nav-id="/2-proposal/index.html"><a class="padding" href="/2-proposal/index.html"> <b> 2. </b> Bản đề xuất</a></li>
+            <li class="" data-nav-id="/3-blogsposted/index.html"><a class="padding default-animation" href="/3-blogsposted/index.html"> <b> 3. </b> Các bài blogs đã đăng</a><ul id="R-subsections-139b2bd7ed608dfc4cda535ffb3638d1" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/4-eventparticipated/index.html"><a class="padding default-animation" href="/4-eventparticipated/index.html"> <b> 4. </b> Các sự kiện đã tham gia</a><ul id="R-subsections-a3223440c4beb7b035882258d4302894" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/5-workshop/index.html"><a class="padding default-animation" href="/5-workshop/index.html"> <b> 5. </b> Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/6-self-evaluation/index.html"><a class="padding" href="/6-self-evaluation/index.html"> <b> 6. </b> Tự đánh giá</a></li>
+            <li class="" data-nav-id="/7-feedback/index.html"><a class="padding" href="/7-feedback/index.html"> <b> 7. </b> Chia sẻ và Đóng góp ý kiến</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-vi" value="vi" data-url="/2-proposal/index.html" lang="vi-vn" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><div style="margin-top: 2rem;">
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Last Updated</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem; margin-bottom: 1.5rem;">02-06-2026</div>
+  
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Team</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem;">First Cloud AI Journey</div>
+</div>
+</div>
+      </div>
+    </aside>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783668541" defer></script>
+    <script src="/js/theme.js?1783668541" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

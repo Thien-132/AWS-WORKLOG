@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Workshop :: Báo cáo thực tập</title>
+    <link>http://localhost:999/en/5_workshop/index.html</link>
+    <description>WORKSHOP Warning&#xD;Note: The information below is for reference only, please do not verbatim copy into your report, including this warning.&#xA;SECURE HYBRID ACCESS TO S3 USING VPC ENDPOINTS Overview AWS PrivateLink provides private connectivity to AWS services from VPCs or on-premise data centers without exposing traffic to the public internet.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:999/en/5_workshop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5.1. Introduction</title>
+      <link>http://localhost:999/en/5_workshop/1_gioi_thieu/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/1_gioi_thieu/index.html</guid>
+      <description>Introduction to VPC Endpoint A VPC endpoint is a virtual device. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks. Compute resources running in a VPC can access Amazon S3 using Gateway endpoints. PrivateLink Interface Endpoints can be used by resources running in a VPC or on-premises data centers. Workshop Overview In this workshop, you will use two VPCs.</description>
+    </item>
+    <item>
+      <title>5.2. Preparation Steps</title>
+      <link>http://localhost:999/en/5_workshop/2_cac_buoc_chuan_bi/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/2_cac_buoc_chuan_bi/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.3. Access S3 from VPC</title>
+      <link>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.4. Access S3 from Traditional Environment</title>
+      <link>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/4_truy_cap_s3_tu_mt_truyen_thong/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.5 VPC Endpoint Policies</title>
+      <link>http://localhost:999/en/5_workshop/5_vpc_endpoint_policies/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/5_vpc_endpoint_policies/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.6. Clean up resources</title>
+      <link>http://localhost:999/en/5_workshop/6_don_dep_tai_nguyen/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/6_don_dep_tai_nguyen/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

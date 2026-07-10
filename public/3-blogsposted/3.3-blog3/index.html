@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html id="R-html" lang="vi-vn" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=60313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <meta name="generator" content="Hugo 0.164.0">
+    <meta name="generator" content="Relearn 9.0.3+36307e4ed23582638ab689240ac7b427217803ee">
+    <meta name="description" content="HƯỚNG DẪN TỐI ƯU HÓA QUẢN LÝ ĐA ỨNG DỤNG (MULTI-APP) VỚI UNIFIED WEBHOOKS TRÊN AWS AMPLIFY HOSTINGTrong phát triển phần mềm hiện đại, kiến trúc Monorepo (quản lý nhiều ứng dụng, services trong cùng một repository) ngày càng được các team phát triển frontend ưa chuộng nhờ khả năng chia sẻ code dễ dàng và đơn giản hóa quy trình quản lý dự án. Tuy nhiên, khi triển khai deploy các ứng dụng này lên AWS Amplify Hosting, các kỹ sư thường phải đối mặt với một “nỗi đau” (pain point) rất lớn: Giới hạn số lượng Webhook của Git Provider.">
+    <meta name="author" content="">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting :: Báo cáo thực tập">
+    <meta name="twitter:description" content="HƯỚNG DẪN TỐI ƯU HÓA QUẢN LÝ ĐA ỨNG DỤNG (MULTI-APP) VỚI UNIFIED WEBHOOKS TRÊN AWS AMPLIFY HOSTINGTrong phát triển phần mềm hiện đại, kiến trúc Monorepo (quản lý nhiều ứng dụng, services trong cùng một repository) ngày càng được các team phát triển frontend ưa chuộng nhờ khả năng chia sẻ code dễ dàng và đơn giản hóa quy trình quản lý dự án. Tuy nhiên, khi triển khai deploy các ứng dụng này lên AWS Amplify Hosting, các kỹ sư thường phải đối mặt với một “nỗi đau” (pain point) rất lớn: Giới hạn số lượng Webhook của Git Provider.">
+    <meta property="og:url" content="http://localhost:60313/3-blogsposted/3.3-blog3/index.html">
+    <meta property="og:site_name" content="Báo cáo thực tập">
+    <meta property="og:title" content="Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting :: Báo cáo thực tập">
+    <meta property="og:description" content="HƯỚNG DẪN TỐI ƯU HÓA QUẢN LÝ ĐA ỨNG DỤNG (MULTI-APP) VỚI UNIFIED WEBHOOKS TRÊN AWS AMPLIFY HOSTINGTrong phát triển phần mềm hiện đại, kiến trúc Monorepo (quản lý nhiều ứng dụng, services trong cùng một repository) ngày càng được các team phát triển frontend ưa chuộng nhờ khả năng chia sẻ code dễ dàng và đơn giản hóa quy trình quản lý dự án. Tuy nhiên, khi triển khai deploy các ứng dụng này lên AWS Amplify Hosting, các kỹ sư thường phải đối mặt với một “nỗi đau” (pain point) rất lớn: Giới hạn số lượng Webhook của Git Provider.">
+    <meta property="og:locale" content="vi_vn">
+    <meta property="og:type" content="website">
+    <meta itemprop="name" content="Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting :: Báo cáo thực tập">
+    <meta itemprop="description" content="HƯỚNG DẪN TỐI ƯU HÓA QUẢN LÝ ĐA ỨNG DỤNG (MULTI-APP) VỚI UNIFIED WEBHOOKS TRÊN AWS AMPLIFY HOSTINGTrong phát triển phần mềm hiện đại, kiến trúc Monorepo (quản lý nhiều ứng dụng, services trong cùng một repository) ngày càng được các team phát triển frontend ưa chuộng nhờ khả năng chia sẻ code dễ dàng và đơn giản hóa quy trình quản lý dự án. Tuy nhiên, khi triển khai deploy các ứng dụng này lên AWS Amplify Hosting, các kỹ sư thường phải đối mặt với một “nỗi đau” (pain point) rất lớn: Giới hạn số lượng Webhook của Git Provider.">
+    <meta itemprop="datePublished" content="2026-06-30T00:00:00+00:00">
+    <meta itemprop="dateModified" content="2026-06-30T00:00:00+00:00">
+    <meta itemprop="wordCount" content="861">
+    <title>Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting :: Báo cáo thực tập</title>
+    <link href="/3-blogsposted/3.3-blog3/index.xml" rel="alternate" type="application/rss+xml" title="Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting :: Báo cáo thực tập">
+    <link href="/css/auto-complete/auto-complete.min.css?1783614785" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783614785" defer></script>
+    <script src="/js/search-lunr.js?1783614785" defer></script>
+    <script src="/js/search.js?1783614785" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.index_js_url="/searchindex.vi.js?1783614785";
+    </script>
+    <script src="/js/lunr/lunr.min.js?1783614785" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783614785" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783614785" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783614785" defer></script>
+    <script>
+      window.relearn = window.relearn || {};
+      window.relearn.contentLangs=['vi'];
+    </script>
+    <link href="/fonts/fontawesome/css/all.min.css?1783614785" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783614785" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783614785" rel="stylesheet">
+    <link href="/css/theme.css?1783614785" rel="stylesheet">
+    <link href="/css/format-html.css?1783614785" rel="stylesheet" id="R-format-style">
+    <script>
+      window.relearn = window.relearn || {};
+      // configuration
+      window.relearn.min = ``;
+      window.relearn.path='\/3-blogsposted\/3.3-blog3\/index.html';
+      window.relearn.relBasePath='..\/..';
+      window.relearn.relBaseUri='..\/..';
+      window.relearn.absBaseUri='http:\/\/localhost:60313';
+      window.relearn.disableInlineCopyToClipboard=false;
+      window.relearn.enableBlockCodeWrap=true;
+      // translations
+      window.T_Copy_to_clipboard = `Sao chép văn bản vào bảng tạm`;
+      window.T_Copied_to_clipboard = `Văn bản đã sao chép vào bảng tạm!`;
+      window.T_Link_copied_to_clipboard = `Liên kết đã sao chép vào bảng tạm!`;
+      window.T_Reset_view = `Đặt lại dạng xem`;
+      window.T_View_reset = `Xem đặt lại!`;
+      window.T_No_results_found = `Không tìm thấy kết quả nào cho "{0}"`;
+      window.T_N_results_found = `{1} kết quả được tìm thấy cho "{0}"`;
+      window.T_Browser_unsupported_feature = `Trình duyệt này không hỗ trợ tính năng này`;
+      // variant stuff
+      window.relearn.themevariants = [ 'relearn-light', 'relearn-dark' ];
+      window.relearn.customvariantprefix = "my-custom-";
+      window.relearn.changeVariant = function(variant) {
+        var oldVariant = document.documentElement.dataset.rThemeVariant;
+        window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        document.documentElement.dataset.rThemeVariant = variant;
+        if (oldVariant != variant) {
+          document.dispatchEvent( new CustomEvent('themeVariantLoaded', { detail: { variant, oldVariant } }) );
+          window.relearn.markVariant();
+        }
+      }
+      window.relearn.markVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant");
+        document.querySelectorAll(".R-variantswitcher select").forEach((select) => {select.value = variant;});
+      }
+      window.relearn.initVariant = function() {
+        var variant = window.localStorage.getItem(window.relearn.absBaseUri + "/variant") ?? "";
+        if( !variant ||
+            (!variant.startsWith(window.relearn.customvariantprefix) && !window.relearn.themevariants.includes(variant)) ||
+            (variant.startsWith(window.relearn.customvariantprefix) && !window.localStorage.getItem(window.relearn.absBaseUri + "/variantstylesheet-" + variant)) ){
+          variant = window.relearn.themevariants[0];
+          window.localStorage.setItem(window.relearn.absBaseUri + "/variant", variant);
+        }
+        document.documentElement.dataset.rThemeVariant = variant;
+      }
+      window.relearn.initVariant();
+      window.relearn.markVariant();
+    </script><style>
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+table:has(th:nth-child(5):last-child) { table-layout: fixed; width: 100%; }
+table:has(th:nth-child(5):last-child) th:nth-child(1) { width: 8%; }
+table:has(th:nth-child(5):last-child) th:nth-child(2) { width: 42%; }
+table:has(th:nth-child(5):last-child) th:nth-child(3) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(4) { width: 15%; }
+table:has(th:nth-child(5):last-child) th:nth-child(5) { width: 20%; word-break: break-all; }
+td { word-wrap: break-word; }
+
+:root {
+  --PRIMARY-color: #3b99fc !important; 
+  --PRIMARY-HOVER-color: #5da2e1 !important;
+  --MENU-HEADER-BG-color: #232f3e !important;
+  --MENU-HEADER-BORDER-color: #161e27 !important;
+  --MENU-SEARCH-BG-color: #161e27 !important;
+  --MENU-SEARCH-BORDER-color: #161e27 !important;
+  --MENU-SECTIONS-BG-color: #232f3e !important;
+  --MENU-SECTIONS-ACTIVE-BG-color: #161e27 !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-color: #ffffff !important;
+  --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #161e27 !important;
+  --MENU-SECTION-SEPARATOR-color: #161e27 !important;
+  --MENU-SECTIONS-LINK-color: #879596 !important;
+  --MENU-SECTIONS-LINK-HOVER-color: #ffffff !important;
+}
+body, h1, h2, h3, h4, h5, h6, table {
+  font-family: "Open Sans", "Amazon Ember", "Helvetica Neue", Roboto, "Segoe UI", Arial, sans-serif !important;
+}
+</style>
+
+  </head>
+  <body class="mobile-support html" data-origin="/3-blogsposted/3.3-blog3/index.html">
+    <div id="R-body" class="default-animation">
+      <div id="R-body-overlay"></div>
+      <nav id="R-topbar" class="default-animation">
+        <div class="topbar-wrapper default-animation">
+          <div class="topbar-sidebar-divider default-animation"></div>
+          <div class="topbar-area topbar-area-start" data-area="start">
+            <div class="topbar-button topbar-button-sidebar default-animation" data-content-empty="disable" data-width-s="show" data-width-m="hide" data-width-l="hide">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleNav()" type="button" title="Menu (CTRL&#43;ALT&#43;n)"><i class="fa-fw fas fa-bars"></i></button></span>
+            </div>
+            <div class="topbar-button topbar-button-toc default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Mục lục (CTRL&#43;ALT&#43;t)"><i class="fa-fw fas fa-table-list"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+<nav class="TableOfContents">
+  <ul>
+    <li><a href="#cơ-chế-hoạt-động-của-unified-webhooks">Cơ Chế Hoạt Động của Unified Webhooks</a></li>
+    <li><a href="#các-lợi-ích-vượt-trội">Các Lợi Ích Vượt Trội</a></li>
+    <li><a href="#hướng-dẫn-triển-khai-nhanh-quick-walkthrough">Hướng Dẫn Triển Khai Nhanh (Quick Walkthrough)</a>
+      <ul>
+        <li><a href="#1-đối-với-các-ứng-dụng-amplify-mới-tạo">1. Đối với các ứng dụng Amplify mới tạo</a></li>
+        <li><a href="#2-đối-với-các-ứng-dụng-amplify-hiện-hữu-đang-chạy">2. Đối với các ứng dụng Amplify hiện hữu (đang chạy)</a></li>
+      </ul>
+    </li>
+    <li><a href="#các-lưu-ý-quan-trọng--kết-luận">Các Lưu Ý Quan Trọng &amp; Kết Luận</a>
+      <ul>
+        <li><a href="#một-số-lưu-ý-khi-triển-khai">Một số lưu ý khi triển khai:</a></li>
+        <li><a href="#kết-luận">Kết luận:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ol class="topbar-breadcrumbs breadcrumbs highlightable" itemscope itemtype="http://schema.org/BreadcrumbList"><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/index.html"><span itemprop="name">Báo cáo thực tập</span></a><meta itemprop="position" content="1">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><a itemprop="item" href="/3-blogsposted/index.html"><span itemprop="name">Các bài blogs đã đăng</span></a><meta itemprop="position" content="2">&nbsp;>&nbsp;</li><li itemscope itemtype="https://schema.org/ListItem" itemprop="itemListElement" class=""><span itemprop="name">Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting</span><meta itemprop="position" content="3"></li>
+          </ol>
+          <div class="topbar-area topbar-area-end" data-area="end">
+            <div class="topbar-button topbar-button-prev default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/3-blogsposted/3.2-blog2/index.html" title="Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore (🡐)"><i class="fa-fw fas fa-chevron-left"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-next default-animation" data-content-empty="disable" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><a href="/4-eventparticipated/index.html" title="Các events đã tham gia (🡒)"><i class="fa-fw fas fa-chevron-right"></i></a></span>
+            </div>
+            <div class="topbar-button topbar-button-more default-animation" data-content-empty="hide" data-width-s="show" data-width-m="show" data-width-l="show">
+<span class="btn cstyle button link noborder notitle interactive"><button onclick="toggleTopbarFlyout(this)" type="button" title="Nội dung khác"><i class="fa-fw fas fa-ellipsis-v"></i></button></span>
+              <div class="topbar-content">
+                <div class="topbar-content-wrapper">
+                  <div class="topbar-area topbar-area-more" data-area="more">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div id="R-main-overlay"></div>
+      <main id="R-body-inner" class="highlightable 3-blogsposted" tabindex="-1">
+        <div class="flex-block-wrapper">
+<article class="default">
+  <header class="headline">
+  </header>
+
+<h1 id="hướng-dẫn-tối-ưu-hóa-quản-lý-đa-ứng-dụng-với-unified-webhooks-trên-aws-amplify-hosting">Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting</h1>
+
+<h1 id="hướng-dẫn-tối-ưu-hóa-quản-lý-đa-ứng-dụng-multi-app-với-unified-webhooks-trên-aws-amplify-hosting">HƯỚNG DẪN TỐI ƯU HÓA QUẢN LÝ ĐA ỨNG DỤNG (MULTI-APP) VỚI UNIFIED WEBHOOKS TRÊN AWS AMPLIFY HOSTING<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h1>
+<p>Trong phát triển phần mềm hiện đại, kiến trúc <strong>Monorepo</strong> (quản lý nhiều ứng dụng, services trong cùng một repository) ngày càng được các team phát triển frontend ưa chuộng nhờ khả năng chia sẻ code dễ dàng và đơn giản hóa quy trình quản lý dự án. Tuy nhiên, khi triển khai deploy các ứng dụng này lên <strong>AWS Amplify Hosting</strong>, các kỹ sư thường phải đối mặt với một &ldquo;nỗi đau&rdquo; (pain point) rất lớn: <strong>Giới hạn số lượng Webhook của Git Provider</strong>.</p>
+<p>Mỗi khi bạn kết nối một ứng dụng Amplify mới trỏ tới cùng một repository, một webhook mới sẽ được sinh ra và đăng ký với Git provider. Điều này rất nhanh chóng dẫn đến việc chạm hạn mức giới hạn webhook của các Git provider phổ biến:</p>
+<ul>
+<li><strong>GitHub:</strong> Giới hạn tối đa <strong>20 webhooks</strong> mỗi repository.</li>
+<li><strong>GitLab:</strong> Giới hạn tối đa <strong>100 webhooks</strong> mỗi repository.</li>
+<li><strong>Bitbucket:</strong> Giới hạn tối đa <strong>50 webhooks</strong> mỗi repository.</li>
+</ul>
+<p>Khi chạm ngưỡng này, bạn không thể kết nối thêm ứng dụng Amplify mới hoặc kích hoạt các pipeline CI/CD khác, gây tắc nghẽn toàn bộ workflow của nhóm.</p>
+<p>Để giải quyết triệt để bài toán này, AWS đã ra mắt tính năng <strong>Unified Webhooks trên AWS Amplify Hosting</strong>, cho phép gộp tất cả các webhook liên quan đến Amplify thành một webhook duy nhất cho toàn bộ repository.</p>
+
+<details open class="box cstyle notices info">
+  <summary class="box-label" tabindex="-1">
+    <i class="fa-fw fas fa-info-circle"></i> 
+    Thông tin
+  </summary>
+  <div class="box-content">
+<p><strong>Lợi ích cốt lõi:</strong> Một webhook duy nhất đại diện cho AWS Amplify Hosting trên repository của bạn, tự động phân phối tín hiệu trigger đến tất cả ứng dụng Amplify tương ứng bên trong.</p>
+  </div>
+</details>
+<hr>
+<h2 id="cơ-chế-hoạt-động-của-unified-webhooks">Cơ Chế Hoạt Động của Unified Webhooks<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Hãy xem luồng xử lý trước và sau khi áp dụng Unified Webhooks để thấy sự khác biệt:</p>
+<pre class="mermaid actionbar-wrapper align-center ">graph TD
+    subgraph Kịch bản cũ: Nhiều Webhooks độc lập
+        RepoOld[Git Repository] --&gt;|Webhook 1| App1[Amplify App 1]
+        RepoOld --&gt;|Webhook 2| App2[Amplify App 2]
+        RepoOld --&gt;|Webhook 3| App3[Amplify App 3]
+        style RepoOld fill:#f9f,stroke:#333,stroke-width:2px
+    end
+
+    subgraph Kịch bản mới: Unified Webhook
+        RepoNew[Git Repository] --&gt;|1 Webhook Duy Nhất| UnifiedGateway[Amplify Unified Webhooks Gateway]
+        UnifiedGateway --&gt; App1New[Amplify App 1]
+        UnifiedGateway --&gt; App2New[Amplify App 2]
+        UnifiedGateway --&gt; App3New[Amplify App 3]
+        style RepoNew fill:#bbf,stroke:#333,stroke-width:2px
+    end</pre>
+<hr>
+<h2 id="các-lợi-ích-vượt-trội">Các Lợi Ích Vượt Trội<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Việc áp dụng Unified Webhooks mang lại nhiều lợi ích to lớn cho doanh nghiệp và đội ngũ phát triển:</p>
+<ul>
+<li><strong>Vượt qua giới hạn của Git Provider:</strong> Không còn lo lắng về việc chạm ngưỡng 20 webhooks của GitHub, thoải mái mở rộng quy mô dự án monorepo với hàng chục ứng dụng frontend.</li>
+<li><strong>Tăng tính linh hoạt cho Monorepo:</strong> Hỗ trợ mô hình phát triển Agile, cho phép tạo và phá hủy các ứng dụng Amplify tạm thời (ví dụ: preview environments cho từng Pull Request) mà không ảnh hưởng tới hạn mức webhook.</li>
+<li><strong>Đơn giản hóa quản lý hạ tầng:</strong> Giảm thiểu sự phức tạp khi cấu hình tích hợp giữa Git provider và AWS. Tránh tình trạng webhook bị lỗi hoặc mất đồng bộ.</li>
+<li><strong>Giải phóng slot webhook:</strong> Nhường chỗ cho các dịch vụ CI/CD và công cụ tự động hóa khác của bên thứ ba (như Slack notification, SonarQube, security scan&hellip;).</li>
+</ul>
+<hr>
+<h2 id="hướng-dẫn-triển-khai-nhanh-quick-walkthrough">Hướng Dẫn Triển Khai Nhanh (Quick Walkthrough)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<p>Tính năng Unified Webhooks cực kỳ dễ kích hoạt:</p>
+<h3 id="1-đối-với-các-ứng-dụng-amplify-mới-tạo">1. Đối với các ứng dụng Amplify mới tạo<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Tính năng này sẽ được <strong>tự động áp dụng</strong> ngay khi bạn liên kết ứng dụng với repository. Bạn không cần thực hiện thêm bất kỳ bước thủ công nào.</p>
+<h3 id="2-đối-với-các-ứng-dụng-amplify-hiện-hữu-đang-chạy">2. Đối với các ứng dụng Amplify hiện hữu (đang chạy)<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<p>Bạn chỉ cần thực hiện tái kết nối (Reconnect) repository theo các bước sau:</p>
+<ol>
+<li>Truy cập vào <strong>AWS Management Console</strong> -&gt; Chọn <strong>AWS Amplify</strong>.</li>
+<li>Chọn ứng dụng cần cấu hình -&gt; Vào mục <strong>App settings</strong> ở menu trái.</li>
+<li>Chọn <strong>Branch settings</strong> (Cài đặt nhánh).</li>
+<li>Click chọn nút <strong>Reconnect repository</strong> (Kết nối lại repository) và thực hiện xác thực theo hướng dẫn. Hệ thống sẽ tự động gộp webhook của app này vào webhook duy nhất của repo.</li>
+</ol>
+<hr>
+<h2 id="các-lưu-ý-quan-trọng--kết-luận">Các Lưu Ý Quan Trọng &amp; Kết Luận<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h2>
+<h3 id="một-số-lưu-ý-khi-triển-khai">Một số lưu ý khi triển khai:<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<ul>
+<li><strong>Dọn dẹp trước khi migrate:</strong> Nếu repository của bạn đã bị full webhook trước đó (chạm mốc 20/20 trên GitHub), bạn hãy chủ động xóa bớt các webhook Amplify cũ trước khi tiến hành nhấn &ldquo;Reconnect&rdquo; để quá trình tạo webhook duy nhất không bị lỗi.</li>
+<li><strong>Tính chất Region-based:</strong> Unified Webhooks hoạt động trên cơ sở từng vùng (region-based). Nếu bạn có các ứng dụng Amplify ở các AWS Region khác nhau trỏ chung một repository, hệ thống sẽ tạo một unified webhook cho mỗi Region.</li>
+</ul>
+<h3 id="kết-luận">Kết luận:<span class="btn cstyle anchor copyanchor scrollanchor link noborder notitle interactive"><button type="button" title="Sao chép liên kết vào bảng tạm"><i class="fa-fw fas fa-link fa-lg"></i></button></span></h3>
+<blockquote>
+<p>Tính năng Unified Webhooks là một cải tiến &ldquo;nhỏ nhưng có võ&rdquo; từ AWS Amplify Hosting. Nó giúp giải phóng các Frontend Developer khỏi các rắc rối liên quan đến quản lý kết nối hạ tầng và giới hạn webhook, mang lại trải nghiệm phát triển Monorepo mượt mà, giúp tăng tốc độ phân phối sản phẩm đến tay khách hàng.</p>
+</blockquote>
+<hr>
+<ul>
+<li><strong>Link bài đăng cộng đồng:</strong> <a href="https://www.facebook.com/groups/awsstudygroupfcj/permalink/2190199598411667/" rel="external">AWS Study Group Facebook Post</a></li>
+<li><strong>Hashtags:</strong> #AWS #AmplifyHosting #UnifiedWebhooks #Monorepo #FrontendDev #awsstudygroup</li>
+</ul>
+
+  <footer class="footline">
+              <i class='fa-fw fas fa-calendar'></i> 30 thg 6, 2026
+  </footer>
+</article>
+        </div>
+      </main>
+    </div>
+    <aside id="R-sidebar" class="default-animation">
+      <div id="R-header-topbar" class="default-animation"></div>
+      <div id="R-header-wrapper" class="default-animation"><a href="/" id="logo" style="display: flex; align-items: center; justify-content: center; padding: 10px;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS Logo" style="height: 35px; filter: brightness(0) invert(1);">
+</a>
+
+        <search><form action="/search/index.html" method="get">
+          <div class="searchbox default-animation">
+            <button class="search-detail" type="submit" title="Tìm kiếm (CTRL+ALT+f)"><i class="fas fa-fw fa-search"></i></button>
+            <label class="a11y-only" for="R-search-by">Tìm kiếm</label>
+            <input data-search-input id="R-search-by" name="search-by" class="search-by" type="search" placeholder="Tìm kiếm...">
+            <button class="search-clear" type="button" data-search-clear="" title="Xóa tìm kiếm"><i class="fas fa-fw fa-times" title="Xóa tìm kiếm"></i></button>
+          </div>
+        </form></search>
+      </div>
+      <div id="R-homelinks" class="default-animation homelinks">
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-homelinks default-animation">
+          <ul class="space collapsible-menu">
+            <li class="" data-nav-id="/index.html"><a class="padding" href="/index.html"><i class="fa-fw fas fa-home"></i> Home</a></li>
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-headercontrols default-animation">
+          <ul class="">
+          </ul>
+        </div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+      </div>
+      <div id="R-content-wrapper" class="highlightable">
+        <div class="R-sidebarmenu R-shortcutmenu-main default-animation">
+          <ul class="enlarge morespace collapsible-menu">
+            <li class="" data-nav-id="/1-worklog/index.html"><a class="padding default-animation" href="/1-worklog/index.html"> <b> 1. </b> Nhật ký công việc</a><ul id="R-subsections-16447363d800ec5deaa3b0a76c63c922" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/2-proposal/index.html"><a class="padding" href="/2-proposal/index.html"> <b> 2. </b> Bản đề xuất</a></li>
+            <li class="parent " data-nav-id="/3-blogsposted/index.html"><a class="padding default-animation" href="/3-blogsposted/index.html"> <b> 3. </b> Các bài blogs đã đăng</a><ul id="R-subsections-139b2bd7ed608dfc4cda535ffb3638d1" class="collapsible-menu">
+            <li class="" data-nav-id="/3-blogsposted/3.1-blog1/index.html"><a class="padding" href="/3-blogsposted/3.1-blog1/index.html">Đơn giản hóa tích hợp AWS AppSync Events với Powertools</a></li>
+            <li class="" data-nav-id="/3-blogsposted/3.2-blog2/index.html"><a class="padding" href="/3-blogsposted/3.2-blog2/index.html">Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore</a></li>
+            <li class="active " data-nav-id="/3-blogsposted/3.3-blog3/index.html"><a class="padding" href="/3-blogsposted/3.3-blog3/index.html">Hướng dẫn tối ưu hóa Quản lý Đa ứng dụng với Unified Webhooks trên AWS Amplify Hosting</a></li></ul></li>
+            <li class="" data-nav-id="/4-eventparticipated/index.html"><a class="padding default-animation" href="/4-eventparticipated/index.html"> <b> 4. </b> Các events đã tham gia</a><ul id="R-subsections-a3223440c4beb7b035882258d4302894" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/5-workshop/index.html"><a class="padding default-animation" href="/5-workshop/index.html"> <b> 5. </b> Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/6-self-evaluation/index.html"><a class="padding" href="/6-self-evaluation/index.html"> <b> 6. </b> Tự đánh giá</a></li>
+            <li class="" data-nav-id="/7-feedback/index.html"><a class="padding" href="/7-feedback/index.html"> <b> 7. </b> Chia sẻ và Đóng góp ý kiến</a></li>
+          </ul>
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-shortcuts default-animation">
+          <ul class="space collapsible-menu">
+          </ul>
+        </div>
+        <div id="R-footer-margin" class="default-animation"></div>
+        <div class="R-menu-divider default-animation">
+          <hr class="padding default-animation">
+        </div>
+        <div class="R-sidebarmenu R-shortcutmenu-footercontrols default-animation">
+          <ul class="">
+			<li class="R-languageswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-language"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-language">Ngôn ngữ</label>
+                  <select id="R-select-language">
+                    <option id="R-select-language-vi" value="vi" data-url="/3-blogsposted/3.3-blog3/index.html" lang="vi-vn" selected data-selected>Tiếng Việt</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </li>
+            <li class="R-variantswitcher">
+              <div class="padding menu-control">
+                <i class="fa-fw fas fa-paint-brush"></i>
+                <span>&nbsp;</span>
+                <div class="control-style">
+                  <label class="a11y-only" for="R-select-variant">Đề tài</label>
+                  <select id="R-select-variant">
+                    <option id="R-select-variant-relearn-light" value="relearn-light" selected>Relearn Light</option>
+                    <option id="R-select-variant-relearn-dark" value="relearn-dark">Relearn Dark</option>
+                  </select>
+                </div>
+                <div class="clear"></div>
+              </div>
+              <script>window.relearn.markVariant();</script>
+            </li>
+          </ul>
+        </div>
+<div id="R-footer" class="default-animation"><div style="margin-top: 2rem;">
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Last Updated</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem; margin-bottom: 1.5rem;">02-06-2026</div>
+  
+  <div style="font-weight: bold; font-size: 0.95rem; margin-bottom: 0.2rem; color: #879596;">Team</div>
+  <div style="color: #f39c12; font-style: italic; font-size: 0.95rem;">First Cloud AI Journey</div>
+</div>
+</div>
+      </div>
+    </aside>
+    <script src="/js/js-yaml/js-yaml.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-color.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-dispatch.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-drag.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-ease.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-interpolate.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-selection.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-timer.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-transition.min.js?1783614785" defer></script>
+    <script src="/js/d3/d3-zoom.min.js?1783614785" defer></script>
+    <script src="/js/mermaid/mermaid.min.js?1783614785" defer></script>
+    <script>
+      window.relearn.themeUseMermaid = JSON.parse("{}");
+    </script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783614785" defer></script>
+    <script src="/js/theme.js?1783614785" defer></script>
+    <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+  </body>
+</html>

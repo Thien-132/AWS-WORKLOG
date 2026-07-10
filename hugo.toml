@@ -1,0 +1,48 @@
+baseURL = 'http://example.org/'
+defaultContentLanguage = 'vi'
+locale = 'vi-vn'
+title = 'Báo cáo thực tập'
+theme = 'hugo-theme-relearn'
+
+[params]
+  themeVariant = [ "relearn-light", "relearn-dark" ]
+  disableLastmod = true
+
+[languages]
+  [languages.vi]
+    languageName = 'Tiếng Việt'
+    contentDir = 'content'
+    weight = 1
+  [languages.en]
+    languageName = 'English'
+    contentDir = 'content.en'
+    weight = 2
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[[languages.vi.menu.shortcut]]
+name = "AWS Study Group - Blog"
+url = "https://cloudjourney.awsstudygroup.com/"
+weight = 10
+pre = "<i class='fab fa-aws' style='font-size: 1.1rem; margin-right: 0.3rem;'></i> "
+
+[[languages.vi.menu.shortcut]]
+name = "AWS Study Group - FB Group"
+url = "https://www.facebook.com/groups/awsstudygroup"
+weight = 20
+pre = "<i class='fab fa-facebook-square' style='font-size: 1.1rem; margin-right: 0.3rem;'></i> "
+
+[[languages.en.menu.shortcut]]
+name = "AWS Study Group - Blog"
+url = "https://cloudjourney.awsstudygroup.com/"
+weight = 10
+pre = "<i class='fab fa-aws' style='font-size: 1.1rem; margin-right: 0.3rem;'></i> "
+
+[[languages.en.menu.shortcut]]
+name = "AWS Study Group - FB Group"
+url = "https://www.facebook.com/groups/awsstudygroup"
+weight = 20
+pre = "<i class='fab fa-facebook-square' style='font-size: 1.1rem; margin-right: 0.3rem;'></i> "

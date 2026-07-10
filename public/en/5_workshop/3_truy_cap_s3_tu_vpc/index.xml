@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>5.3. Access S3 from VPC :: Báo cáo thực tập</title>
+    <link>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5.3.1 Create a Gateway Endpoint</title>
+      <link>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/1_tao_gateway_endpoint/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/1_tao_gateway_endpoint/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.3.2 Test Gateway Endpoint</title>
+      <link>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/2_kiem_tra_gateway_endpoint/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:999/en/5_workshop/3_truy_cap_s3_tu_vpc/2_kiem_tra_gateway_endpoint/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

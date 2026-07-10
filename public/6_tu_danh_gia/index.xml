@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>6. Tự đánh giá :: Báo cáo thực tập</title>
+    <link>http://localhost:1313/6_tu_danh_gia/index.html</link>
+    <description>Trong suốt thời gian thực tập tại Công ty TNHH Amazon Web Services Việt Nam từ 20/04/2026 đến 05/07/2026, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường vào môi trường làm việc thực tế. Tôi đã tham gia dự án phân tích dữ liệu và thiết lập hạ tầng Cloud AI, qua đó cải thiện kỹ năng lập trình, phân tích, viết báo cáo, giao tiếp….</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <atom:link href="http://localhost:1313/6_tu_danh_gia/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

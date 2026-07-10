@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Đột phá stale knowledge của AI Agent với Web Search trên Amazon Bedrock AgentCore :: Báo cáo thực tập</title>
+    <link>http://localhost:60313/3-blogsposted/3.2-blog2/index.html</link>
+    <description>ĐỘT PHÁ STALE KNOWLEDGE CỦA AI AGENT VỚI WEB SEARCH TRÊN AMAZON BEDROCK AGENTCORE&#xD;Trong làn sóng phát triển trí tuệ nhân tạo hiện nay, các AI Agent ngày càng được kỳ vọng sẽ giải quyết các tác vụ phức tạp một cách tự động và thông minh. Tuy nhiên, một trong những giới hạn lớn nhất của các mô hình ngôn ngữ lớn (LLM) và AI Agent hiện tại là hiện tượng “Stale Knowledge” (Kiến thức bị đóng băng). Do kiến thức của mô hình chỉ giới hạn tại thời điểm kết thúc quá trình huấn luyện (training cutoff), AI Agent hoàn toàn “mù tịt” trước các thông tin mang tính thời gian thực (real-time) như giá cổ phiếu hôm nay, kết quả của một trận bóng đá vừa diễn ra, hay các tin tức công nghệ mới cập nhật.</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:60313/3-blogsposted/3.2-blog2/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

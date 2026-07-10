@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>6. Self-Assessment :: Báo cáo thực tập</title>
+    <link>http://localhost:999/en/6_tu_danh_gia/index.html</link>
+    <description>During my internship at Amazon Web Services Vietnam LLC from 20/04/2026 to 05/07/2026, I had the opportunity to learn, practice, and apply the knowledge acquired at school in a real-world working environment. I participated in data analysis and Cloud AI infrastructure setup projects, thereby improving my skills in programming, analyzing, report writing, and communication….&#xA;In terms of professionalism, I always strive to complete assigned tasks well, comply with regulations, and actively communicate with colleagues to improve work efficiency.</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="http://localhost:999/en/6_tu_danh_gia/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

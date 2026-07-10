@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>5.3. Truy cập S3 từ VPC :: Báo cáo thực tập</title>
+    <link>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/index.html</link>
+    <description></description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <atom:link href="http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>5.3.1 Tạo một Gateway Endpoint</title>
+      <link>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/1_tao_gateway_endpoint/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/1_tao_gateway_endpoint/index.html</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>5.3.2 Kiểm tra Gateway Endpoint</title>
+      <link>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/2_kiem_tra_gateway_endpoint/index.html</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/5_workshop/3_truy_cap_s3_tu_vpc/2_kiem_tra_gateway_endpoint/index.html</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
