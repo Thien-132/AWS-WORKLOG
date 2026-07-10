@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html id="R-html" lang="vi-vn" dir="ltr" itemscope itemtype="http://schema.org/Article" data-r-output-format="html">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="generator" content="Hugo 0.164.0">
@@ -10,7 +10,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Worklog Tuần 4 :: Báo cáo thực tập">
     <meta name="twitter:description" content="Mục tiêu tuần 4:Tập trung vào bảo mật, giới hạn dịch vụ và kiểm soát truy cập. Làm quen với các dịch vụ hỗ trợ quản trị an toàn trên AWS. Các công việc cần triển khai trong tuần này:Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 AWS: Quotas &amp; Environment 08/05/2026 08/05/2026 Theo dõi giới hạn dịch vụ và chuẩn bị môi trường làm việc Hoàn thành 2 AWS: EBS Backup Automation 09/05/2026 09/05/2026 Tự động hóa snapshot và chiến lược sao lưu Hoàn thành 3 AWS: SSO &amp; Permissions 10/05/2026 10/05/2026 Làm quen xác thực tập trung và phân quyền người dùng Hoàn thành 4 AWS: IAM Policies &amp; Sec Hub 11/05/2026 11/05/2026 Xây dựng chính sách IAM và kiểm tra bảo mật với Security Hub Hoàn thành 5 AWS: S3 Endpoints &amp; WAF 12/05/2026 12/05/2026 Truy cập riêng tư đến S3 và bảo vệ ứng dụng bằng WAF Hoàn thành 6 AWS: Macie &amp; KMS 13/05/2026 13/05/2026 Mã hóa dữ liệu và phát hiện dữ liệu nhạy cảm Hoàn thành 7 AWS: Secrets &amp; Firewall Mgr 14/05/2026 14/05/2026 Quản lý bí mật và điều phối chính sách bảo mật đa tài khoản Hoàn thành Chi tiết từng ngàyNgày 1 - AWS: Quotas &amp; EnvironmentKiểm tra giới hạn dịch vụ và chuẩn bị môi trường làm việc trước khi bắt đầu lab. Ngày 2 - AWS: EBS Backup AutomationTự động hóa snapshot và tìm hiểu cách lập kế hoạch sao lưu cho EBS. Ngày 3 - AWS: SSO &amp; PermissionsLàm quen với xác thực tập trung và cách gán quyền trong môi trường doanh nghiệp. Ngày 4 - AWS: IAM Policies &amp; Sec HubThiết kế IAM policy và sử dụng Security Hub để rà soát mức độ an toàn. Ngày 5 - AWS: S3 Endpoints &amp; WAFThiết lập truy cập riêng tư vào S3 và thêm lớp bảo vệ ứng dụng bằng WAF. Ngày 6 - AWS: Macie &amp; KMSÁp dụng mã hóa bằng KMS và phát hiện dữ liệu nhạy cảm với Macie. Ngày 7 - AWS: Secrets &amp; Firewall MgrQuản lý secrets và điều phối chính sách bảo mật trên nhiều tài khoản. Kết quả đạt được tuần 4:Hiểu được cách thiết kế bảo mật nhiều lớp trên AWS. Biết áp dụng IAM, KMS, Macie, WAF và Security Hub trong bài toán thực tế. Có nền tảng để xử lý các workload nhạy cảm và yêu cầu kiểm soát truy cập chặt.">
-    <meta property="og:url" content="http://localhost:1313/1-worklog/1.4-week4/index.html">
+    <meta property="og:url" content="http://example.org/1-worklog/1.4-week4/index.html">
     <meta property="og:site_name" content="Báo cáo thực tập">
     <meta property="og:title" content="Worklog Tuần 4 :: Báo cáo thực tập">
     <meta property="og:description" content="Mục tiêu tuần 4:Tập trung vào bảo mật, giới hạn dịch vụ và kiểm soát truy cập. Làm quen với các dịch vụ hỗ trợ quản trị an toàn trên AWS. Các công việc cần triển khai trong tuần này:Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 AWS: Quotas &amp; Environment 08/05/2026 08/05/2026 Theo dõi giới hạn dịch vụ và chuẩn bị môi trường làm việc Hoàn thành 2 AWS: EBS Backup Automation 09/05/2026 09/05/2026 Tự động hóa snapshot và chiến lược sao lưu Hoàn thành 3 AWS: SSO &amp; Permissions 10/05/2026 10/05/2026 Làm quen xác thực tập trung và phân quyền người dùng Hoàn thành 4 AWS: IAM Policies &amp; Sec Hub 11/05/2026 11/05/2026 Xây dựng chính sách IAM và kiểm tra bảo mật với Security Hub Hoàn thành 5 AWS: S3 Endpoints &amp; WAF 12/05/2026 12/05/2026 Truy cập riêng tư đến S3 và bảo vệ ứng dụng bằng WAF Hoàn thành 6 AWS: Macie &amp; KMS 13/05/2026 13/05/2026 Mã hóa dữ liệu và phát hiện dữ liệu nhạy cảm Hoàn thành 7 AWS: Secrets &amp; Firewall Mgr 14/05/2026 14/05/2026 Quản lý bí mật và điều phối chính sách bảo mật đa tài khoản Hoàn thành Chi tiết từng ngàyNgày 1 - AWS: Quotas &amp; EnvironmentKiểm tra giới hạn dịch vụ và chuẩn bị môi trường làm việc trước khi bắt đầu lab. Ngày 2 - AWS: EBS Backup AutomationTự động hóa snapshot và tìm hiểu cách lập kế hoạch sao lưu cho EBS. Ngày 3 - AWS: SSO &amp; PermissionsLàm quen với xác thực tập trung và cách gán quyền trong môi trường doanh nghiệp. Ngày 4 - AWS: IAM Policies &amp; Sec HubThiết kế IAM policy và sử dụng Security Hub để rà soát mức độ an toàn. Ngày 5 - AWS: S3 Endpoints &amp; WAFThiết lập truy cập riêng tư vào S3 và thêm lớp bảo vệ ứng dụng bằng WAF. Ngày 6 - AWS: Macie &amp; KMSÁp dụng mã hóa bằng KMS và phát hiện dữ liệu nhạy cảm với Macie. Ngày 7 - AWS: Secrets &amp; Firewall MgrQuản lý secrets và điều phối chính sách bảo mật trên nhiều tài khoản. Kết quả đạt được tuần 4:Hiểu được cách thiết kế bảo mật nhiều lớp trên AWS. Biết áp dụng IAM, KMS, Macie, WAF và Security Hub trong bài toán thực tế. Có nền tảng để xử lý các workload nhạy cảm và yêu cầu kiểm soát truy cập chặt.">
@@ -23,34 +23,34 @@
     <meta itemprop="wordCount" content="425">
     <title>Worklog Tuần 4 :: Báo cáo thực tập</title>
     <link href="/1-worklog/1.4-week4/index.xml" rel="alternate" type="application/rss+xml" title="Worklog Tuần 4 :: Báo cáo thực tập">
-    <link href="/css/auto-complete/auto-complete.min.css?1783665761" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1783665761" defer></script>
-    <script src="/js/search-lunr.js?1783665761" defer></script>
-    <script src="/js/search.js?1783665761" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1783669524" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783669524" defer></script>
+    <script src="/js/search-lunr.min.js?1783669524" defer></script>
+    <script src="/js/search.min.js?1783669524" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.vi.js?1783665761";
+      window.relearn.index_js_url="/searchindex.vi.js?1783669524";
     </script>
-    <script src="/js/lunr/lunr.min.js?1783665761" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1783665761" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1783665761" defer></script>
-    <script src="/js/lunr/lunr.vi.min.js?1783665761" defer></script>
+    <script src="/js/lunr/lunr.min.js?1783669524" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783669524" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783669524" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783669524" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/fonts/fontawesome/css/all.min.css?1783665761" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783665761" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783665761" rel="stylesheet">
-    <link href="/css/theme.css?1783665761" rel="stylesheet">
-    <link href="/css/format-html.css?1783665761" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/all.min.css?1783669524" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783669524" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783669524" rel="stylesheet">
+    <link href="/css/theme.min.css?1783669524" rel="stylesheet">
+    <link href="/css/format-html.min.css?1783669524" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
-      window.relearn.min = ``;
+      window.relearn.min = `.min`;
       window.relearn.path='\/1-worklog\/1.4-week4\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.absBaseUri='http:\/\/example.org';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // translations
@@ -353,7 +353,7 @@ body, h1, h2, h3, h4, h5, h6, table {
             <li class="" data-nav-id="/1-worklog/1.12-week12/index.html"><a class="padding" href="/1-worklog/1.12-week12/index.html"> <b> 1.12. </b> Worklog Tuần 12</a></li></ul></li>
             <li class="" data-nav-id="/2-proposal/index.html"><a class="padding" href="/2-proposal/index.html"> <b> 2. </b> Bản đề xuất</a></li>
             <li class="" data-nav-id="/3-blogsposted/index.html"><a class="padding default-animation" href="/3-blogsposted/index.html"> <b> 3. </b> Các bài blogs đã đăng</a><ul id="R-subsections-139b2bd7ed608dfc4cda535ffb3638d1" class="collapsible-menu"></ul></li>
-            <li class="" data-nav-id="/4-eventparticipated/index.html"><a class="padding default-animation" href="/4-eventparticipated/index.html"> <b> 4. </b> Các events đã tham gia</a><ul id="R-subsections-a3223440c4beb7b035882258d4302894" class="collapsible-menu"></ul></li>
+            <li class="" data-nav-id="/4-eventparticipated/index.html"><a class="padding default-animation" href="/4-eventparticipated/index.html"> <b> 4. </b> Các sự kiện đã tham gia</a><ul id="R-subsections-a3223440c4beb7b035882258d4302894" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/5-workshop/index.html"><a class="padding default-animation" href="/5-workshop/index.html"> <b> 5. </b> Workshop</a><ul id="R-subsections-3232083df9b680629be5cc26bdd904c0" class="collapsible-menu"></ul></li>
             <li class="" data-nav-id="/6-self-evaluation/index.html"><a class="padding" href="/6-self-evaluation/index.html"> <b> 6. </b> Tự đánh giá</a></li>
             <li class="" data-nav-id="/7-feedback/index.html"><a class="padding" href="/7-feedback/index.html"> <b> 7. </b> Chia sẻ và Đóng góp ý kiến</a></li>
@@ -409,8 +409,8 @@ body, h1, h2, h3, h4, h5, h6, table {
 </div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783665761" defer></script>
-    <script src="/js/theme.js?1783665761" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783669524" defer></script>
+    <script src="/js/theme.min.js?1783669524" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

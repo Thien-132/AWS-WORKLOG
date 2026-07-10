@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Báo cáo thực tập</title>
-    <link>http://localhost:1313/index.html</link>
+    <link>http://example.org/index.html</link>
     <description>Internship Report&#xD;Student Information:&#xD;Họ và tên: Trần Bá Thiện&#xA;Số điện thoại: 0912191218&#xA;Email: tran.thien1830@gmail.com&#xA;Trường đại học: Trường Đại Học Công Nghệ TP.HCM (HUTECH)&#xA;Ngành: Công Nghệ Thông Tin&#xA;Lớp: 22DTHD7&#xA;Công Ty Thực Tập: Công ty TNHH Amazon Web Services Việt Nam</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nhật ký công việc</title>
-      <link>http://localhost:1313/1-worklog/index.html</link>
+      <link>http://example.org/1-worklog/index.html</link>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/1-worklog/index.html</guid>
+      <guid>http://example.org/1-worklog/index.html</guid>
       <description>Chào mừng đến với trang Nhật ký công việc, nơi ghi lại toàn bộ hành trình 12 tuần học tập và trải nghiệm thực tế với các dịch vụ của AWS.&#xA;Lộ trình dưới đây được chia thành từng tuần, mỗi tuần tập trung vào các nhóm kiến thức cốt lõi của AWS Cloud: bắt đầu từ việc làm quen tài khoản, thiết lập mạng, cơ sở hạ tầng, cho đến các chủ đề chuyên sâu như bảo mật, container, kiến trúc serverless, xử lý dữ liệu và machine learning.</description>
     </item>
     <item>
       <title>Bản đề xuất</title>
-      <link>http://localhost:1313/2-proposal/index.html</link>
+      <link>http://example.org/2-proposal/index.html</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/2-proposal/index.html</guid>
+      <guid>http://example.org/2-proposal/index.html</guid>
       <description>BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNG&#xD;DỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS&#xD;1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ&#xD;1.1. Xu hướng Cloud-native và Decoupled&#xD;Hiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.</description>
     </item>
     <item>
       <title>Các bài blogs đã đăng</title>
-      <link>http://localhost:1313/3-blogsposted/index.html</link>
+      <link>http://example.org/3-blogsposted/index.html</link>
       <pubDate>Tue, 30 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/3-blogsposted/index.html</guid>
+      <guid>http://example.org/3-blogsposted/index.html</guid>
       <description>Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã đăng trên AWS Study Group.&#xA;Blog 1 - ĐƠN GIẢN HÓA TÍCH HỢP AWS APPSYNC EVENTS VỚI POWERTOOLS FOR AWS LAMBDA&#xD;Blog này giới thiệu Powertools for AWS Lambda vừa ra mắt tính năng mới AppSyncEventsResolver (hỗ trợ Python, TypeScript và .NET), giúp đơn giản hóa việc tích hợp AWS AppSync Events cho các ứng dụng thời gian thực như ứng dụng chat, bảng điều khiển hoặc hệ thống IoT.</description>
     </item>
     <item>
       <title>Các sự kiện đã tham gia</title>
-      <link>http://localhost:1313/4-eventparticipated/index.html</link>
+      <link>http://example.org/4-eventparticipated/index.html</link>
       <pubDate>Sat, 09 May 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/4-eventparticipated/index.html</guid>
+      <guid>http://example.org/4-eventparticipated/index.html</guid>
       <description>Trong kỳ thực tập này, em đã có cơ hội tham gia một sự kiện vô cùng ý nghĩa. Không chỉ mang lại những kiến thức thực tiễn và góc nhìn mới mẻ về công nghệ, đây còn là dịp để giao lưu, học hỏi và tạo ra những kỷ niệm đáng nhớ.&#xA;Sự kiện 1&#xD;Tên sự kiện: FCAJ Meetup: Ứng dụng AI trong kỷ nguyên mới</description>
     </item>
     <item>
       <title>Workshop</title>
-      <link>http://localhost:1313/5-workshop/index.html</link>
+      <link>http://example.org/5-workshop/index.html</link>
       <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/5-workshop/index.html</guid>
+      <guid>http://example.org/5-workshop/index.html</guid>
       <description>THỰC HÀNH AWS CDK: Xây dựng hệ thống Serverless Event-Driven&#xD;Chào mừng bạn đến với chuỗi bài thực hành chuyên sâu về AWS! Trong đồ án Workshop này, tôi sẽ hướng dẫn chi tiết cách thiết kế và triển khai một kiến trúc ứng dụng Serverless hướng sự kiện (Event-Driven Architecture) hoàn chỉnh. Chúng ta sẽ sử dụng AWS Cloud Development Kit (CDK) kết hợp ngôn ngữ TypeScript để xây dựng hạ tầng dưới dạng mã (IaC), giúp hệ thống dễ dàng mở rộng, linh hoạt và bảo mật cao.</description>
     </item>
     <item>
       <title>Tự đánh giá</title>
-      <link>http://localhost:1313/6-self-evaluation/index.html</link>
+      <link>http://example.org/6-self-evaluation/index.html</link>
       <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/6-self-evaluation/index.html</guid>
+      <guid>http://example.org/6-self-evaluation/index.html</guid>
       <description>Bảng tự đánh giá sinh viên&#xD;Trong suốt thời gian thực tập tại Công ty TNHH Amazon Web Services Việt Nam từ 17/04/2026 đến 09/07/2026, tôi đã có cơ hội học hỏi, rèn luyện và áp dụng kiến thức đã được trang bị tại trường Đại Học Công Nghệ TP.HCM (HUTECH) vào môi trường làm việc thực tế.</description>
     </item>
     <item>
       <title>Chia sẻ và Đóng góp ý kiến</title>
-      <link>http://localhost:1313/7-feedback/index.html</link>
+      <link>http://example.org/7-feedback/index.html</link>
       <pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/7-feedback/index.html</guid>
+      <guid>http://example.org/7-feedback/index.html</guid>
       <description>Đánh giá chung&#xD;1. Môi trường làm việc Môi trường làm việc tại AWS Việt Nam rất thân thiện và cởi mở. Các thành viên luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc năng động giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người kết nối và hiểu nhau hơn.</description>
     </item>
   </channel>
