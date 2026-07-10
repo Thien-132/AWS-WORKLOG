@@ -14,7 +14,7 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as dynamodb from &#39;aws-c
     <meta name="twitter:description" content="Thiết lập bảng DynamoDB dạng Single Table để lưu trữ dữ liệu chung và S3 bucket để lưu trữ tài nguyên/tệp tin của ứng dụng.
 Tạo tệp lib/storage-stack.ts:
 import * as cdk from &#39;aws-cdk-lib&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import * as s3 from &#39;aws-cdk-lib/aws-s3&#39;; import { Construct } from &#39;constructs&#39;; export class StorageStack extends cdk.Stack { public readonly table: dynamodb.Table; public readonly assetBucket: s3.Bucket; constructor(scope: Construct, id: string, props?: cdk.StackProps) { super(scope, id, props); // Khởi tạo DynamoDB Single Table cho dữ liệu ứng dụng nói chung this.table = new dynamodb.Table(this, &#39;AppSingleTable&#39;, { partitionKey: { name: &#39;PK&#39;, type: dynamodb.AttributeType.STRING }, sortKey: { name: &#39;SK&#39;, type: dynamodb.AttributeType.STRING }, billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, // Thanh toán On-Demand pointInTimeRecovery: true, // Tự động backup liên tục removalPolicy: cdk.RemovalPolicy.DESTROY, // Tự động xóa khi destroy stack }); // Tạo S3 Bucket riêng tư để lưu trữ tài nguyên ứng dụng this.assetBucket = new s3.Bucket(this, &#39;AssetStorageBucket&#39;, { encryption: s3.BucketEncryption.S3_MANAGED, blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL, // Chặn hoàn toàn public access removalPolicy: cdk.RemovalPolicy.DESTROY, autoDeleteObjects: true, }); } }">
-    <meta property="og:url" content="http://localhost:1313/5-workshop/5.3-module1-storage/index.html">
+    <meta property="og:url" content="http://192.168.1.219:1313/5-workshop/5.3-module1-storage/index.html">
     <meta property="og:site_name" content="Báo cáo thực tập">
     <meta property="og:title" content="Module 1: Lưu trữ &amp; DB :: Báo cáo thực tập">
     <meta property="og:description" content="Thiết lập bảng DynamoDB dạng Single Table để lưu trữ dữ liệu chung và S3 bucket để lưu trữ tài nguyên/tệp tin của ứng dụng.
@@ -31,26 +31,26 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as dynamodb from &#39;aws-c
     <meta itemprop="wordCount" content="169">
     <title>Module 1: Lưu trữ &amp; DB :: Báo cáo thực tập</title>
     <link href="/5-workshop/5.3-module1-storage/index.xml" rel="alternate" type="application/rss+xml" title="Module 1: Lưu trữ &amp; DB :: Báo cáo thực tập">
-    <link href="/css/auto-complete/auto-complete.min.css?1783670069" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1783670069" defer></script>
-    <script src="/js/search-lunr.js?1783670069" defer></script>
-    <script src="/js/search.js?1783670069" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1783679196" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783679196" defer></script>
+    <script src="/js/search-lunr.js?1783679196" defer></script>
+    <script src="/js/search.js?1783679196" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.vi.js?1783670069";
+      window.relearn.index_js_url="/searchindex.vi.js?1783679196";
     </script>
-    <script src="/js/lunr/lunr.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.vi.min.js?1783670069" defer></script>
+    <script src="/js/lunr/lunr.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783679196" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/fonts/fontawesome/css/all.min.css?1783670069" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783670069" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783670069" rel="stylesheet">
-    <link href="/css/theme.css?1783670069" rel="stylesheet">
-    <link href="/css/format-html.css?1783670069" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/all.min.css?1783679196" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783679196" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783679196" rel="stylesheet">
+    <link href="/css/theme.css?1783679196" rel="stylesheet">
+    <link href="/css/format-html.css?1783679196" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -58,7 +58,7 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as dynamodb from &#39;aws-c
       window.relearn.path='\/5-workshop\/5.3-module1-storage\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.absBaseUri='http:\/\/192.168.1.219:1313';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // translations
@@ -322,8 +322,8 @@ body, h1, h2, h3, h4, h5, h6, table {
 </div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783670069" defer></script>
-    <script src="/js/theme.js?1783670069" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783679196" defer></script>
+    <script src="/js/theme.js?1783679196" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

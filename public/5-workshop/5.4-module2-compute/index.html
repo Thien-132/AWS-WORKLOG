@@ -14,7 +14,7 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk
     <meta name="twitter:description" content="Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.
 Tạo tệp lib/api-stack.ts:
 import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk-lib/aws-lambda&#39;; import * as apigateway from &#39;aws-cdk-lib/aws-apigateway&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import { Construct } from &#39;constructs&#39;; interface ApiStackProps extends cdk.StackProps { table: dynamodb.Table; userPool: cognito.IUserPool; } export class ApiStack extends cdk.Stack { constructor(scope: Construct, id: string, props: ApiStackProps) { super(scope, id, props); const authorizer = new apigateway.CognitoUserPoolsAuthorizer(this, &#39;AppApiAuthorizer&#39;, { cognitoUserPools: [props.userPool], authorizerName: &#39;AppAuthorizer&#39;, }); const dataLambda = new lambda.Function(this, &#39;DataServiceLambda&#39;, { runtime: lambda.Runtime.NODEJS_18_X, handler: &#39;index.handler&#39;, code: lambda.Code.fromInline(` const { DynamoDBClient } = require(&#34;@aws-sdk/client-dynamodb&#34;); const { DynamoDBDocumentClient, ScanCommand } = require(&#34;@aws-sdk/lib-dynamodb&#34;); const client = new DynamoDBClient({}); const docClient = DynamoDBDocumentClient.from(client); exports.handler = async (event) =&gt; { const tableName = process.env.TABLE_NAME; try { const data = await docClient.send(new ScanCommand({ TableName: tableName, FilterExpression: &#34;begins_with(PK, :pk)&#34;, ExpressionAttributeValues: { &#34;:pk&#34;: &#34;ITEM#&#34; } })); return { statusCode: 200, headers: { &#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Access-Control-Allow-Origin&#34;: &#34;*&#34; }, body: JSON.stringify(data.Items || []) }; } catch (err) { return { statusCode: 500, body: JSON.stringify({ error: err.message }) }; } }; `), environment: { TABLE_NAME: props.table.tableName, }, }); props.table.grantReadWriteData(dataLambda); const api = new apigateway.RestApi(this, &#39;AppRestApi&#39;, { restApiName: &#39;Application Backend API&#39;, defaultCorsPreflightOptions: { allowOrigins: apigateway.Cors.ALL_ORIGINS, allowMethods: apigateway.Cors.ALL_METHODS, }, }); const itemsResource = api.root.addResource(&#39;items&#39;); itemsResource.addMethod(&#39;GET&#39;, new apigateway.LambdaIntegration(dataLambda)); itemsResource.addMethod(&#39;POST&#39;, new apigateway.LambdaIntegration(dataLambda), { authorizer: authorizer, authorizationType: apigateway.AuthorizationType.COGNITO, }); } }">
-    <meta property="og:url" content="http://localhost:1313/5-workshop/5.4-module2-compute/index.html">
+    <meta property="og:url" content="http://192.168.1.219:1313/5-workshop/5.4-module2-compute/index.html">
     <meta property="og:site_name" content="Báo cáo thực tập">
     <meta property="og:title" content="Module 2: Tính toán &amp; API :: Báo cáo thực tập">
     <meta property="og:description" content="Thiết lập Lambda function và liên kết với API Gateway. Vì sử dụng kiến trúc Serverless thuần túy, Lambda sẽ chạy ở chế độ mặc định trên mạng AWS, cho phép gọi trực tiếp tới DynamoDB một cách nhanh chóng.
@@ -31,26 +31,26 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk
     <meta itemprop="wordCount" content="258">
     <title>Module 2: Tính toán &amp; API :: Báo cáo thực tập</title>
     <link href="/5-workshop/5.4-module2-compute/index.xml" rel="alternate" type="application/rss+xml" title="Module 2: Tính toán &amp; API :: Báo cáo thực tập">
-    <link href="/css/auto-complete/auto-complete.min.css?1783670069" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1783670069" defer></script>
-    <script src="/js/search-lunr.js?1783670069" defer></script>
-    <script src="/js/search.js?1783670069" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1783679196" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783679196" defer></script>
+    <script src="/js/search-lunr.js?1783679196" defer></script>
+    <script src="/js/search.js?1783679196" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.vi.js?1783670069";
+      window.relearn.index_js_url="/searchindex.vi.js?1783679196";
     </script>
-    <script src="/js/lunr/lunr.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.vi.min.js?1783670069" defer></script>
+    <script src="/js/lunr/lunr.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783679196" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/fonts/fontawesome/css/all.min.css?1783670069" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783670069" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783670069" rel="stylesheet">
-    <link href="/css/theme.css?1783670069" rel="stylesheet">
-    <link href="/css/format-html.css?1783670069" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/all.min.css?1783679196" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783679196" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783679196" rel="stylesheet">
+    <link href="/css/theme.css?1783679196" rel="stylesheet">
+    <link href="/css/format-html.css?1783679196" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -58,7 +58,7 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as lambda from &#39;aws-cdk
       window.relearn.path='\/5-workshop\/5.4-module2-compute\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.absBaseUri='http:\/\/192.168.1.219:1313';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // translations
@@ -364,8 +364,8 @@ body, h1, h2, h3, h4, h5, h6, table {
 </div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783670069" defer></script>
-    <script src="/js/theme.js?1783670069" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783679196" defer></script>
+    <script src="/js/theme.js?1783679196" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>

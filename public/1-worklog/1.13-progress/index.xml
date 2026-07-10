@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Báo cáo tiến độ (Progress Report) :: Báo cáo thực tập</title>
+    <link>http://192.168.1.219:1313/1-worklog/1.13-progress/index.html</link>
+    <description>Tiến độ hoàn thành Worklog&#xD;Dưới đây là bảng tổng hợp tiến độ hoàn thành các mục tiêu trong đợt thực tập.&#xA;Tuần Chủ đề Trạng thái Ghi chú Tuần 1 Làm quen AWS &amp; Quản lý chi phí ✅ Hoàn thành Đã xong lý thuyết và lab Tuần 2 Mạng &amp; Triển khai ứng dụng đa tầng ✅ Hoàn thành Triển khai VPC thành công Tuần 3 Infrastructure as Code &amp; Giám sát ⏳ Đang thực hiện Đang vướng phần CloudWatch Tuần 4 Phân quyền IAM &amp; Bảo mật 📝 Chưa bắt đầu Tuần 5 Tính khả dụng cao &amp; VPC Peering 📝 Chưa bắt đầu Tuần 6 - 12 Các chủ đề nâng cao 📝 Chưa bắt đầu (Bạn có thể vào file này để chỉnh sửa lại tiến độ thực tế của mình nhé!)</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://192.168.1.219:1313/1-worklog/1.13-progress/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

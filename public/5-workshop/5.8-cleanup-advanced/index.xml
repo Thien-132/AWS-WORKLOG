@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dọn dẹp &amp; Nâng cao :: Báo cáo thực tập</title>
-    <link>http://localhost:1313/5-workshop/5.8-cleanup-advanced/index.html</link>
+    <link>http://192.168.1.219:1313/5-workshop/5.8-cleanup-advanced/index.html</link>
     <description>1. Dọn dẹp tài nguyên&#xD;Để tránh các chi phí phát sinh ngoài ý muốn, hãy phá hủy toàn bộ tài nguyên khi kết thúc bài thực hành:&#xA;cdk destroy --all&#xD;2. Kiểm thử hạ tầng tự động (Jest)&#xD;Viết kiểm thử tự động để bảo đảm hạ tầng luôn tuân thủ các chính sách của dự án. Tạo tệp test/infra.test.ts:</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://localhost:1313/5-workshop/5.8-cleanup-advanced/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://192.168.1.219:1313/5-workshop/5.8-cleanup-advanced/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Các bài blogs đã đăng :: Báo cáo thực tập</title>
-    <link>http://localhost:1313/3-blogsposted/index.html</link>
+    <link>http://192.168.1.219:1313/3-blogsposted/index.html</link>
     <description>Tại đây sẽ là phần liệt kê, giới thiệu các blogs mà các bạn đã đăng trên AWS Study Group.&#xA;Blog 1 - ĐƠN GIẢN HÓA TÍCH HỢP AWS APPSYNC EVENTS VỚI POWERTOOLS FOR AWS LAMBDA&#xD;Blog này giới thiệu Powertools for AWS Lambda vừa ra mắt tính năng mới AppSyncEventsResolver (hỗ trợ Python, TypeScript và .NET), giúp đơn giản hóa việc tích hợp AWS AppSync Events cho các ứng dụng thời gian thực như ứng dụng chat, bảng điều khiển hoặc hệ thống IoT.</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate>Tue, 09 Jun 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/3-blogsposted/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://192.168.1.219:1313/3-blogsposted/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Đơn giản hóa tích hợp AWS AppSync Events với Powertools</title>
-      <link>http://localhost:1313/3-blogsposted/3.1-blog1/index.html</link>
+      <link>http://192.168.1.219:1313/3-blogsposted/3.1-blog1/index.html</link>
       <pubDate>Tue, 09 Jun 2026 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/3-blogsposted/3.1-blog1/index.html</guid>
+      <guid>http://192.168.1.219:1313/3-blogsposted/3.1-blog1/index.html</guid>
       <description>Trong việc xây dựng ứng dụng Serverless, tối ưu hóa mã nguồn luôn là ưu tiên hàng đầu. Việc công cụ Powertools for AWS Lambda ra mắt bộ tính năng AppSyncEventsResolver (cho Python, TypeScript và .NET) mang lại nhiều lợi ích lớn. Nó giúp việc kết nối và xử lý luồng sự kiện thời gian thực (real-time) từ AWS AppSync Events trở nên dễ dàng và hiệu quả hơn rất nhiều.</description>
     </item>
   </channel>

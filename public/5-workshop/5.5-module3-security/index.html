@@ -14,7 +14,7 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as cognito from &#39;aws-cd
     <meta name="twitter:description" content="Thiết lập Cognito User Pool cho đăng nhập và tạo các chính sách IAM chi tiết tuân theo nguyên tắc phân quyền tối thiểu (Least Privilege).
 Tạo tệp lib/security-stack.ts:
 import * as cdk from &#39;aws-cdk-lib&#39;; import * as cognito from &#39;aws-cdk-lib/aws-cognito&#39;; import * as iam from &#39;aws-cdk-lib/aws-iam&#39;; import { Construct } from &#39;constructs&#39;; export class SecurityStack extends cdk.Stack { public readonly userPool: cognito.UserPool; public readonly userPoolClient: cognito.UserPoolClient; constructor(scope: Construct, id: string, props?: cdk.StackProps) { super(scope, id, props); this.userPool = new cognito.UserPool(this, &#39;AppUserPool&#39;, { userPoolName: &#39;app-user-pool&#39;, selfSignUpEnabled: true, signInAliases: { email: true }, autoVerify: { email: true }, passwordPolicy: { minLength: 8, requireLowercase: true, requireUppercase: true, requireDigits: true, requireSymbols: true, }, removalPolicy: cdk.RemovalPolicy.DESTROY, }); this.userPoolClient = new cognito.UserPoolClient(this, &#39;AppUserPoolClient&#39;, { userPool: this.userPool, generateSecret: false, }); // Custom role cho hệ thống thông báo (Quyền tối thiểu) const notificationRole = new iam.Role(this, &#39;NotificationPublishRole&#39;, { assumedBy: new iam.ServicePrincipal(&#39;lambda.amazonaws.com&#39;), description: &#39;Role gửi thông báo với các quyền tối giản&#39;, }); notificationRole.addToPolicy(new iam.PolicyStatement({ actions: [&#39;sns:Publish&#39;], resources: [&#39;*&#39;], effect: iam.Effect.ALLOW, })); } }">
-    <meta property="og:url" content="http://localhost:1313/5-workshop/5.5-module3-security/index.html">
+    <meta property="og:url" content="http://192.168.1.219:1313/5-workshop/5.5-module3-security/index.html">
     <meta property="og:site_name" content="Báo cáo thực tập">
     <meta property="og:title" content="Module 3: Bảo mật &amp; Phân quyền :: Báo cáo thực tập">
     <meta property="og:description" content="Thiết lập Cognito User Pool cho đăng nhập và tạo các chính sách IAM chi tiết tuân theo nguyên tắc phân quyền tối thiểu (Least Privilege).
@@ -31,26 +31,26 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as cognito from &#39;aws-cd
     <meta itemprop="wordCount" content="167">
     <title>Module 3: Bảo mật &amp; Phân quyền :: Báo cáo thực tập</title>
     <link href="/5-workshop/5.5-module3-security/index.xml" rel="alternate" type="application/rss+xml" title="Module 3: Bảo mật &amp; Phân quyền :: Báo cáo thực tập">
-    <link href="/css/auto-complete/auto-complete.min.css?1783670069" rel="stylesheet">
-    <script src="/js/auto-complete/auto-complete.min.js?1783670069" defer></script>
-    <script src="/js/search-lunr.js?1783670069" defer></script>
-    <script src="/js/search.js?1783670069" defer></script>
+    <link href="/css/auto-complete/auto-complete.min.css?1783679196" rel="stylesheet">
+    <script src="/js/auto-complete/auto-complete.min.js?1783679196" defer></script>
+    <script src="/js/search-lunr.js?1783679196" defer></script>
+    <script src="/js/search.js?1783679196" defer></script>
     <script>
       window.relearn = window.relearn || {};
-      window.relearn.index_js_url="/searchindex.vi.js?1783670069";
+      window.relearn.index_js_url="/searchindex.vi.js?1783679196";
     </script>
-    <script src="/js/lunr/lunr.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.stemmer.support.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.multi.min.js?1783670069" defer></script>
-    <script src="/js/lunr/lunr.vi.min.js?1783670069" defer></script>
+    <script src="/js/lunr/lunr.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.stemmer.support.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.multi.min.js?1783679196" defer></script>
+    <script src="/js/lunr/lunr.vi.min.js?1783679196" defer></script>
     <script>
       window.relearn = window.relearn || {};
       window.relearn.contentLangs=['vi'];
     </script>
-    <link href="/fonts/fontawesome/css/all.min.css?1783670069" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783670069" rel="stylesheet"></noscript>
-    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783670069" rel="stylesheet">
-    <link href="/css/theme.css?1783670069" rel="stylesheet">
-    <link href="/css/format-html.css?1783670069" rel="stylesheet" id="R-format-style">
+    <link href="/fonts/fontawesome/css/all.min.css?1783679196" rel="stylesheet" media="print" onload="this.media='all';this.onload=null;"><noscript><link href="/fonts/fontawesome/css/all.min.css?1783679196" rel="stylesheet"></noscript>
+    <link href="/css/perfect-scrollbar/perfect-scrollbar.min.css?1783679196" rel="stylesheet">
+    <link href="/css/theme.css?1783679196" rel="stylesheet">
+    <link href="/css/format-html.css?1783679196" rel="stylesheet" id="R-format-style">
     <script>
       window.relearn = window.relearn || {};
       // configuration
@@ -58,7 +58,7 @@ import * as cdk from &#39;aws-cdk-lib&#39;; import * as cognito from &#39;aws-cd
       window.relearn.path='\/5-workshop\/5.5-module3-security\/index.html';
       window.relearn.relBasePath='..\/..';
       window.relearn.relBaseUri='..\/..';
-      window.relearn.absBaseUri='http:\/\/localhost:1313';
+      window.relearn.absBaseUri='http:\/\/192.168.1.219:1313';
       window.relearn.disableInlineCopyToClipboard=false;
       window.relearn.enableBlockCodeWrap=true;
       // translations
@@ -337,8 +337,8 @@ body, h1, h2, h3, h4, h5, h6, table {
 </div>
       </div>
     </aside>
-    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783670069" defer></script>
-    <script src="/js/theme.js?1783670069" defer></script>
+    <script src="/js/perfect-scrollbar/perfect-scrollbar.min.js?1783679196" defer></script>
+    <script src="/js/theme.js?1783679196" defer></script>
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
   </body>
 </html>
