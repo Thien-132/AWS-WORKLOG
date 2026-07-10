@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Worklog Tuần 6 :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/1-worklog/1.6-week6/index.html</link>
+    <link>http://localhost:1313/1-worklog/1.6-week6/index.html</link>
     <description>Mục tiêu tuần 6:&#xD;Thực hành containerization, orchestration và CI/CD cho ứng dụng container. Tìm hiểu thêm về storage và tối ưu chi phí vận hành. Các công việc cần triển khai trong tuần này:&#xD;Ngày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 AWS: Docker &amp; ECS 22/05/2026 22/05/2026 Container hóa ứng dụng và chạy trên Amazon ECS Hoàn thành 2 AWS: ECS IaC &amp; CodePipeline 23/05/2026 23/05/2026 Tự động hóa triển khai ECS bằng CDK và CodePipeline Hoàn thành 3 AWS: Deployments &amp; DevOps 24/05/2026 24/05/2026 Áp dụng quy trình phát hành tự động trong DevOps Hoàn thành 4 AWS: Storage Gateway &amp; FSx 25/05/2026 25/05/2026 Làm việc với lưu trữ lai và file storage cho Windows Hoàn thành 5 AWS: DynamoDB &amp; Step Functions 26/05/2026 26/05/2026 Điều phối workflow và làm việc với dữ liệu phi quan hệ Hoàn thành 6 AWS: Storage Performance 27/05/2026 27/05/2026 Tối ưu hiệu năng lưu trữ cho workload thực tế Hoàn thành 7 AWS: Cost Visualization 28/05/2026 28/05/2026 Phân tích và trực quan hóa chi phí để tối ưu ngân sách Hoàn thành Chi tiết từng ngày&#xD;Ngày 1 - AWS: Docker &amp; ECS&#xD;Container hóa ứng dụng và chạy thử trên Amazon ECS. Ngày 2 - AWS: ECS IaC &amp; CodePipeline&#xD;Tự động hóa triển khai ECS bằng CDK và CodePipeline. Ngày 3 - AWS: Deployments &amp; DevOps&#xD;Thực hành quy trình phát hành tự động và cách vận hành DevOps. Ngày 4 - AWS: Storage Gateway &amp; FSx&#xD;Khám phá lưu trữ lai và file storage cho môi trường Windows. Ngày 5 - AWS: DynamoDB &amp; Step Functions&#xD;Kết hợp NoSQL với điều phối workflow để xây dựng luồng xử lý rõ ràng. Ngày 6 - AWS: Storage Performance&#xD;Phân tích hiệu năng lưu trữ và tác động của lựa chọn storage lên hệ thống. Ngày 7 - AWS: Cost Visualization&#xD;Trực quan hóa chi phí đám mây để hỗ trợ quyết định tối ưu ngân sách. Kết quả đạt được tuần 6:&#xD;Biết cách triển khai và vận hành ứng dụng container trên AWS. Hiểu mối liên hệ giữa CI/CD, storage và tối ưu chi phí. Có thêm góc nhìn về cách thiết kế hệ thống vừa linh hoạt vừa tiết kiệm.</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/1-worklog/1.6-week6/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/1-worklog/1.6-week6/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bản đề xuất :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/2-proposal/index.html</link>
+    <link>http://localhost:1313/2-proposal/index.html</link>
     <description>BẢN ĐỀ XUẤT KIẾN TRÚC HỆ THỐNG&#xD;DỰ ÁN: NỀN TẢNG THƯƠNG MẠI ĐIỆN TỬ TÍCH HỢP AI TRÊN NỀN TẢNG AWS SERVERLESS&#xD;1. GIỚI THIỆU &amp; ĐẶT VẤN ĐỀ&#xD;1.1. Xu hướng Cloud-native và Decoupled&#xD;Hiện nay, ngành thương mại điện tử đang có sự dịch chuyển mạnh mẽ từ kiến trúc Monolithic truyền thống sang mô hình Cloud-native và Event-Driven. Việc này giúp các hệ thống trở nên linh hoạt hơn, dễ dàng xử lý lượng truy cập khổng lồ trong các đợt sự kiện mua sắm, đồng thời giảm thiểu tối đa thời gian gián đoạn dịch vụ. Bằng việc phân tách rạch ròi Frontend và Backend (Decoupled), hệ thống có khả năng xử lý bất đồng bộ, tăng độ chịu tải và dự phòng lỗi.</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/2-proposal/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/2-proposal/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

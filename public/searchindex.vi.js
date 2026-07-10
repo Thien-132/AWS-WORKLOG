@@ -48,14 +48,6 @@ var relearn_searchindex = [
     "uri": "/5-workshop/5.1-overview/index.html"
   },
   {
-    "breadcrumb": "Báo cáo thực tập \u003e Suộc code web Nhóm",
-    "content": "Link source code: https://github.com/Thien-132/music-instrument-store.git",
-    "description": "Link source code: https://github.com/Thien-132/music-instrument-store.git",
-    "tags": [],
-    "title": "Music Instrument Store",
-    "uri": "/6-suoccodewebnhom/music-instrument-store/index.html"
-  },
-  {
     "breadcrumb": "Báo cáo thực tập \u003e Nhật ký công việc",
     "content": "Mục tiêu tuần 2:\rNắm được cách vận hành mạng, DNS và kết nối ứng dụng trên AWS. Làm quen với các bài workshop liên quan đến kiến trúc đa tầng và phân phối nội dung. Các công việc cần triển khai trong tuần này:\rNgày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 AWS: Route 53 \u0026 CLI 24/04/2026 24/04/2026 Thực hành quản lý DNS bằng Route 53 và thao tác dịch vụ bằng CLI Hoàn thành 2 AWS: DynamoDB \u0026 ElastiCache 25/04/2026 25/04/2026 Tìm hiểu NoSQL và caching trong kiến trúc ứng dụng Hoàn thành 3 AWS: Networking Workshop 26/04/2026 26/04/2026 Củng cố kiến thức về mạng, subnet và kết nối giữa các thành phần Hoàn thành 4 AWS: CloudFront \u0026 Lambda@Edge 27/04/2026 27/04/2026 Triển khai phân phối nội dung và xử lý tại edge Hoàn thành 5 AWS: Windows \u0026 Web Apps 28/04/2026 28/04/2026 Học cách chạy workload Windows và web app có tính sẵn sàng cao Hoàn thành 6 AWS: VM \u0026 DB Migration 29/04/2026 29/04/2026 Tìm hiểu quá trình di chuyển máy ảo và cơ sở dữ liệu lên AWS Hoàn thành 7 AWS: Disaster Recovery 30/04/2026 30/04/2026 Nắm các mô hình khôi phục sau thảm họa với AWS Elastic Disaster Recovery Hoàn thành Chi tiết từng ngày\rNgày 1 - AWS: Route 53 \u0026 CLI\rÔn lại DNS, quản lý bản ghi Route 53 và sử dụng CLI để kiểm tra tài nguyên. Ngày 2 - AWS: DynamoDB \u0026 ElastiCache\rSo sánh mô hình NoSQL và caching để hiểu khi nào nên dùng DynamoDB hoặc ElastiCache. Ngày 3 - AWS: Networking Workshop\rCủng cố kiến thức VPC, subnet và định tuyến qua workshop thực hành. Ngày 4 - AWS: CloudFront \u0026 Lambda@Edge\rTìm hiểu phân phối nội dung CDN và xử lý tại edge bằng CloudFront và Lambda@Edge. Ngày 5 - AWS: Windows \u0026 Web Apps\rXem cách triển khai workload Windows và cấu hình web app có tính sẵn sàng cao. Ngày 6 - AWS: VM \u0026 DB Migration\rNghiên cứu các hướng di chuyển máy ảo và cơ sở dữ liệu lên AWS. Ngày 7 - AWS: Disaster Recovery\rHọc các mô hình khôi phục sau thảm họa và vai trò của AWS trong kế hoạch dự phòng. Kết quả đạt được tuần 2:\rNắm được các khái niệm DNS, CDN và caching trên AWS. Hiểu vai trò của DynamoDB, ElastiCache và CloudFront trong kiến trúc ứng dụng. Bắt đầu nhìn rõ hơn cách AWS hỗ trợ workload truyền thống, migration và disaster recovery.",
     "description": "Mục tiêu tuần 2:\rNắm được cách vận hành mạng, DNS và kết nối ứng dụng trên AWS. Làm quen với các bài workshop liên quan đến kiến trúc đa tầng và phân phối nội dung. Các công việc cần triển khai trong tuần này:\rNgày Nhiệm vụ Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 AWS: Route 53 \u0026 CLI 24/04/2026 24/04/2026 Thực hành quản lý DNS bằng Route 53 và thao tác dịch vụ bằng CLI Hoàn thành 2 AWS: DynamoDB \u0026 ElastiCache 25/04/2026 25/04/2026 Tìm hiểu NoSQL và caching trong kiến trúc ứng dụng Hoàn thành 3 AWS: Networking Workshop 26/04/2026 26/04/2026 Củng cố kiến thức về mạng, subnet và kết nối giữa các thành phần Hoàn thành 4 AWS: CloudFront \u0026 Lambda@Edge 27/04/2026 27/04/2026 Triển khai phân phối nội dung và xử lý tại edge Hoàn thành 5 AWS: Windows \u0026 Web Apps 28/04/2026 28/04/2026 Học cách chạy workload Windows và web app có tính sẵn sàng cao Hoàn thành 6 AWS: VM \u0026 DB Migration 29/04/2026 29/04/2026 Tìm hiểu quá trình di chuyển máy ảo và cơ sở dữ liệu lên AWS Hoàn thành 7 AWS: Disaster Recovery 30/04/2026 30/04/2026 Nắm các mô hình khôi phục sau thảm họa với AWS Elastic Disaster Recovery Hoàn thành Chi tiết từng ngày\rNgày 1 - AWS: Route 53 \u0026 CLI\rÔn lại DNS, quản lý bản ghi Route 53 và sử dụng CLI để kiểm tra tài nguyên. Ngày 2 - AWS: DynamoDB \u0026 ElastiCache\rSo sánh mô hình NoSQL và caching để hiểu khi nào nên dùng DynamoDB hoặc ElastiCache. Ngày 3 - AWS: Networking Workshop\rCủng cố kiến thức VPC, subnet và định tuyến qua workshop thực hành. Ngày 4 - AWS: CloudFront \u0026 Lambda@Edge\rTìm hiểu phân phối nội dung CDN và xử lý tại edge bằng CloudFront và Lambda@Edge. Ngày 5 - AWS: Windows \u0026 Web Apps\rXem cách triển khai workload Windows và cấu hình web app có tính sẵn sàng cao. Ngày 6 - AWS: VM \u0026 DB Migration\rNghiên cứu các hướng di chuyển máy ảo và cơ sở dữ liệu lên AWS. Ngày 7 - AWS: Disaster Recovery\rHọc các mô hình khôi phục sau thảm họa và vai trò của AWS trong kế hoạch dự phòng. Kết quả đạt được tuần 2:\rNắm được các khái niệm DNS, CDN và caching trên AWS. Hiểu vai trò của DynamoDB, ElastiCache và CloudFront trong kiến trúc ứng dụng. Bắt đầu nhìn rõ hơn cách AWS hỗ trợ workload truyền thống, migration và disaster recovery.",
@@ -174,14 +166,6 @@ var relearn_searchindex = [
     "tags": [],
     "title": "Module 4: Serverless Backend",
     "uri": "/5-workshop/5.6-module4-serverless/index.html"
-  },
-  {
-    "breadcrumb": "Báo cáo thực tập",
-    "content": "Đây là thư mục chứa source code của nhóm.",
-    "description": "Đây là thư mục chứa source code của nhóm.",
-    "tags": [],
-    "title": "Suộc code web Nhóm",
-    "uri": "/6-suoccodewebnhom/index.html"
   },
   {
     "breadcrumb": "Báo cáo thực tập",

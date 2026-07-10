@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Suộc code web Nhóm :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/6-suoccodewebnhom/index.html</link>
+    <link>http://localhost:1313/6-suoccodewebnhom/index.html</link>
     <description>Đây là thư mục chứa source code của nhóm.</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
-    <atom:link href="http://192.168.1.219:1313/6-suoccodewebnhom/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/6-suoccodewebnhom/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Music Instrument Store</title>
-      <link>http://192.168.1.219:1313/6-suoccodewebnhom/music-instrument-store/index.html</link>
+      <link>http://localhost:1313/6-suoccodewebnhom/music-instrument-store/index.html</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://192.168.1.219:1313/6-suoccodewebnhom/music-instrument-store/index.html</guid>
+      <guid>http://localhost:1313/6-suoccodewebnhom/music-instrument-store/index.html</guid>
       <description>Link source code: https://github.com/Thien-132/music-instrument-store.git</description>
     </item>
   </channel>

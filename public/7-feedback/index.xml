@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chia sẻ và Đóng góp ý kiến :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/7-feedback/index.html</link>
+    <link>http://localhost:1313/7-feedback/index.html</link>
     <description>Đánh giá chung&#xD;1. Môi trường làm việc Môi trường làm việc tại AWS Việt Nam rất thân thiện và cởi mở. Các thành viên luôn sẵn sàng hỗ trợ khi mình gặp khó khăn, kể cả ngoài giờ làm việc. Không gian làm việc năng động giúp mình tập trung tốt hơn. Tuy nhiên, mình nghĩ có thể bổ sung thêm một số buổi giao lưu hoặc team bonding để mọi người kết nối và hiểu nhau hơn.</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/7-feedback/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/7-feedback/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
