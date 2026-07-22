@@ -12,7 +12,7 @@ pre: " <b> 6.1. </b> "
 
 ## 1. Project Overview
 
-**Music Instrument Store** is an e-commerce web application dedicated to selling musical instruments and audio equipment (Guitars, Pianos, Drums, Violins, Audio Interface, and accessories).
+**Music Instrument Store (SonicCart)** is an e-commerce web application dedicated to selling musical instruments and audio equipment (Guitars, Pianos, Drums, Violins, Audio Interface, and accessories).
 
 The primary objective of this project is to build a modern, high-performance online shopping platform. It enables customers to easily browse instruments, listen to audio demos, place orders, and manage purchases. Furthermore, the system is designed to integrate seamlessly with **AWS Cloud** infrastructure to ensure scalability, high availability, and data security.
 
@@ -91,15 +91,31 @@ The primary objective of this project is to build a modern, high-performance onl
 
 ---
 
-## 5. Future Enhancements
+## 5. Results, Demo & Future Enhancements
 
+### 5.1. Achievements
+- Intuitive, responsive e-commerce interface supporting multi-device experience.
+- Clean codebase architecture and clear version control management.
+- Containerized design ready for automated deployment on AWS Cloud.
+
+### 5.2. Future Enhancements
 - Integration of AR (Augmented Reality) for 3D instrument preview.
 - Integration of online payment gateways (Stripe / PayPal / Momo).
 - Automated CI/CD deployment pipeline using GitHub Actions and AWS CodePipeline.
 
+### 5.3. Live Demo & Video Demo Showcase
+- 🌐 **Live Website URL:** [https://soniccart.dev/](https://soniccart.dev/)
+- 🎥 **Video Demo Recording (Google Drive):** [Google Drive Video Folder](https://drive.google.com/drive/folders/1faZN2vwPEc-jZtAJJNaS1CeMHHpmpHqd?usp=sharing)
+
 ---
 
-## 6. Source Code Repository
+## 6. Resources & Source Code Repository
 
-🔗 **Official GitHub Repository Link:**  
+🌐 **Live Production Website:**  
+[https://soniccart.dev/](https://soniccart.dev/)
+
+🎥 **Recorded Application Video Demo:**  
+[https://drive.google.com/drive/folders/1faZN2vwPEc-jZtAJJNaS1CeMHHpmpHqd?usp=sharing](https://drive.google.com/drive/folders/1faZN2vwPEc-jZtAJJNaS1CeMHHpmpHqd?usp=sharing)
+
+💻 **Official GitHub Repository Link:**  
 [https://github.com/Thien-132/music-instrument-store.git](https://github.com/Thien-132/music-instrument-store.git)

@@ -12,7 +12,7 @@ pre: " <b> 6.1. </b> "
 
 ## 1. Giới thiệu Tổng quan Dự án
 
-**Music Instrument Store** là dự án website thương mại điện tử chuyên cung cấp các thiết bị và dụng cụ âm nhạc (Guitar, Piano, Drum, Violin, thiết bị thu âm và phụ kiện âm thanh). 
+**Music Instrument Store (SonicCart)** là dự án website thương mại điện tử chuyên cung cấp các thiết bị và dụng cụ âm nhạc (Guitar, Piano, Drum, Violin, thiết bị thu âm và phụ kiện âm thanh). 
 
 Dự án được xây dựng nhằm giải quyết bài toán chuyển đổi số cho cửa hàng bán lẻ nhạc cụ, giúp khách hàng dễ dàng tìm kiếm, trải nghiệm thử âm thanh trực tuyến, đặt mua sản phẩm và theo dõi đơn hàng một cách nhanh chóng, minh bạch. Đồng thời, hệ thống hỗ trợ tích hợp hạ tầng điện toán đám mây **AWS** để đảm bảo khả năng mở rộng (Scalability), tính sẵn sàng cao (High Availability) và bảo mật dữ liệu.
 
@@ -91,7 +91,7 @@ Dự án được xây dựng nhằm giải quyết bài toán chuyển đổi s
 
 ---
 
-## 5. Kết quả Đạt được & Hướng Phát triển
+## 5. Kết quả Đạt được, Demo & Hướng Phát triển
 
 ### 5.1. Kết quả Đạt được
 - Hoàn thành giao diện mua sắm nhạc cụ trực quan, tương thích đa thiết bị (Desktop/Mobile).
@@ -103,9 +103,19 @@ Dự án được xây dựng nhằm giải quyết bài toán chuyển đổi s
 - Tích hợp cổng thanh toán VNPAY / Momo / Stripe.
 - Triển khai tự động hóa CI/CD Pipeline với GitHub Actions và AWS CodePipeline.
 
+### 5.3. Trải nghiệm Demo & Video Demo Sản phẩm
+- 🌐 **Website Trực tuyến (Live App):** [https://soniccart.dev/](https://soniccart.dev/)
+- 🎥 **Video Demo Quá trình Chạy Ứng dụng (Google Drive):** [Thư mục Video Demo](https://drive.google.com/drive/folders/1faZN2vwPEc-jZtAJJNaS1CeMHHpmpHqd?usp=sharing)
+
 ---
 
-## 6. Liên kết Mã nguồn (Source Code Repository)
+## 6. Liên kết Tài nguyên & Mã nguồn
 
-🔗 **Link GitHub Mã nguồn chính thức:**  
+🔗 **Trang web Trực tuyến (Live Demo):**  
+[https://soniccart.dev/](https://soniccart.dev/)
+
+🎥 **Video Demo Quá trình Vận hành (Google Drive):**  
+[https://drive.google.com/drive/folders/1faZN2vwPEc-jZtAJJNaS1CeMHHpmpHqd?usp=sharing](https://drive.google.com/drive/folders/1faZN2vwPEc-jZtAJJNaS1CeMHHpmpHqd?usp=sharing)
+
+💻 **Link GitHub Mã nguồn chính thức:**  
 [https://github.com/Thien-132/music-instrument-store.git](https://github.com/Thien-132/music-instrument-store.git)
