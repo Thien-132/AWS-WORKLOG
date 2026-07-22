@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Demo Ứng dụng &amp; Video Minh họa :: Báo cáo thực tập</title>
+    <link>http://example.org/5-workshop/5.9-demo/index.html</link>
+    <description>DEMO ỨNG DỤNG &amp; VIDEO THỰC HÀNH WORKSHOP&#xD;1. Trải nghiệm Website Trực tuyến (Live Web Application)&#xD;Bạn có thể trực tiếp truy cập và trải nghiệm hệ thống ứng dụng web thương mại điện tử đã được triển khai hoàn chỉnh tại địa chỉ:</description>
+    <generator>Hugo</generator>
+    <language>vi-vn</language>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://example.org/5-workshop/5.9-demo/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

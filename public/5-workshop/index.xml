@@ -64,5 +64,12 @@
       <guid>http://example.org/5-workshop/5.8-cleanup-advanced/index.html</guid>
       <description>1. Dọn dẹp tài nguyên&#xD;Để tránh các chi phí phát sinh ngoài ý muốn, hãy phá hủy toàn bộ tài nguyên khi kết thúc bài thực hành:&#xA;cdk destroy --all&#xD;2. Kiểm thử hạ tầng tự động (Jest)&#xD;Viết kiểm thử tự động để bảo đảm hạ tầng luôn tuân thủ các chính sách của dự án. Tạo tệp test/infra.test.ts:</description>
     </item>
+    <item>
+      <title>Demo Ứng dụng &amp; Video Minh họa</title>
+      <link>http://example.org/5-workshop/5.9-demo/index.html</link>
+      <pubDate>Thu, 01 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>http://example.org/5-workshop/5.9-demo/index.html</guid>
+      <description>DEMO ỨNG DỤNG &amp; VIDEO THỰC HÀNH WORKSHOP&#xD;1. Trải nghiệm Website Trực tuyến (Live Web Application)&#xD;Bạn có thể trực tiếp truy cập và trải nghiệm hệ thống ứng dụng web thương mại điện tử đã được triển khai hoàn chỉnh tại địa chỉ:</description>
+    </item>
   </channel>
 </rss>

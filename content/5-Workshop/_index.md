@@ -37,3 +37,7 @@ Brings your infrastructure code to life by deploying it to the AWS cloud using a
 
 #### [8. Cleanup & Advanced Topics](5.8-Cleanup-Advanced/)
 Guides you through safely tearing down your cloud resources to prevent unexpected billing charges. Furthermore, it introduces advanced practices, such as writing infrastructure unit tests using the Jest testing framework for long-term stability.
+
+#### [9. Live Demo & Video Demonstration (Demo)](5.9-Demo/)
+Directly experience the live production web application at [https://soniccart.dev/](https://soniccart.dev/) and watch the recorded video walkthrough on Google Drive.
+

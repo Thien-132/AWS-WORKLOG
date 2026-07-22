@@ -37,3 +37,7 @@ Phân tích và triển khai các lớp bảo mật thiết yếu. Phần này h
 
 #### [8. Dọn dẹp & Nâng cao (Cleanup & Advanced)](5.8-Cleanup-Advanced/)
 Hướng dẫn dọn dẹp tài nguyên để tránh phát sinh chi phí sau khi hoàn thành. Ngoài ra, phần này mở rộng thêm các kỹ năng nâng cao như viết Unit Test cho hạ tầng bằng framework Jest để đảm bảo tính ổn định lâu dài.
+
+#### [9. Demo Ứng dụng & Video Minh họa (Demo)](5.9-Demo/)
+Trải nghiệm trực tiếp ứng dụng web đã triển khai tại địa chỉ [https://soniccart.dev/](https://soniccart.dev/) và xem video ghi hình chi tiết quá trình vận hành demo hệ thống trên Google Drive.
+
