@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>FCAJ Community Day :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/4-eventparticipated/4.1-event1/index.html</link>
+    <link>http://example.org/4-eventparticipated/4.1-event1/index.html</link>
     <description>1. Thông tin tổng quan&#xD;Tên sự kiện: FCAJ Community Day&#xA;Ngày tổ chức: 09/05/2026&#xA;Địa điểm: Tầng 26, Bitexco Financial Tower, số 02 Hải Triều, Phường Bến Nghé, Quận 1, TP.HCM&#xA;Vai trò: Khán giả tham dự&#xA;Hình thức tổ chức: Hội thảo kỹ thuật trực tiếp (bao gồm thuyết trình, demo thực tế và phần Q&amp;A)</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/4-eventparticipated/4.1-event1/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/4-eventparticipated/4.1-event1/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

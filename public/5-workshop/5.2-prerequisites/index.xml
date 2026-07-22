@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Chuẩn bị &amp; Khởi tạo :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/5-workshop/5.2-prerequisites/index.html</link>
+    <link>http://example.org/5-workshop/5.2-prerequisites/index.html</link>
     <description>1. Các công cụ cần thiết&#xD;Trước khi bắt đầu, hãy đảm bảo bạn đã cài đặt các công cụ sau:&#xA;Node.js (LTS v18 hoặc v20) AWS CLI v2 cấu hình thông tin qua aws configure AWS CDK v2 cài đặt global: npm install -g aws-cdk TypeScript compiler: npm install -g typescript 2. Khởi tạo dự án&#xD;Tạo một thư mục mới và khởi tạo ứng dụng CDK:</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/5-workshop/5.2-prerequisites/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/5-workshop/5.2-prerequisites/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

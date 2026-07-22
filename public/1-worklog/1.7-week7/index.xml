@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Worklog Tuần 7 :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/1-worklog/1.7-week7/index.html</link>
+    <link>http://example.org/1-worklog/1.7-week7/index.html</link>
     <description>Mục tiêu Tuần 7:&#xD;Tìm hiểu và thực hành về Kiến trúc Microservices, Nền tảng Serverless và DevAx. Các công việc thực hiện tuần này:&#xD;Ngày Công việc Ngày bắt đầu Ngày hoàn thành Tài liệu tham khảo Trạng thái 1 Nền tảng Serverless &amp; DevAx 29/05/2026 29/05/2026 Học tập về kiến trúc microservices và nền tảng serverless Hoàn thành</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/1-worklog/1.7-week7/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/1-worklog/1.7-week7/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

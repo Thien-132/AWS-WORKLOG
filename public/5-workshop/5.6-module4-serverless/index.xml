@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Module 4: Serverless Backend :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/5-workshop/5.6-module4-serverless/index.html</link>
+    <link>http://example.org/5-workshop/5.6-module4-serverless/index.html</link>
     <description>Trong phần này, bạn sẽ triển khai logic tiếp nhận dữ liệu và xử lý sự kiện bất đồng bộ (Asynchronous Data Ingestion &amp; Event Processing) sử dụng AWS SDK v3 viết bằng TypeScript. Kiến trúc này sử dụng mô hình hướng sự kiện (Event-Driven Architecture) thông qua API Gateway, AWS Lambda, DynamoDB (Single-Table Design), Amazon SQS, DLQ và Amazon EventBridge.&#xA;Phần 1: Tổng quan và Chuẩn bị (Overview &amp; Prerequisites)&#xD;1. Luồng kiến trúc hệ thống&#xD;Để chịu tải tốt hơn, tách biệt xử lý (decoupling) và đảm bảo an toàn dữ liệu, hệ thống triển khai mô hình xử lý bất đồng bộ hướng sự kiện:</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/5-workshop/5.6-module4-serverless/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/5-workshop/5.6-module4-serverless/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

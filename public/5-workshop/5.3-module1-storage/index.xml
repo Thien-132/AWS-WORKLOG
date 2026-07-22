@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Module 1: Lưu trữ &amp; DB :: Báo cáo thực tập</title>
-    <link>http://192.168.1.219:1313/5-workshop/5.3-module1-storage/index.html</link>
+    <link>http://example.org/5-workshop/5.3-module1-storage/index.html</link>
     <description>Thiết lập bảng DynamoDB dạng Single Table để lưu trữ dữ liệu chung và S3 bucket để lưu trữ tài nguyên/tệp tin của ứng dụng.&#xA;Tạo tệp lib/storage-stack.ts:&#xA;import * as cdk from &#39;aws-cdk-lib&#39;; import * as dynamodb from &#39;aws-cdk-lib/aws-dynamodb&#39;; import * as s3 from &#39;aws-cdk-lib/aws-s3&#39;; import { Construct } from &#39;constructs&#39;; export class StorageStack extends cdk.Stack { public readonly table: dynamodb.Table; public readonly assetBucket: s3.Bucket; constructor(scope: Construct, id: string, props?: cdk.StackProps) { super(scope, id, props); // Khởi tạo DynamoDB Single Table cho dữ liệu ứng dụng nói chung this.table = new dynamodb.Table(this, &#39;AppSingleTable&#39;, { partitionKey: { name: &#39;PK&#39;, type: dynamodb.AttributeType.STRING }, sortKey: { name: &#39;SK&#39;, type: dynamodb.AttributeType.STRING }, billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, // Thanh toán On-Demand pointInTimeRecovery: true, // Tự động backup liên tục removalPolicy: cdk.RemovalPolicy.DESTROY, // Tự động xóa khi destroy stack }); // Tạo S3 Bucket riêng tư để lưu trữ tài nguyên ứng dụng this.assetBucket = new s3.Bucket(this, &#39;AssetStorageBucket&#39;, { encryption: s3.BucketEncryption.S3_MANAGED, blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL, // Chặn hoàn toàn public access removalPolicy: cdk.RemovalPolicy.DESTROY, autoDeleteObjects: true, }); } }</description>
     <generator>Hugo</generator>
     <language>vi-vn</language>
     <lastBuildDate></lastBuildDate>
-    <atom:link href="http://192.168.1.219:1313/5-workshop/5.3-module1-storage/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://example.org/5-workshop/5.3-module1-storage/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

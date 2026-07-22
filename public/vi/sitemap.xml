@@ -1,144 +1,146 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/3-blogsposted/3.1-blog1/index.html</loc>
+    <loc>http://example.org/6-suoccodewebnhom/music-instrument-store/index.html</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://example.org/3-blogsposted/3.1-blog1/index.html</loc>
     <lastmod>2026-06-09T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/4-eventparticipated/4.1-event1/index.html</loc>
+    <loc>http://example.org/4-eventparticipated/4.1-event1/index.html</loc>
     <lastmod>2026-05-09T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/index.html</loc>
+    <loc>http://example.org/index.html</loc>
     <lastmod>2026-04-17T00:00:00+00:00</lastmod>
-    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi-vn" href="http://localhost:1313/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://example.org/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi-vn" href="http://example.org/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://example.org/en/index.html" />
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.1-week1/index.html</loc>
+    <loc>http://example.org/1-worklog/1.1-week1/index.html</loc>
     <lastmod>2026-04-17T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/index.html</loc>
+    <loc>http://example.org/1-worklog/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.1-overview/index.html</loc>
+    <loc>http://example.org/5-workshop/5.1-overview/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/6-suoccodewebnhom/music-instrument-store/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/1-worklog/1.2-week2/index.html</loc>
+    <loc>http://example.org/1-worklog/1.2-week2/index.html</loc>
     <lastmod>2026-04-24T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.2-prerequisites/index.html</loc>
+    <loc>http://example.org/5-workshop/5.2-prerequisites/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/2-proposal/index.html</loc>
+    <loc>http://example.org/2-proposal/index.html</loc>
     <lastmod>2024-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/3-blogsposted/index.html</loc>
+    <loc>http://example.org/3-blogsposted/index.html</loc>
     <lastmod>2026-06-30T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.3-week3/index.html</loc>
+    <loc>http://example.org/1-worklog/1.3-week3/index.html</loc>
     <lastmod>2026-05-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.3-module1-storage/index.html</loc>
+    <loc>http://example.org/5-workshop/5.3-module1-storage/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/4-eventparticipated/index.html</loc>
+    <loc>http://example.org/4-eventparticipated/index.html</loc>
     <lastmod>2026-05-09T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.4-week4/index.html</loc>
+    <loc>http://example.org/1-worklog/1.4-week4/index.html</loc>
     <lastmod>2026-05-08T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.4-module2-compute/index.html</loc>
+    <loc>http://example.org/5-workshop/5.4-module2-compute/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.5-week5/index.html</loc>
+    <loc>http://example.org/1-worklog/1.5-week5/index.html</loc>
     <lastmod>2026-05-15T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.5-module3-security/index.html</loc>
+    <loc>http://example.org/5-workshop/5.5-module3-security/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/index.html</loc>
+    <loc>http://example.org/5-workshop/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/6-self-evaluation/index.html</loc>
+    <loc>http://example.org/6-suoccodewebnhom/index.html</loc>
     <lastmod>2026-07-10T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.6-week6/index.html</loc>
+    <loc>http://example.org/6-self-evaluation/index.html</loc>
+    <lastmod>2026-07-10T00:00:00+00:00</lastmod>
+  </url>
+  <url>
+    <loc>http://example.org/1-worklog/1.6-week6/index.html</loc>
     <lastmod>2026-05-22T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.6-module4-serverless/index.html</loc>
+    <loc>http://example.org/5-workshop/5.6-module4-serverless/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/6-suoccodewebnhom/index.html</loc>
-  </url>
-  <url>
-    <loc>http://localhost:1313/7-feedback/index.html</loc>
+    <loc>http://example.org/7-feedback/index.html</loc>
     <lastmod>2026-07-10T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.7-week7/index.html</loc>
+    <loc>http://example.org/1-worklog/1.7-week7/index.html</loc>
     <lastmod>2026-05-29T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.7-deployment-testing/index.html</loc>
+    <loc>http://example.org/5-workshop/5.7-deployment-testing/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.8-week8/index.html</loc>
+    <loc>http://example.org/1-worklog/1.8-week8/index.html</loc>
     <lastmod>2026-06-05T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/5-workshop/5.8-cleanup-advanced/index.html</loc>
+    <loc>http://example.org/5-workshop/5.8-cleanup-advanced/index.html</loc>
     <lastmod>2026-01-01T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.9-week9/index.html</loc>
+    <loc>http://example.org/1-worklog/1.9-week9/index.html</loc>
     <lastmod>2026-06-12T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.10-week10/index.html</loc>
+    <loc>http://example.org/1-worklog/1.10-week10/index.html</loc>
     <lastmod>2026-06-19T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.11-week11/index.html</loc>
+    <loc>http://example.org/1-worklog/1.11-week11/index.html</loc>
     <lastmod>2026-06-26T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/1-worklog/1.12-week12/index.html</loc>
+    <loc>http://example.org/1-worklog/1.12-week12/index.html</loc>
     <lastmod>2026-07-03T00:00:00+00:00</lastmod>
   </url>
   <url>
-    <loc>http://localhost:1313/categories/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/categories/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi-vn" href="http://localhost:1313/categories/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/en/categories/index.html" />
+    <loc>http://example.org/categories/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://example.org/categories/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi-vn" href="http://example.org/categories/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://example.org/en/categories/index.html" />
   </url>
   <url>
-    <loc>http://localhost:1313/tags/index.html</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="http://localhost:1313/tags/index.html" />
-    <xhtml:link rel="alternate" hreflang="vi-vn" href="http://localhost:1313/tags/index.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="http://localhost:1313/en/tags/index.html" />
+    <loc>http://example.org/tags/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="http://example.org/tags/index.html" />
+    <xhtml:link rel="alternate" hreflang="vi-vn" href="http://example.org/tags/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="http://example.org/en/tags/index.html" />
   </url>
 </urlset>
